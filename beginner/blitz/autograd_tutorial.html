@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Autograd: automatic differentiation &mdash; PyTorch Tutorials 0.4.0 documentation</title>
+  <title>Autograd: 자동 미분 &mdash; PyTorch Tutorials 0.4.0 documentation</title>
   
 
   
@@ -42,7 +42,7 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="PyTorch Tutorials 0.4.0 documentation" href="../../index.html"/>
-        <link rel="up" title="Deep Learning with PyTorch: A 60 Minute Blitz" href="../deep_learning_60min_blitz.html"/>
+        <link rel="up" title="PyTorch로 딥러닝하기: 60분만에 끝장내기" href="../deep_learning_60min_blitz.html"/>
         <link rel="next" title="Neural Networks" href="neural_networks_tutorial.html"/>
         <link rel="prev" title="What is PyTorch?" href="tensor_tutorial.html"/> 
 
@@ -102,7 +102,7 @@
             
               <p class="caption"><span class="caption-text">Beginner Tutorials</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../deep_learning_60min_blitz.html">Deep Learning with PyTorch: A 60 Minute Blitz</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../deep_learning_60min_blitz.html">PyTorch로 딥러닝하기: 60분만에 끝장내기</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="tensor_tutorial.html">What is PyTorch?</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="tensor_tutorial.html#getting-started">Getting Started</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="tensor_tutorial.html#tensors">Tensors</a></li>
@@ -117,9 +117,9 @@
 <li class="toctree-l3"><a class="reference internal" href="tensor_tutorial.html#cuda-tensors">CUDA Tensors</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Autograd: automatic differentiation</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Autograd: 자동 미분</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#tensor">Tensor</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#gradients">Gradients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#gradient">변화도(Gradient)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="neural_networks_tutorial.html">Neural Networks</a><ul>
@@ -515,9 +515,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../deep_learning_60min_blitz.html">Deep Learning with PyTorch: A 60 Minute Blitz</a> &raquo;</li>
+          <li><a href="../deep_learning_60min_blitz.html">PyTorch로 딥러닝하기: 60분만에 끝장내기</a> &raquo;</li>
         
-      <li>Autograd: automatic differentiation</li>
+      <li>Autograd: 자동 미분</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -536,46 +536,41 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="autograd-automatic-differentiation">
-<span id="sphx-glr-beginner-blitz-autograd-tutorial-py"></span><h1>Autograd: automatic differentiation<a class="headerlink" href="#autograd-automatic-differentiation" title="Permalink to this headline">¶</a></h1>
-<p>Central to all neural networks in PyTorch is the <code class="docutils literal notranslate"><span class="pre">autograd</span></code> package.
-Let’s first briefly visit this, and we will then go to training our
-first neural network.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">autograd</span></code> package provides automatic differentiation for all operations
-on Tensors. It is a define-by-run framework, which means that your backprop is
-defined by how your code is run, and that every single iteration can be
-different.</p>
-<p>Let us see this in more simple terms with some examples.</p>
+  <div class="section" id="autograd">
+<span id="sphx-glr-beginner-blitz-autograd-tutorial-py"></span><h1>Autograd: 자동 미분<a class="headerlink" href="#autograd" title="Permalink to this headline">¶</a></h1>
+<p>PyTorch의 모든 신경망의 중심에는 <code class="docutils literal notranslate"><span class="pre">autograd</span></code> 패키지가 있습니다.
+먼저 이것을 가볍게 살펴본 뒤, 첫번째 신경망을 학습시켜보겠습니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">autograd</span></code> 패키지는 Tensor의 모든 연산에 대해 자동 미분을 제공합니다.
+이는 실행-기반-정의(define-by-run) 프레임워크로, 이는 코드를 어떻게 작성하여 실행하느냐에
+따라 역전파가 정의된다는 뜻이며, 역전파는 학습 과정의 매 단계마다 달라집니다.</p>
+<p>좀 더 간단한 용어로 몇 가지 예를 보이겠습니다.</p>
 <div class="section" id="tensor">
 <h2>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> is the central class of the package. If you set its attribute
-<code class="docutils literal notranslate"><span class="pre">.requires_grad</span></code> as <code class="docutils literal notranslate"><span class="pre">True</span></code>, it starts to track all operations on it. When
-you finish your computation you can call <code class="docutils literal notranslate"><span class="pre">.backward()</span></code> and have all the
-gradients computed automatically. The gradient for this tensor will be
-accumulated into <code class="docutils literal notranslate"><span class="pre">.grad</span></code> attribute.</p>
-<p>To stop a tensor from tracking history, you can call <code class="docutils literal notranslate"><span class="pre">.detach()</span></code> to detach
-it from the computation history, and to prevent future computation from being
-tracked.</p>
-<p>To prevent tracking history (and using memory), you can also wrap the code block
-in <code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">torch.no_grad():</span></code>. This can be particularly helpful when evaluating a
-model because the model may have trainable parameters with <cite>requires_grad=True</cite>,
-but we don’t need the gradients.</p>
-<p>There’s one more class which is very important for autograd
-implementation - a <code class="docutils literal notranslate"><span class="pre">Function</span></code>.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Tensor</span></code> and <code class="docutils literal notranslate"><span class="pre">Function</span></code> are interconnected and build up an acyclic
-graph, that encodes a complete history of computation. Each variable has
-a <code class="docutils literal notranslate"><span class="pre">.grad_fn</span></code> attribute that references a <code class="docutils literal notranslate"><span class="pre">Function</span></code> that has created
-the <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> (except for Tensors created by the user - their
-<code class="docutils literal notranslate"><span class="pre">grad_fn</span> <span class="pre">is</span> <span class="pre">None</span></code>).</p>
-<p>If you want to compute the derivatives, you can call <code class="docutils literal notranslate"><span class="pre">.backward()</span></code> on
-a <code class="docutils literal notranslate"><span class="pre">Tensor</span></code>. If <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> is a scalar (i.e. it holds a one element
-data), you don’t need to specify any arguments to <code class="docutils literal notranslate"><span class="pre">backward()</span></code>,
-however if it has more elements, you need to specify a <code class="docutils literal notranslate"><span class="pre">gradient</span></code>
-argument that is a tensor of matching shape.</p>
+<p>패키지의 중심에는 <code class="docutils literal notranslate"><span class="pre">torch.Tensor</span></code> 클래스가 있습니다. 만약 <code class="docutils literal notranslate"><span class="pre">.requires_grad</span></code>
+속성을 <code class="docutils literal notranslate"><span class="pre">True</span></code> 로 설정하면, 그 tensor에서 이뤄진 모든 연산들을 추적(Track)하기
+시작합니다. 계산이 완료된 후 <code class="docutils literal notranslate"><span class="pre">.backward()</span></code> 를 호출하여 모든 변화도(gradient)를
+자동으로 계산할 수 있습니다. 이 Tensor의 변화도는 <code class="docutils literal notranslate"><span class="pre">.grad</span></code> 에 누적됩니다.</p>
+<p>Tensor가 기록을 중단하게 하려면, <code class="docutils literal notranslate"><span class="pre">.detach()</span></code> 를 호출하여 연산 기록으로부터
+분리(detach)하여 이후 연산들이 기록되는 것을 방지할 수 있습니다.</p>
+<p>연산 기록을 추적하는 것(과 메모리 사용)을 멈추기 위해, 코드 블럭(Code Block)을
+<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">torch.no_grad():</span></code> 로 감쌀 수 있습니다. 이는 특히 변화도(Gradient)는
+필요없지만, <cite>requires_grad=True</cite> 가 설정되어 학습 가능한 매개변수(Parameter)를
+갖는 모델을 평가(Evaluate)할 때 유용합니다.</p>
+<p>Autograd 구현에서 매우 중요한 클래스가 하나 더 있는데요, 바로 <code class="docutils literal notranslate"><span class="pre">Function</span></code>
+클래스입니다.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Tensor</span></code> 와 <code class="docutils literal notranslate"><span class="pre">Function</span></code> 은 상호 연결되어 있으며, 모든 연산 과정을
+부호화(encode)하여 순환하지 않은 그래프(acyclic graph)를 생성합니다. 각 변수는
+<code class="docutils literal notranslate"><span class="pre">.grad_fn</span></code> 속성을 갖고 있는데, 이는 <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> 를 생성한 <code class="docutils literal notranslate"><span class="pre">Function</span></code> 을
+참조하고 있습니다. (단, 사용자가 만든 Tensor는 예외로, 이 때 <code class="docutils literal notranslate"><span class="pre">grad_fn</span></code> 은
+<code class="docutils literal notranslate"><span class="pre">None</span></code> 입니다.)</p>
+<p>도함수를 계산하기 위해서는, <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> 의 <code class="docutils literal notranslate"><span class="pre">.backward()</span></code> 를 호출하면 됩니다.
+<code class="docutils literal notranslate"><span class="pre">Tensor</span></code> 가 스칼라(scalar)인 경우(예. 하나의 요소만 갖는 등)에는, <code class="docutils literal notranslate"><span class="pre">backward</span></code> 에
+인자를 정해줄 필요가 없습니다. 하지만 여러 개의 요소를 갖고 있을
+때는 tensor의 모양을 <code class="docutils literal notranslate"><span class="pre">gradient</span></code> 의 인자로 지정할 필요가 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 </pre></div>
 </div>
-<p>Create a tensor and set requires_grad=True to track computation with it</p>
+<p>tensor를 생성하고 requires_grad=True를 설정하여 연산을 기록합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -585,7 +580,7 @@ argument that is a tensor of matching shape.</p>
         <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>Do an operation of tensor:</p>
+<p>tensor에 연산을 수행합니다:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">2</span>
 <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
@@ -595,15 +590,15 @@ argument that is a tensor of matching shape.</p>
         <span class="p">[</span> <span class="mf">3.</span><span class="p">,</span>  <span class="mf">3.</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">y</span></code> was created as a result of an operation, so it has a <code class="docutils literal notranslate"><span class="pre">grad_fn</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">y</span></code> 는 연산의 결과로 생성된 것이므로, <code class="docutils literal notranslate"><span class="pre">grad_fn</span></code> 을 갖습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">grad_fn</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AddBackward0</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f113c916f28</span><span class="o">&gt;</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">AddBackward0</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f3e6b4d6c88</span><span class="o">&gt;</span>
 </pre></div>
 </div>
-<p>Do more operations on y</p>
+<p>y에 다른 연산을 수행합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">z</span> <span class="o">=</span> <span class="n">y</span> <span class="o">*</span> <span class="n">y</span> <span class="o">*</span> <span class="mi">3</span>
 <span class="n">out</span> <span class="o">=</span> <span class="n">z</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 
@@ -615,8 +610,8 @@ argument that is a tensor of matching shape.</p>
         <span class="p">[</span> <span class="mf">27.</span><span class="p">,</span>  <span class="mf">27.</span><span class="p">]])</span> <span class="n">tensor</span><span class="p">(</span><span class="mf">27.</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">.requires_grad_(</span> <span class="pre">...</span> <span class="pre">)</span></code> changes an existing Tensor’s <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code>
-flag in-place. The input flag defaults to <code class="docutils literal notranslate"><span class="pre">True</span></code> if not given.</p>
+<p><code class="docutils literal notranslate"><span class="pre">.requires_grad_(</span> <span class="pre">...</span> <span class="pre">)</span></code> 은 기존 Tensor의 <code class="docutils literal notranslate"><span class="pre">requires_grad</span></code> 값을 In-place로
+변화시킵니다. 입력 값이 주어지지 않으면 기본 값으로 <code class="docutils literal notranslate"><span class="pre">True</span></code> 를 갖습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">a</span> <span class="o">=</span> <span class="p">((</span><span class="n">a</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
@@ -629,19 +624,19 @@ flag in-place. The input flag defaults to <code class="docutils literal notransl
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kc">False</span>
 <span class="kc">True</span>
-<span class="o">&lt;</span><span class="n">SumBackward0</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f1161072630</span><span class="o">&gt;</span>
+<span class="o">&lt;</span><span class="n">SumBackward0</span> <span class="nb">object</span> <span class="n">at</span> <span class="mh">0x7f3e6b4d6b38</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="gradients">
-<h2>Gradients<a class="headerlink" href="#gradients" title="Permalink to this headline">¶</a></h2>
-<p>Let’s backprop now
-Because <code class="docutils literal notranslate"><span class="pre">out</span></code> contains a single scalar, <code class="docutils literal notranslate"><span class="pre">out.backward()</span></code> is
-equivalent to <code class="docutils literal notranslate"><span class="pre">out.backward(torch.tensor(1))</span></code>.</p>
+<div class="section" id="gradient">
+<h2>변화도(Gradient)<a class="headerlink" href="#gradient" title="Permalink to this headline">¶</a></h2>
+<p>이제 역전파(backprop)를 해보겠습니다.
+<code class="docutils literal notranslate"><span class="pre">out</span></code> 은 하나의 스칼라(Scalar) 값만 갖고 있기 때문에, <code class="docutils literal notranslate"><span class="pre">out.backward()</span></code> 는
+<code class="docutils literal notranslate"><span class="pre">out.backward(torch.tensor(1))</span></code> 을 하는 것과 똑같습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">out</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>print gradients d(out)/dx</p>
+<p>변화도 d(out)/dx를 출력합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">grad</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -650,14 +645,14 @@ equivalent to <code class="docutils literal notranslate"><span class="pre">out.b
         <span class="p">[</span> <span class="mf">4.5000</span><span class="p">,</span>  <span class="mf">4.5000</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>You should have got a matrix of <code class="docutils literal notranslate"><span class="pre">4.5</span></code>. Let’s call the <code class="docutils literal notranslate"><span class="pre">out</span></code>
-<em>Tensor</em> “<span class="math notranslate">\(o\)</span>”.
-We have that <span class="math notranslate">\(o = \frac{1}{4}\sum_i z_i\)</span>,
-<span class="math notranslate">\(z_i = 3(x_i+2)^2\)</span> and <span class="math notranslate">\(z_i\bigr\rvert_{x_i=1} = 27\)</span>.
-Therefore,
-<span class="math notranslate">\(\frac{\partial o}{\partial x_i} = \frac{3}{2}(x_i+2)\)</span>, hence
+<p><code class="docutils literal notranslate"><span class="pre">4.5</span></code> 로 이루어진 행렬이 보일 것입니다. <code class="docutils literal notranslate"><span class="pre">out</span></code> 을 <em>Tensor</em> “<span class="math notranslate">\(o\)</span>” 라고
+하면, 다음과 같이 구할 수 있습니다.
+<span class="math notranslate">\(o = \frac{1}{4}\sum_i z_i\)</span>,
+<span class="math notranslate">\(z_i = 3(x_i+2)^2\)</span> 이고 <span class="math notranslate">\(z_i\bigr\rvert_{x_i=1} = 27\)</span> 입니다.
+따라서,
+<span class="math notranslate">\(\frac{\partial o}{\partial x_i} = \frac{3}{2}(x_i+2)\)</span> 이므로,
 <span class="math notranslate">\(\frac{\partial o}{\partial x_i}\bigr\rvert_{x_i=1} = \frac{9}{2} = 4.5\)</span>.</p>
-<p>You can do many crazy things with autograd!</p>
+<p>autograd로 많은 정신나간 일들(crazy things)도 할 수 있습니다!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">requires_grad</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="mi">2</span>
@@ -668,7 +663,7 @@ Therefore,
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">857.9819</span><span class="p">,</span>  <span class="mf">556.9619</span><span class="p">,</span> <span class="o">-</span><span class="mf">528.1221</span><span class="p">])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mf">148.3163</span><span class="p">,</span> <span class="o">-</span><span class="mf">775.4905</span><span class="p">,</span> <span class="o">-</span><span class="mf">873.8795</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">gradients</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">([</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
@@ -678,12 +673,11 @@ Therefore,
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span>  <span class="mf">102.4000</span><span class="p">,</span>  <span class="mf">1024.0000</span><span class="p">,</span>     <span class="mf">0.1024</span><span class="p">])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span>  <span class="mf">51.2000</span><span class="p">,</span>  <span class="mf">512.0000</span><span class="p">,</span>    <span class="mf">0.0512</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>You can also stops autograd from tracking history on Tensors
-with requires_grad=True by wrapping the code block in
-<code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">torch.no_grad():</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">torch.no_grad():</span></code> 로 코드 블럭(Code Block)을 감싸서, autograd가
+requires_grad=True인 Tensor들의 연산 기록을 추적하는 것을 멈출 수 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
 <span class="k">print</span><span class="p">((</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad</span><span class="p">)</span>
 
@@ -697,10 +691,10 @@ with requires_grad=True by wrapping the code block in
 <span class="kc">False</span>
 </pre></div>
 </div>
-<p><strong>Read Later:</strong></p>
-<p>Documentation of <code class="docutils literal notranslate"><span class="pre">autograd</span></code> and <code class="docutils literal notranslate"><span class="pre">Function</span></code> is at
-<a class="reference external" href="http://pytorch.org/docs/autograd">http://pytorch.org/docs/autograd</a></p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.004 seconds)</p>
+<p><strong>더 읽을거리:</strong></p>
+<p><code class="docutils literal notranslate"><span class="pre">Variable</span></code> 과 <code class="docutils literal notranslate"><span class="pre">Function</span></code> 관련 문서는 <a class="reference external" href="http://pytorch.org/docs/autograd">http://pytorch.org/docs/autograd</a> 에
+있습니다.</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.505 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/autograd_tutorial.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">autograd_tutorial.py</span></code></a></div>
@@ -789,7 +783,7 @@ with requires_grad=True by wrapping the code block in
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-90545585-2', 'auto');
+  ga('create', 'UA-71919972-2', 'auto');
   ga('send', 'pageview');
 
 </script>
