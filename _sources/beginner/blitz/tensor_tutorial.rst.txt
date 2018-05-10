@@ -3,24 +3,21 @@
 .. _sphx_glr_beginner_blitz_tensor_tutorial.py:
 
 
-What is PyTorch?
-================
+PyTorch가 무엇인가요?
+=====================
 
-It’s a Python based scientific computing package targeted at two sets of
-audiences:
+Python 기반의 과학 연산 패키지로 다음과 같은 두 집단을 대상으로 합니다:
 
--  A replacement for NumPy to use the power of GPUs
--  a deep learning research platform that provides maximum flexibility
-   and speed
+-  NumPy를 대체하고 GPU의 연산력을 사용
+-  최대한의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼
 
-Getting Started
----------------
+시작하기
+--------
 
 Tensors
 ^^^^^^^
 
-Tensors are similar to NumPy’s ndarrays, with the addition being that
-Tensors can also be used on a GPU to accelerate computing.
+Tensor는 NumPy의 ndarray와 유사할뿐만 아니라, GPU를 사용한 연산 가속도 지원합니다.
 
 
 
@@ -36,7 +33,7 @@ Tensors can also be used on a GPU to accelerate computing.
 
 
 
-Construct a 5x3 matrix, uninitialized:
+초기화되지 않은 5x3 행렬을 생성합니다:
 
 
 
@@ -54,15 +51,14 @@ Construct a 5x3 matrix, uninitialized:
 
  Out::
 
-    tensor(1.00000e-03 *
-           [[-1.1953,  0.0000,  0.0000],
-            [ 0.0000,  0.0000,  0.0000],
-            [ 0.0000,  0.0000,  0.0000],
-            [ 0.0000,  0.0000,  0.0000],
-            [ 0.0000,  0.0000,  0.0000]])
+    tensor([[-1.4001e+05,  4.5890e-41,  5.5380e-37],
+            [ 0.0000e+00,  3.0851e+35,  4.5890e-41],
+            [ 3.0803e+35,  4.5890e-41,  1.2492e-38],
+            [ 0.0000e+00,  3.1320e+35,  4.5890e-41],
+            [ 5.3703e-37,  0.0000e+00, -1.4001e+05]])
 
 
-Construct a randomly initialized matrix:
+무작위로 초기화된 행렬을 생성합니다:
 
 
 
@@ -80,14 +76,14 @@ Construct a randomly initialized matrix:
 
  Out::
 
-    tensor([[ 0.2783,  0.9060,  0.4173],
-            [ 0.0521,  0.0965,  0.5175],
-            [ 0.8759,  0.7391,  0.4502],
-            [ 0.3129,  0.2739,  0.9239],
-            [ 0.8041,  0.7796,  0.2116]])
+    tensor([[ 0.6189,  0.2607,  0.0137],
+            [ 0.4669,  0.0662,  0.8195],
+            [ 0.1544,  0.6876,  0.5475],
+            [ 0.3260,  0.0540,  0.7493],
+            [ 0.3714,  0.9783,  0.3964]])
 
 
-Construct a matrix filled zeros and of dtype long:
+dtype이 long이고 0으로 채워진 행렬을 생성합니다:
 
 
 
@@ -112,7 +108,7 @@ Construct a matrix filled zeros and of dtype long:
             [ 0,  0,  0]])
 
 
-Construct a tensor directly from data:
+데이터로부터 바로 tensor를 생성합니다:
 
 
 
@@ -133,9 +129,9 @@ Construct a tensor directly from data:
     tensor([ 5.5000,  3.0000])
 
 
-or create a tensor basing on existing tensor. These methods
-will reuse properties of the input tensor, e.g. dtype, unless
-new values are provided by user
+또는, 존재하는 tensor를 바탕으로 tensor를 만듭니다. 이 메소드(method)들은
+dtype과 같이 사용자로부터 제공된 새로운 값이 없는 한 입력 tensor의 속성을
+재사용합니다.
 
 
 
@@ -161,14 +157,14 @@ new values are provided by user
             [ 1.,  1.,  1.],
             [ 1.,  1.,  1.],
             [ 1.,  1.,  1.]], dtype=torch.float64)
-    tensor([[-0.5667,  0.5487, -0.5874],
-            [ 1.0029,  0.3634, -0.9188],
-            [-0.7759, -1.5590,  0.0308],
-            [ 1.5513, -1.6970, -0.7742],
-            [-0.8386, -0.7571, -0.0513]])
+    tensor([[-0.1434, -0.9036,  0.6173],
+            [-1.8882,  0.2043,  0.8345],
+            [ 0.8766, -0.3247, -0.4614],
+            [ 0.7884,  0.0843,  0.3453],
+            [ 0.5381,  0.2875, -1.6127]])
 
 
-Get its size:
+행렬의 크기를 구합니다:
 
 
 
@@ -189,14 +185,13 @@ Get its size:
 
 
 .. note::
-    ``torch.Size`` is in fact a tuple, so it supports all tuple operations.
+    ``torch.Size`` 는 튜플(tuple)과 같으며, 모든 튜플 연산에 사용할 수 있습니다.
 
-Operations
-^^^^^^^^^^
-There are multiple syntaxes for operations. In the following
-example, we will take a look at the addition operation.
+연산(Operations)
+^^^^^^^^^^^^^^^^
+연산을 위한 여러가지 문법을 제공합니다. 다음 예제들을 통해 덧셈 연산을 살펴보겠습니다.
 
-Addition: syntax 1
+덧셈: 문법1
 
 
 
@@ -213,14 +208,14 @@ Addition: syntax 1
 
  Out::
 
-    tensor([[ 0.2165,  1.4261, -0.1618],
-            [ 1.2835,  1.1807, -0.6920],
-            [-0.2490, -0.6997,  0.1837],
-            [ 2.0945, -0.9584,  0.0131],
-            [ 0.0095, -0.5321,  0.7002]])
+    tensor([[ 0.6342,  0.0234,  0.7210],
+            [-1.8106,  1.0273,  1.1665],
+            [ 1.6815,  0.2780,  0.3537],
+            [ 1.3928,  0.5665,  1.3134],
+            [ 1.4892,  1.0322, -0.6322]])
 
 
-Addition: syntax 2
+덧셈: 문법2
 
 
 
@@ -237,14 +232,14 @@ Addition: syntax 2
 
  Out::
 
-    tensor([[ 0.2165,  1.4261, -0.1618],
-            [ 1.2835,  1.1807, -0.6920],
-            [-0.2490, -0.6997,  0.1837],
-            [ 2.0945, -0.9584,  0.0131],
-            [ 0.0095, -0.5321,  0.7002]])
+    tensor([[ 0.6342,  0.0234,  0.7210],
+            [-1.8106,  1.0273,  1.1665],
+            [ 1.6815,  0.2780,  0.3537],
+            [ 1.3928,  0.5665,  1.3134],
+            [ 1.4892,  1.0322, -0.6322]])
 
 
-Addition: providing an output tensor as argument
+덧셈: 결과 tensor를 인자로 제공
 
 
 
@@ -262,21 +257,21 @@ Addition: providing an output tensor as argument
 
  Out::
 
-    tensor([[ 0.2165,  1.4261, -0.1618],
-            [ 1.2835,  1.1807, -0.6920],
-            [-0.2490, -0.6997,  0.1837],
-            [ 2.0945, -0.9584,  0.0131],
-            [ 0.0095, -0.5321,  0.7002]])
+    tensor([[ 0.6342,  0.0234,  0.7210],
+            [-1.8106,  1.0273,  1.1665],
+            [ 1.6815,  0.2780,  0.3537],
+            [ 1.3928,  0.5665,  1.3134],
+            [ 1.4892,  1.0322, -0.6322]])
 
 
-Addition: in-place
+덧셈: in-place
 
 
 
 .. code-block:: python
 
 
-    # adds x to y
+    # y에 x 더하기
     y.add_(x)
     print(y)
 
@@ -288,18 +283,18 @@ Addition: in-place
 
  Out::
 
-    tensor([[ 0.2165,  1.4261, -0.1618],
-            [ 1.2835,  1.1807, -0.6920],
-            [-0.2490, -0.6997,  0.1837],
-            [ 2.0945, -0.9584,  0.0131],
-            [ 0.0095, -0.5321,  0.7002]])
+    tensor([[ 0.6342,  0.0234,  0.7210],
+            [-1.8106,  1.0273,  1.1665],
+            [ 1.6815,  0.2780,  0.3537],
+            [ 1.3928,  0.5665,  1.3134],
+            [ 1.4892,  1.0322, -0.6322]])
 
 
 .. note::
-    Any operation that mutates a tensor in-place is post-fixed with an ``_``.
-    For example: ``x.copy_(y)``, ``x.t_()``, will change ``x``.
+    In-place로 tensor의 값을 변경하는 연산은 ``_`` 를 접미사로 갖습니다.
+    예: ``x.copy_(y)``, ``x.t_()`` 는 ``x`` 를 변경합니다.
 
-You can use standard NumPy-like indexing with all bells and whistles!
+NumPy의 인덱싱 표기 방법을 사용할 수도 있습니다!
 
 
 
@@ -316,10 +311,10 @@ You can use standard NumPy-like indexing with all bells and whistles!
 
  Out::
 
-    tensor([ 0.5487,  0.3634, -1.5590, -1.6970, -0.7571])
+    tensor([-0.9036,  0.2043, -0.3247,  0.0843,  0.2875])
 
 
-Resizing: If you want to resize/reshape tensor, you can use ``torch.view``:
+크기 변경: tensor의 크기(size)나 모양(shape)을 변경하고 싶을 때, ``torch.view`` 를 사용합니다.
 
 
 
@@ -327,7 +322,7 @@ Resizing: If you want to resize/reshape tensor, you can use ``torch.view``:
 
     x = torch.randn(4, 4)
     y = x.view(16)
-    z = x.view(-1, 8)  # the size -1 is inferred from other dimensions
+    z = x.view(-1, 8)  # 사이즈가 -1인 경우 다른 차원들을 사용하여 유추합니다.
     print(x.size(), y.size(), z.size())
 
 
@@ -360,27 +355,26 @@ Python number
 
  Out::
 
-    tensor([-1.4048])
-    -1.404821753501892
+    tensor([-1.7726])
+    -1.7725592851638794
 
 
-**Read later:**
+**더 읽을거리:**
 
 
-  100+ Tensor operations, including transposing, indexing, slicing,
-  mathematical operations, linear algebra, random numbers, etc.,
-  are described
-  `here <http://pytorch.org/docs/torch>`_.
+  전치(transposing), 인덱싱(indexing), 슬라이싱(slicing), 수학 계산,
+  선형 대수, 난수(random number) 등과 같은 100가지 이상의 Tensor 연산은
+  `여기 <http://pytorch.org/docs/torch>`_ 에 설명되어 있습니다.
 
-NumPy Bridge
-------------
+NumPy 변환(Bridge)
+------------------
 
-Converting a Torch Tensor to a NumPy array and vice versa is a breeze.
+Torch Tensor를 NumPy 배열(array)로 변환하거나, 그 반대로 하는 것은 매우 쉽습니다.
 
-The Torch Tensor and NumPy array will share their underlying memory
-locations, and changing one will change the other.
+Torch Tensor와 NumPy 배열은 저장 공간을 공유하기 때문에, 하나를 변경하면 다른 하나도
+변경됩니다.
 
-Converting a Torch Tensor to a NumPy Array
+Torch Tensor를 NumPy 배열로 변환하기
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
@@ -420,7 +414,7 @@ Converting a Torch Tensor to a NumPy Array
     [1. 1. 1. 1. 1.]
 
 
-See how the numpy array changed in value.
+numpy 배열의 값이 어떻게 변하는지 확인해보세요.
 
 
 
@@ -443,9 +437,9 @@ See how the numpy array changed in value.
     [2. 2. 2. 2. 2.]
 
 
-Converting NumPy Array to Torch Tensor
+NumPy 배열을 Torch Tensor로 변환하기
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-See how changing the np array changed the Torch Tensor automatically
+np 배열을 변경하면 Torch Tensor의 값도 자동 변경되는 것을 확인해보세요.
 
 
 
@@ -471,28 +465,28 @@ See how changing the np array changed the Torch Tensor automatically
     tensor([ 2.,  2.,  2.,  2.,  2.], dtype=torch.float64)
 
 
-All the Tensors on the CPU except a CharTensor support converting to
-NumPy and back.
+CharTensor를 제외한 CPU 상의 모든 Tensor는 NumPy로의 변환을 지원하며,
+(NumPy에서 Tensor로의) 반대 변환도 지원합니다.
 
 CUDA Tensors
 ------------
 
-Tensors can be moved onto any device using the ``.to`` method.
+``.to`` 메소드를 사용하여 Tensor를 어떠한 장치로도 옮길 수 있습니다.
 
 
 
 .. code-block:: python
 
 
-    # let us run this cell only if CUDA is available
-    # We will use ``torch.device`` objects to move tensors in and out of GPU
+    # 이 코드는 CUDA가 사용 가능한 환경에서만 실행합니다.
+    # ``torch.device`` 를 사용하여 tensor를 GPU 안팎으로 이동해보겠습니다.
     if torch.cuda.is_available():
-        device = torch.device("cuda")          # a CUDA device object
-        y = torch.ones_like(x, device=device)  # directly create a tensor on GPU
-        x = x.to(device)                       # or just use strings ``.to("cuda")``
+        device = torch.device("cuda")          # CUDA 장치 객체(Device Object)로
+        y = torch.ones_like(x, device=device)  # GPU 상에 바로(directly) tensor를 생성하거나
+        x = x.to(device)                       # 단지 ``.to("cuda")`` 라고만 작성하면 됩니다.
         z = x + y
         print(z)
-        print(z.to("cpu", torch.double))       # ``.to`` can also change dtype together!
+        print(z.to("cpu", torch.double))       # ``.to`` 는 dtype도 함께 변경합니다!
 
 
 
@@ -501,11 +495,11 @@ Tensors can be moved onto any device using the ``.to`` method.
 
  Out::
 
-    tensor([-0.4048], device='cuda:0')
-    tensor([-0.4048], dtype=torch.float64)
+    tensor([-0.7726], device='cuda:0')
+    tensor([-0.7726], dtype=torch.float64)
 
 
-**Total running time of the script:** ( 0 minutes  0.004 seconds)
+**Total running time of the script:** ( 0 minutes  3.193 seconds)
 
 
 
