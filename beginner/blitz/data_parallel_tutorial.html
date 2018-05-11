@@ -44,7 +44,7 @@
     <link rel="top" title="PyTorch Tutorials 0.4.0 documentation" href="../../index.html"/>
         <link rel="up" title="PyTorch로 딥러닝하기: 60분만에 끝장내기" href="../deep_learning_60min_blitz.html"/>
         <link rel="next" title="PyTorch for former Torch users" href="../former_torchies_tutorial.html"/>
-        <link rel="prev" title="Training a classifier" href="cifar10_tutorial.html"/> 
+        <link rel="prev" title="분류기(Classifier) 학습하기" href="cifar10_tutorial.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -129,19 +129,19 @@
 <li class="toctree-l3"><a class="reference internal" href="neural_networks_tutorial.html#id4">가중치 갱신</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="cifar10_tutorial.html">Training a classifier</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#what-about-data">What about data?</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#training-an-image-classifier">Training an image classifier</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#loading-and-normalizing-cifar10">1. Loading and normalizing CIFAR10</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#define-a-convolution-neural-network">2. Define a Convolution Neural Network</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#define-a-loss-function-and-optimizer">3. Define a Loss function and optimizer</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#train-the-network">4. Train the network</a></li>
-<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#test-the-network-on-the-test-data">5. Test the network on the test data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cifar10_tutorial.html">분류기(Classifier) 학습하기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#id1">데이터는 어떻게 하나요?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#id2">이미지 분류기 학습하기</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#cifar10">1. CIFAR10를 불러오고 정규화하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#convolution-neural-network">2. 합성곱 신경망(Convolution Neural Network) 정의하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#optimizer">3. 손실 함수와 Optimizer 정의하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#id3">4. 신경망 학습하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="cifar10_tutorial.html#id4">5. 시험용 데이터로 신경망 검사하기</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#training-on-gpu">Training on GPU</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#training-on-multiple-gpus">Training on multiple GPUs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#where-do-i-go-next">Where do I go next?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#gpu">GPU에서 학습하기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#id5">여러개의 GPU에서 학습하기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="cifar10_tutorial.html#id6">이제 뭘 해볼까요?</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Optional: Data Parallelism</a><ul>
@@ -549,9 +549,9 @@
 <div class="code python highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mytensor</span> <span class="o">=</span> <span class="n">my_tensor</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Please note that just calling <code class="docutils literal notranslate"><span class="pre">mytensor.to(device)</span></code> returns a new copy of
-<code class="docutils literal notranslate"><span class="pre">mytensor</span></code> on GPU instead of rewriting <code class="docutils literal notranslate"><span class="pre">mytensor</span></code>. You need to assign it to
-a new variable and use that tensor on the GPU.</p>
+<p>Please note that just calling <code class="docutils literal notranslate"><span class="pre">my_tensor.to(device)</span></code> returns a new copy of
+<code class="docutils literal notranslate"><span class="pre">my_tensor</span></code> on GPU instead of rewriting <code class="docutils literal notranslate"><span class="pre">my_tensor</span></code>. You need to assign it to
+a new tensor and use that tensor on the GPU.</p>
 <p>It’s natural to execute your forward, backward propagations on multiple GPUs.
 However, Pytorch will only use one GPU by default. You can easily run your
 operations on multiple GPUs by making your model run parallelly using
@@ -758,7 +758,7 @@ models on several GPUs. After each model finishes their job, DataParallel
 collects and merges the results before returning it to you.</p>
 <p>For more information, please check out
 <a class="reference external" href="http://pytorch.org/tutorials/beginner/former_torchies/parallelism_tutorial.html">http://pytorch.org/tutorials/beginner/former_torchies/parallelism_tutorial.html</a>.</p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.002 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  3.140 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/data_parallel_tutorial.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">data_parallel_tutorial.py</span></code></a></div>
@@ -782,7 +782,7 @@ collects and merges the results before returning it to you.</p>
         <a href="../former_torchies_tutorial.html" class="btn btn-neutral float-right" title="PyTorch for former Torch users" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="cifar10_tutorial.html" class="btn btn-neutral" title="Training a classifier" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="cifar10_tutorial.html" class="btn btn-neutral" title="분류기(Classifier) 학습하기" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
