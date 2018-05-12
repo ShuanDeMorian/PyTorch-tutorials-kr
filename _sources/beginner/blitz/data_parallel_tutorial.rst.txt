@@ -222,8 +222,8 @@ Now we can see the sizes of input and output tensors.
 Results
 -------
 
-When we batch 30 inputs and 30 outputs, the model gets 30 and outputs 30 as
-expected. But if you have GPUs, then you can get results like this.
+If you have no GPU or one GPU, when we batch 30 inputs and 30 outputs, the model gets 30 and outputs 30 as
+expected. But if you have multiple GPUs, then you can get results like this.
 
 2 GPUs
 ~~~~~~
@@ -328,7 +328,7 @@ http://pytorch.org/tutorials/beginner/former\_torchies/parallelism\_tutorial.htm
 
 
 
-**Total running time of the script:** ( 0 minutes  3.140 seconds)
+**Total running time of the script:** ( 0 minutes  3.180 seconds)
 
 
 
