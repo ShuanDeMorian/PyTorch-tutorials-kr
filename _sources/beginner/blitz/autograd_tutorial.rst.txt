@@ -117,7 +117,7 @@ tensor에 연산을 수행합니다:
 
  Out::
 
-    <AddBackward0 object at 0x7f3e6b4d6c88>
+    <AddBackward0 object at 0x7f2f21f11978>
 
 
 y에 다른 연산을 수행합니다.
@@ -143,8 +143,8 @@ y에 다른 연산을 수행합니다.
             [ 27.,  27.]]) tensor(27.)
 
 
-``.requires_grad_( ... )`` 은 기존 Tensor의 ``requires_grad`` 값을 In-place로
-변화시킵니다. 입력 값이 주어지지 않으면 기본 값으로 ``True`` 를 갖습니다.
+``.requires_grad_( ... )`` 는 기존 Tensor의 ``requires_grad`` 값을 In-place로
+변경합니다. 입력값이 지정되지 않으면 기본값은 ``True`` 입니다.
 
 
 
@@ -168,7 +168,7 @@ y에 다른 연산을 수행합니다.
 
     False
     True
-    <SumBackward0 object at 0x7f3e6b4d6b38>
+    <SumBackward0 object at 0x7f2f21eb5048>
 
 
 변화도(Gradient)
@@ -245,7 +245,7 @@ autograd로 많은 정신나간 일들(crazy things)도 할 수 있습니다!
 
  Out::
 
-    tensor([-148.3163, -775.4905, -873.8795])
+    tensor([  172.6891,  1148.2012,  -544.5717])
 
 
 
@@ -264,7 +264,7 @@ autograd로 많은 정신나간 일들(crazy things)도 할 수 있습니다!
 
  Out::
 
-    tensor([  51.2000,  512.0000,    0.0512])
+    tensor([  102.4000,  1024.0000,     0.1024])
 
 
 ``with torch.no_grad():`` 로 코드 블럭(Code Block)을 감싸서, autograd가
@@ -299,7 +299,7 @@ requires_grad=True인 Tensor들의 연산 기록을 추적하는 것을 멈출 �
 있습니다.
 
 
-**Total running time of the script:** ( 0 minutes  0.505 seconds)
+**Total running time of the script:** ( 0 minutes  0.003 seconds)
 
 
 

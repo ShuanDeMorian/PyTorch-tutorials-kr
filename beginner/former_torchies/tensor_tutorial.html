@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Tensors &mdash; PyTorch Tutorials 0.4.0 documentation</title>
+  <title>Tensor &mdash; PyTorch Tutorials 0.4.0 documentation</title>
   
 
   
@@ -42,9 +42,9 @@
               href="../../genindex.html"/>
         <link rel="search" title="Search" href="../../search.html"/>
     <link rel="top" title="PyTorch Tutorials 0.4.0 documentation" href="../../index.html"/>
-        <link rel="up" title="PyTorch for former Torch users" href="../former_torchies_tutorial.html"/>
+        <link rel="up" title="Torch 사용자를 위한 PyTorch" href="../former_torchies_tutorial.html"/>
         <link rel="next" title="Autograd" href="autograd_tutorial.html"/>
-        <link rel="prev" title="PyTorch for former Torch users" href="../former_torchies_tutorial.html"/> 
+        <link rel="prev" title="Torch 사용자를 위한 PyTorch" href="../former_torchies_tutorial.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -161,33 +161,33 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="reference internal" href="../former_torchies_tutorial.html">PyTorch for former Torch users</a><ul class="current">
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Tensors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#inplace-out-of-place">Inplace / Out-of-place</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#zero-indexing">Zero Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#no-camel-casing">No camel casing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#numpy-bridge">Numpy Bridge</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#converting-torch-tensor-to-numpy-array">Converting torch Tensor to numpy Array</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#converting-numpy-array-to-torch-tensor">Converting numpy Array to torch Tensor</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../former_torchies_tutorial.html">Torch 사용자를 위한 PyTorch</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tensor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#in-place-out-of-place">In-place / Out-of-place</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#zero-indexing">0-인덱스(Zero Indexing)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#camel-case">카멜표기법(Camel Case) 없음</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#numpy-bridge">NumPy 변환(Bridge)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#torch-tensor-numpy">Torch Tensor를 NumPy 배열로 변환하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numpy-torch-tensor">NumPy 배열을 Torch Tensor로 변환하기</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cuda-tensors">CUDA Tensors</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="autograd_tutorial.html">Autograd</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="autograd_tutorial.html#tensors-that-track-history">Tensors that track history</a></li>
-<li class="toctree-l3"><a class="reference internal" href="autograd_tutorial.html#gradients">Gradients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autograd_tutorial.html#history-track-tensor">이력(history)을 추적(track)하는 Tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="autograd_tutorial.html#gradient">변화도(Gradient)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="nn_tutorial.html">nn package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="nn_tutorial.html#example-1-convnet">Example 1: ConvNet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nn_tutorial.html#forward-and-backward-function-hooks">Forward and Backward Function Hooks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="nn_tutorial.html#example-2-recurrent-net">Example 2: Recurrent Net</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nn_tutorial.html">nn 패키지</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nn_tutorial.html#convnet">예제1: 합성곱 신경망(ConvNet)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nn_tutorial.html#hook">순방향/역방향 함수 훅(Hook)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nn_tutorial.html#recurrent-nets">예제2: 순환 신경망(Recurrent Nets)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="parallelism_tutorial.html">Multi-GPU examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="parallelism_tutorial.html">멀티-GPU 예제</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="parallelism_tutorial.html#dataparallel">DataParallel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="parallelism_tutorial.html#part-of-the-model-on-cpu-and-part-on-the-gpu">Part of the model on CPU and part on the GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="parallelism_tutorial.html#cpu-gpu">모델의 일부는 CPU, 일부는 GPU에서</a></li>
 </ul>
 </li>
 </ul>
@@ -234,21 +234,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../transfer_learning_tutorial.html">Transfer Learning tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#load-data">Load Data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#visualize-a-few-images">Visualize a few images</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../transfer_learning_tutorial.html">전이학습(Transfer Learning) 튜토리얼</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#id2">데이터 불러오기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#id4">일부 이미지 시각화하기</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#training-the-model">Training the model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#visualizing-the-model-predictions">Visualizing the model predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#id5">모델 학습하기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#id6">모델 예측값 시각화하기</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#finetuning-the-convnet">Finetuning the convnet</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#train-and-evaluate">Train and evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#finetuning">합성곱 신경망 미세조정(Finetuning)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#id7">학습 및 평가하기</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#convnet-as-fixed-feature-extractor">ConvNet as fixed feature extractor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#id1">Train and evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../transfer_learning_tutorial.html#id8">고정 특정 추출기로써의 합성곱 신경망</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../transfer_learning_tutorial.html#id9">학습 및 평가하기</a></li>
 </ul>
 </li>
 </ul>
@@ -515,9 +515,9 @@
     
       <li><a href="../../index.html">Docs</a> &raquo;</li>
         
-          <li><a href="../former_torchies_tutorial.html">PyTorch for former Torch users</a> &raquo;</li>
+          <li><a href="../former_torchies_tutorial.html">Torch 사용자를 위한 PyTorch</a> &raquo;</li>
         
-      <li>Tensors</li>
+      <li>Tensor</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -536,46 +536,44 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="tensors">
-<span id="sphx-glr-beginner-former-torchies-tensor-tutorial-py"></span><h1>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">¶</a></h1>
-<p>Tensors behave almost exactly the same way in PyTorch as they do in
-Torch.</p>
-<p>Create a tensor of size (5 x 7) with uninitialized memory:</p>
+  <div class="section" id="tensor">
+<span id="sphx-glr-beginner-former-torchies-tensor-tutorial-py"></span><h1>Tensor<a class="headerlink" href="#tensor" title="Permalink to this headline">¶</a></h1>
+<p>PyTorch에서의 Tensor는 Torch에서와 거의 동일하게 동작합니다.</p>
+<p>초기화되지 않은 (5 x 7) 크기의 tensor를 생성합니다:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">empty</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Initialize a double tensor randomized with a normal distribution with mean=0,
-var=1:</p>
+<p>평균 0, 분산 1의 정규분포를 따르는 무작위 숫자로 dobule tensor를 초기화합니다:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">double</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="o">.</span><span class="n">size</span><span class="p">())</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">0.1817</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6608</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.7329</span><span class="p">,</span>  <span class="mf">1.3896</span><span class="p">,</span>  <span class="mf">0.9026</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9061</span><span class="p">,</span>  <span class="mf">0.7681</span><span class="p">],</span>
-        <span class="p">[</span><span class="o">-</span><span class="mf">0.7082</span><span class="p">,</span>  <span class="mf">0.8631</span><span class="p">,</span>  <span class="mf">0.8052</span><span class="p">,</span>  <span class="mf">1.4917</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2101</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1274</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8675</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.6593</span><span class="p">,</span>  <span class="mf">0.1760</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9741</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4218</span><span class="p">,</span> <span class="o">-</span><span class="mf">2.3831</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9978</span><span class="p">,</span>  <span class="mf">1.1796</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.5335</span><span class="p">,</span>  <span class="mf">1.3242</span><span class="p">,</span>  <span class="mf">0.0481</span><span class="p">,</span>  <span class="mf">0.1334</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0318</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0750</span><span class="p">,</span>  <span class="mf">0.1157</span><span class="p">],</span>
-        <span class="p">[</span><span class="o">-</span><span class="mf">0.3111</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1364</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5787</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8876</span><span class="p">,</span>  <span class="mf">1.4115</span><span class="p">,</span>  <span class="mf">1.1054</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0258</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.4075</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4354</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5010</span><span class="p">,</span>  <span class="mf">0.7296</span><span class="p">,</span>  <span class="mf">0.3088</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.6877</span><span class="p">,</span>  <span class="mf">1.1318</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">0.2674</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1063</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5112</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4417</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.0684</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0407</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4418</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.4740</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5140</span><span class="p">,</span>  <span class="mf">1.1307</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4926</span><span class="p">,</span>  <span class="mf">0.3551</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0136</span><span class="p">,</span>  <span class="mf">1.0798</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.2899</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1951</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8799</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1205</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3175</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5859</span><span class="p">,</span>  <span class="mf">0.4272</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.6475</span><span class="p">,</span>  <span class="mf">0.9429</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7531</span><span class="p">,</span>  <span class="mf">0.8400</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4949</span><span class="p">,</span>  <span class="mf">0.0425</span><span class="p">,</span>  <span class="mf">2.0133</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">])</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last"><code class="docutils literal notranslate"><span class="pre">torch.Size</span></code> is in fact a tuple, so it supports the same operations</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">torch.Size</span></code> 는 튜플(tuple)과 같으며, 모든 튜플 연산에 사용할 수 있습니다.</p>
 </div>
-<div class="section" id="inplace-out-of-place">
-<h2>Inplace / Out-of-place<a class="headerlink" href="#inplace-out-of-place" title="Permalink to this headline">¶</a></h2>
-<p>The first difference is that ALL operations on the tensor that operate
-in-place on it will have an <code class="docutils literal notranslate"><span class="pre">_</span></code> postfix. For example, <code class="docutils literal notranslate"><span class="pre">add</span></code> is the
-out-of-place version, and <code class="docutils literal notranslate"><span class="pre">add_</span></code> is the in-place version.</p>
+<div class="section" id="in-place-out-of-place">
+<h2>In-place / Out-of-place<a class="headerlink" href="#in-place-out-of-place" title="Permalink to this headline">¶</a></h2>
+<p>첫 번째 차이점은 tensor의 모든 In-place 연산은 <code class="docutils literal notranslate"><span class="pre">_</span></code> 접미사를 갖는다는 것입니다.
+예를 들어, <code class="docutils literal notranslate"><span class="pre">add</span></code> 는 연산 결과를 돌려주는 Out-of-place 연산을 하고, <code class="docutils literal notranslate"><span class="pre">add_</span></code> 는
+In-place 연산을 합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">fill_</span><span class="p">(</span><span class="mf">3.5</span><span class="p">)</span>
-<span class="c1"># a has now been filled with the value 3.5</span>
+<span class="c1"># a가 값 3.5로 채워집니다.</span>
 
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="mf">4.0</span><span class="p">)</span>
-<span class="c1"># a is still filled with 3.5</span>
-<span class="c1"># new tensor b is returned with values 3.5 + 4.0 = 7.5</span>
+<span class="c1"># a는 여전히 3.5입니다.</span>
+<span class="c1"># 3.5 + 4.0 = 7.5의 값이 반환되어 새로운 tensor b가 됩니다.</span>
 
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 </pre></div>
@@ -592,27 +590,26 @@ out-of-place version, and <code class="docutils literal notranslate"><span class
         <span class="p">[</span> <span class="mf">7.5000</span><span class="p">,</span>  <span class="mf">7.5000</span><span class="p">,</span>  <span class="mf">7.5000</span><span class="p">,</span>  <span class="mf">7.5000</span><span class="p">,</span>  <span class="mf">7.5000</span><span class="p">,</span>  <span class="mf">7.5000</span><span class="p">,</span>  <span class="mf">7.5000</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Some operations like <code class="docutils literal notranslate"><span class="pre">narrow</span></code> do not have in-place versions, and
-hence, <code class="docutils literal notranslate"><span class="pre">.narrow_</span></code> does not exist. Similarly, some operations like
-<code class="docutils literal notranslate"><span class="pre">fill_</span></code> do not have an out-of-place version, so <code class="docutils literal notranslate"><span class="pre">.fill</span></code> does not
-exist.</p>
+<p><code class="docutils literal notranslate"><span class="pre">narrow</span></code> 와 같은 일부 연산들은 In-place 형태를 갖지 않기 때문에 <code class="docutils literal notranslate"><span class="pre">.narrow_</span></code> 는
+존재하지 않습니다. 또한, <code class="docutils literal notranslate"><span class="pre">fill_</span></code> 은 Out-of-place 형태를 갖지 않기 떄문에 역시
+<code class="docutils literal notranslate"><span class="pre">.fill</span></code> 도 존재하지 않습니다.</p>
 </div>
 <div class="section" id="zero-indexing">
-<h2>Zero Indexing<a class="headerlink" href="#zero-indexing" title="Permalink to this headline">¶</a></h2>
-<p>Another difference is that Tensors are zero-indexed. (In lua, tensors are
-one-indexed)</p>
+<h2>0-인덱스(Zero Indexing)<a class="headerlink" href="#zero-indexing" title="Permalink to this headline">¶</a></h2>
+<p>또 다른 차이점은 Tensor의 인덱스는 0부터 시작(0-인덱스)는 점입니다.
+(Lua에서 tensor는 1-인덱스를 갖습니다.)</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># select 1st row, 4th column from a</span>
 </pre></div>
 </div>
-<p>Tensors can be also indexed with Python’s slicing</p>
+<p>Python의 슬라이싱(slicing)으로도 Tensor를 인덱스 할 수 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>  <span class="c1"># selects all rows, 4th column and  5th column from a</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="no-camel-casing">
-<h2>No camel casing<a class="headerlink" href="#no-camel-casing" title="Permalink to this headline">¶</a></h2>
-<p>The next small difference is that all functions are now NOT camelCase
-anymore. For example <code class="docutils literal notranslate"><span class="pre">indexAdd</span></code> is now called <code class="docutils literal notranslate"><span class="pre">index_add_</span></code></p>
+<div class="section" id="camel-case">
+<h2>카멜표기법(Camel Case) 없음<a class="headerlink" href="#camel-case" title="Permalink to this headline">¶</a></h2>
+<p>그 외에도 카멜표기법을 사용하지 않는 사소한 차이가 있습니다.
+예를 들어 <code class="docutils literal notranslate"><span class="pre">indexAdd</span></code> 는 <code class="docutils literal notranslate"><span class="pre">index_add_</span></code> 라고 표기합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -653,12 +650,12 @@ anymore. For example <code class="docutils literal notranslate"><span class="pre
 </div>
 </div>
 <div class="section" id="numpy-bridge">
-<h2>Numpy Bridge<a class="headerlink" href="#numpy-bridge" title="Permalink to this headline">¶</a></h2>
-<p>Converting a torch Tensor to a numpy array and vice versa is a breeze.
-The torch Tensor and numpy array will share their underlying memory
-locations, and changing one will change the other.</p>
-<div class="section" id="converting-torch-tensor-to-numpy-array">
-<h3>Converting torch Tensor to numpy Array<a class="headerlink" href="#converting-torch-tensor-to-numpy-array" title="Permalink to this headline">¶</a></h3>
+<h2>NumPy 변환(Bridge)<a class="headerlink" href="#numpy-bridge" title="Permalink to this headline">¶</a></h2>
+<p>Torch Tensor를 NumPy 배열(array)로 변환하거나, 그 반대로 하는 것은 매우 쉽습니다.
+Torch Tensor와 NumPy 배열은 저장 공간을 공유하기 때문에, 하나를 변경하면 다른 하나도
+변경됩니다.</p>
+<div class="section" id="torch-tensor-numpy">
+<h3>Torch Tensor를 NumPy 배열로 변환하기<a class="headerlink" href="#torch-tensor-numpy" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </pre></div>
@@ -686,8 +683,8 @@ locations, and changing one will change the other.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="converting-numpy-array-to-torch-tensor">
-<h3>Converting numpy Array to torch Tensor<a class="headerlink" href="#converting-numpy-array-to-torch-tensor" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="numpy-torch-tensor">
+<h3>NumPy 배열을 Torch Tensor로 변환하기<a class="headerlink" href="#numpy-torch-tensor" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -701,24 +698,22 @@ locations, and changing one will change the other.</p>
 <span class="n">tensor</span><span class="p">([</span> <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">,</span>  <span class="mf">2.</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>All the Tensors on the CPU except a CharTensor support converting to
-NumPy and back.</p>
+<p>CharTensor를 제외한 CPU 상의 모든 Tensor는 NumPy로의 변환을 지원하며,
+(NumPy에서 Tensor로의) 반대 변환도 지원합니다.</p>
 </div>
 </div>
 <div class="section" id="cuda-tensors">
 <h2>CUDA Tensors<a class="headerlink" href="#cuda-tensors" title="Permalink to this headline">¶</a></h2>
-<p>CUDA Tensors are nice and easy in pytorch, and transfering a CUDA tensor
-from the CPU to GPU will retain its underlying type.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># let us run this cell only if CUDA is available</span>
+<p>PyTorch에서 CUDA Tensor는 멋지고 쉽습니다. 그리고 CUDA Tensor를 CPU에서 GPU로 옮겨도
+기본 형식(underlying type)은 유지됩니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 이 코드는 CUDA가 사용 가능한 환경에서만 실행됩니다.</span>
 <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">():</span>
 
-    <span class="c1"># creates a LongTensor and transfers it</span>
-    <span class="c1"># to GPU as torch.cuda.LongTensor</span>
+    <span class="c1"># LongTensor를 생성하고 이를 torch.cuda.LongTensor로 GPU로 옮깁니다.</span>
     <span class="n">a</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">full</span><span class="p">((</span><span class="mi">10</span><span class="p">,),</span> <span class="mi">3</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda&quot;</span><span class="p">))</span>
     <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
     <span class="n">b</span> <span class="o">=</span> <span class="n">a</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cpu&quot;</span><span class="p">))</span>
-    <span class="c1"># transfers it to CPU, back to</span>
-    <span class="c1"># being a torch.LongTensor</span>
+    <span class="c1"># CPU로 다시 전송을 하면, torch.LongTensor로 되돌아옵니다.</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -749,7 +744,7 @@ from the CPU to GPU will retain its underlying type.</p>
         <a href="autograd_tutorial.html" class="btn btn-neutral float-right" title="Autograd" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../former_torchies_tutorial.html" class="btn btn-neutral" title="PyTorch for former Torch users" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../former_torchies_tutorial.html" class="btn btn-neutral" title="Torch 사용자를 위한 PyTorch" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

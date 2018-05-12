@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Transfer Learning tutorial &mdash; PyTorch Tutorials 0.4.0 documentation</title>
+  <title>전이학습(Transfer Learning) 튜토리얼 &mdash; PyTorch Tutorials 0.4.0 documentation</title>
   
 
   
@@ -160,33 +160,33 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="former_torchies_tutorial.html">PyTorch for former Torch users</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="former_torchies/tensor_tutorial.html">Tensors</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#inplace-out-of-place">Inplace / Out-of-place</a></li>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#zero-indexing">Zero Indexing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#no-camel-casing">No camel casing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#numpy-bridge">Numpy Bridge</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="former_torchies/tensor_tutorial.html#converting-torch-tensor-to-numpy-array">Converting torch Tensor to numpy Array</a></li>
-<li class="toctree-l4"><a class="reference internal" href="former_torchies/tensor_tutorial.html#converting-numpy-array-to-torch-tensor">Converting numpy Array to torch Tensor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="former_torchies_tutorial.html">Torch 사용자를 위한 PyTorch</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="former_torchies/tensor_tutorial.html">Tensor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#in-place-out-of-place">In-place / Out-of-place</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#zero-indexing">0-인덱스(Zero Indexing)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#camel-case">카멜표기법(Camel Case) 없음</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#numpy-bridge">NumPy 변환(Bridge)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="former_torchies/tensor_tutorial.html#torch-tensor-numpy">Torch Tensor를 NumPy 배열로 변환하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="former_torchies/tensor_tutorial.html#numpy-torch-tensor">NumPy 배열을 Torch Tensor로 변환하기</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="former_torchies/tensor_tutorial.html#cuda-tensors">CUDA Tensors</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="former_torchies/autograd_tutorial.html">Autograd</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/autograd_tutorial.html#tensors-that-track-history">Tensors that track history</a></li>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/autograd_tutorial.html#gradients">Gradients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/autograd_tutorial.html#history-track-tensor">이력(history)을 추적(track)하는 Tensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/autograd_tutorial.html#gradient">변화도(Gradient)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="former_torchies/nn_tutorial.html">nn package</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/nn_tutorial.html#example-1-convnet">Example 1: ConvNet</a></li>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/nn_tutorial.html#forward-and-backward-function-hooks">Forward and Backward Function Hooks</a></li>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/nn_tutorial.html#example-2-recurrent-net">Example 2: Recurrent Net</a></li>
+<li class="toctree-l2"><a class="reference internal" href="former_torchies/nn_tutorial.html">nn 패키지</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/nn_tutorial.html#convnet">예제1: 합성곱 신경망(ConvNet)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/nn_tutorial.html#hook">순방향/역방향 함수 훅(Hook)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/nn_tutorial.html#recurrent-nets">예제2: 순환 신경망(Recurrent Nets)</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="former_torchies/parallelism_tutorial.html">Multi-GPU examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="former_torchies/parallelism_tutorial.html">멀티-GPU 예제</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="former_torchies/parallelism_tutorial.html#dataparallel">DataParallel</a></li>
-<li class="toctree-l3"><a class="reference internal" href="former_torchies/parallelism_tutorial.html#part-of-the-model-on-cpu-and-part-on-the-gpu">Part of the model on CPU and part on the GPU</a></li>
+<li class="toctree-l3"><a class="reference internal" href="former_torchies/parallelism_tutorial.html#cpu-gpu">모델의 일부는 CPU, 일부는 GPU에서</a></li>
 </ul>
 </li>
 </ul>
@@ -233,21 +233,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Transfer Learning tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#load-data">Load Data</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#visualize-a-few-images">Visualize a few images</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">전이학습(Transfer Learning) 튜토리얼</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#id2">데이터 불러오기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">일부 이미지 시각화하기</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#training-the-model">Training the model</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#visualizing-the-model-predictions">Visualizing the model predictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id5">모델 학습하기</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">모델 예측값 시각화하기</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#finetuning-the-convnet">Finetuning the convnet</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#train-and-evaluate">Train and evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#finetuning">합성곱 신경망 미세조정(Finetuning)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">학습 및 평가하기</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#convnet-as-fixed-feature-extractor">ConvNet as fixed feature extractor</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Train and evaluate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id8">고정 특정 추출기로써의 합성곱 신경망</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id9">학습 및 평가하기</a></li>
 </ul>
 </li>
 </ul>
@@ -514,7 +514,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Transfer Learning tutorial</li>
+      <li>전이학습(Transfer Learning) 튜토리얼</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -533,31 +533,33 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="transfer-learning-tutorial">
-<span id="sphx-glr-beginner-transfer-learning-tutorial-py"></span><h1>Transfer Learning tutorial<a class="headerlink" href="#transfer-learning-tutorial" title="Permalink to this headline">¶</a></h1>
-<p><strong>Author</strong>: <a class="reference external" href="https://chsasank.github.io">Sasank Chilamkurthy</a></p>
-<p>In this tutorial, you will learn how to train your network using
-transfer learning. You can read more about the transfer learning at <a class="reference external" href="http://cs231n.github.io/transfer-learning/">cs231n
-notes</a></p>
-<p>Quoting these notes,</p>
+  <div class="section" id="transfer-learning">
+<span id="sphx-glr-beginner-transfer-learning-tutorial-py"></span><h1>전이학습(Transfer Learning) 튜토리얼<a class="headerlink" href="#transfer-learning" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt><strong>Author</strong>: <a class="reference external" href="https://chsasank.github.io">Sasank Chilamkurthy</a></dt>
+<dd><strong>번역</strong>: <a class="reference external" href="http://github.com/9bow">박정환</a></dd>
+</dl>
+<p>이 튜토리얼에서는 전이학습(Transfer Learning)을 이용하여 신경망을 어떻게 학습시키는지
+배워보겠습니다. 전이학습에 대해서 더 알아보시려면
+<a class="reference external" href="http://cs231n.github.io/transfer-learning/">CS231n 노트</a> 를 읽어보시면 좋습니다.</p>
+<p>위 노트를 인용해보면,</p>
 <blockquote>
-<div>In practice, very few people train an entire Convolutional Network
-from scratch (with random initialization), because it is relatively
-rare to have a dataset of sufficient size. Instead, it is common to
-pretrain a ConvNet on a very large dataset (e.g. ImageNet, which
-contains 1.2 million images with 1000 categories), and then use the
-ConvNet either as an initialization or a fixed feature extractor for
-the task of interest.</div></blockquote>
-<p>These two major transfer learning scenarios look as follows:</p>
+<div>실제로 충분한 크기의 데이터셋을 갖추기는 상대적으로 드물기 때문에,
+(무작위 초기화를 통해) 바닥부터(from scratch) 전체 합성곱 신경망(Convolutional
+Network)를 학습하는 사람은 거의 없습니다. 대신, 매우 큰 데이터셋(예.
+100가지 분류(Category)에 대해 120만개의 이미지가 포함된 ImageNet)에서 합성곱
+신경망(ConvNet)을 미리 학습(Pretrain)한 후, 이 합성곱 신경망을 관심있는 작업
+(task of interest)을 위한 초기화(initialization) 또는 고정 특징 추출기(fixed
+feature extractor)로 사용합니다.</div></blockquote>
+<p>이러한 2가지의 주요한 전이학습 시나리오는 다음과 같습니다:</p>
 <ul class="simple">
-<li><strong>Finetuning the convnet</strong>: Instead of random initializaion, we
-initialize the network with a pretrained network, like the one that is
-trained on imagenet 1000 dataset. Rest of the training looks as
-usual.</li>
-<li><strong>ConvNet as fixed feature extractor</strong>: Here, we will freeze the weights
-for all of the network except that of the final fully connected
-layer. This last fully connected layer is replaced with a new one
-with random weights and only this layer is trained.</li>
+<li><strong>합성곱 신경망의 미세조정(Finetuning)</strong>: 무작위 초기화 대신, 신경망을
+ImageNet 1000 데이터셋 등으로 미리 학습한 신경망으로 초기화합니다. 학습의 나머지
+과정들은 평상시와 같습니다.</li>
+<li><strong>고정 특정 추출기로써의 합성곱 신경망</strong>: 여기서는 마지막의 완전히 연결
+(Fully-connected)된 계층을 제외한 모든 신경망의 가중치를 고정합니다. 이
+마지막의 완전히 연결된 계층은 새로운 무작위의 가중치를 갖는 계층으로 대체되어
+이 계층만 학습합니다.</li>
 </ul>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># License: BSD</span>
 <span class="c1"># Author: Sasank Chilamkurthy</span>
@@ -579,25 +581,21 @@ with random weights and only this layer is trained.</li>
 <span class="n">plt</span><span class="o">.</span><span class="n">ion</span><span class="p">()</span>   <span class="c1"># interactive mode</span>
 </pre></div>
 </div>
-<div class="section" id="load-data">
-<h2>Load Data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
-<p>We will use torchvision and torch.utils.data packages for loading the
-data.</p>
-<p>The problem we’re going to solve today is to train a model to classify
-<strong>ants</strong> and <strong>bees</strong>. We have about 120 training images each for ants and bees.
-There are 75 validation images for each class. Usually, this is a very
-small dataset to generalize upon, if trained from scratch. Since we
-are using transfer learning, we should be able to generalize reasonably
-well.</p>
-<p>This dataset is a very small subset of imagenet.</p>
+<div class="section" id="id2">
+<h2>데이터 불러오기<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>데이터를 불러오기 위해 torchvision과 torch.utils.data 패키지를 사용하겠습니다.</p>
+<p>오늘 풀고자 하는 문제는 <strong>개미</strong> 와 <strong>벌</strong> 을 분류하는 모델을 학습하는 것입니다.
+각각의 분류에는 75개의 검증용 이미지(validation image)가 있습니다. 일반적으로,
+만약 바닥부터 학습을 한다면, 이는 일반화하기에는 아주 작은 데이터셋입니다.
+하지만 전이학습을 사용할 것이므로, 합리적으로 잘 일반화해 할 수 있습니다.</p>
+<p>이 데이터셋은 ImageNet의 아주 작은 부분(Subset)입니다.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">Download the data from
-<a class="reference external" href="https://download.pytorch.org/tutorial/hymenoptera_data.zip">here</a>
-and extract it to the current directory.</p>
+<p class="last">데이터를 <a class="reference external" href="https://download.pytorch.org/tutorial/hymenoptera_data.zip">여기</a>
+에서 다운로드 받아 현재 디렉토리에 압축을 푸십시오.</p>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Data augmentation and normalization for training</span>
-<span class="c1"># Just normalization for validation</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 학습을 위한 데이터 증가(Augmentation)와 일반화하기</span>
+<span class="c1"># 단지 검증을 위한 일반화하기</span>
 <span class="n">data_transforms</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;train&#39;</span><span class="p">:</span> <span class="n">transforms</span><span class="o">.</span><span class="n">Compose</span><span class="p">([</span>
         <span class="n">transforms</span><span class="o">.</span><span class="n">RandomResizedCrop</span><span class="p">(</span><span class="mi">224</span><span class="p">),</span>
@@ -626,10 +624,9 @@ and extract it to the current directory.</p>
 <span class="n">device</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">device</span><span class="p">(</span><span class="s2">&quot;cuda:0&quot;</span> <span class="k">if</span> <span class="n">torch</span><span class="o">.</span><span class="n">cuda</span><span class="o">.</span><span class="n">is_available</span><span class="p">()</span> <span class="k">else</span> <span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="visualize-a-few-images">
-<h3>Visualize a few images<a class="headerlink" href="#visualize-a-few-images" title="Permalink to this headline">¶</a></h3>
-<p>Let’s visualize a few training images so as to understand the data
-augmentations.</p>
+<div class="section" id="id4">
+<h3>일부 이미지 시각화하기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>데이터 증가를 이해하기 위해 일부 학습용 이미지를 시각화해보겠습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">imshow</span><span class="p">(</span><span class="n">inp</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Imshow for Tensor.&quot;&quot;&quot;</span>
     <span class="n">inp</span> <span class="o">=</span> <span class="n">inp</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
@@ -655,16 +652,16 @@ augmentations.</p>
 <img alt="../_images/sphx_glr_transfer_learning_tutorial_001.png" class="align-center" src="../_images/sphx_glr_transfer_learning_tutorial_001.png" />
 </div>
 </div>
-<div class="section" id="training-the-model">
-<h2>Training the model<a class="headerlink" href="#training-the-model" title="Permalink to this headline">¶</a></h2>
-<p>Now, let’s write a general function to train a model. Here, we will
-illustrate:</p>
+<div class="section" id="id5">
+<h2>모델 학습하기<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>이제 모델을 학습하기 위한 일반 함수를 작성해보겠습니다. 여기서는 다음 내용들을
+설명합니다:</p>
 <ul class="simple">
-<li>Scheduling the learning rate</li>
-<li>Saving the best model</li>
+<li>Learning Rate 관리(Scheduling)</li>
+<li>최적의 모델 구하기</li>
 </ul>
-<p>In the following, parameter <code class="docutils literal notranslate"><span class="pre">scheduler</span></code> is an LR scheduler object from
-<code class="docutils literal notranslate"><span class="pre">torch.optim.lr_scheduler</span></code>.</p>
+<p>아래에서 <code class="docutils literal notranslate"><span class="pre">scheduler</span></code> 매개변수는 <code class="docutils literal notranslate"><span class="pre">torch.optim.lr_scheduler</span></code> 의 LR Scheduler
+객체(Object)입니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">scheduler</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">):</span>
     <span class="n">since</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
@@ -733,9 +730,9 @@ illustrate:</p>
     <span class="k">return</span> <span class="n">model</span>
 </pre></div>
 </div>
-<div class="section" id="visualizing-the-model-predictions">
-<h3>Visualizing the model predictions<a class="headerlink" href="#visualizing-the-model-predictions" title="Permalink to this headline">¶</a></h3>
-<p>Generic function to display predictions for a few images</p>
+<div class="section" id="id6">
+<h3>모델 예측값 시각화하기<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>일부 이미지에 대한 예측값을 보여주는 일반화된(Generic) 함수입니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">visualize_model</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">num_images</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
     <span class="n">was_training</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">training</span>
     <span class="n">model</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
@@ -765,9 +762,9 @@ illustrate:</p>
 </div>
 </div>
 </div>
-<div class="section" id="finetuning-the-convnet">
-<h2>Finetuning the convnet<a class="headerlink" href="#finetuning-the-convnet" title="Permalink to this headline">¶</a></h2>
-<p>Load a pretrained model and reset final fully connected layer.</p>
+<div class="section" id="finetuning">
+<h2>합성곱 신경망 미세조정(Finetuning)<a class="headerlink" href="#finetuning" title="Permalink to this headline">¶</a></h2>
+<p>미리 학습한 모델을 불러온 후 마지막의 완전히 연결된 계층을 재설정(reset)합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_ft</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="n">num_ftrs</span> <span class="o">=</span> <span class="n">model_ft</span><span class="o">.</span><span class="n">fc</span><span class="o">.</span><span class="n">in_features</span>
 <span class="n">model_ft</span><span class="o">.</span><span class="n">fc</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">num_ftrs</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -783,10 +780,9 @@ illustrate:</p>
 <span class="n">exp_lr_scheduler</span> <span class="o">=</span> <span class="n">lr_scheduler</span><span class="o">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer_ft</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="train-and-evaluate">
-<h3>Train and evaluate<a class="headerlink" href="#train-and-evaluate" title="Permalink to this headline">¶</a></h3>
-<p>It should take around 15-25 min on CPU. On GPU though, it takes less than a
-minute.</p>
+<div class="section" id="id7">
+<h3>학습 및 평가하기<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>CPU에서 15-25분 가량 소요될 것입니다. 그래도 GPU에서는 1분도 걸리지 않습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_ft</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">model_ft</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer_ft</span><span class="p">,</span> <span class="n">exp_lr_scheduler</span><span class="p">,</span>
                        <span class="n">num_epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
@@ -794,128 +790,128 @@ minute.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Epoch</span> <span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6067</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6721</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1738</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6173</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6721</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2390</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9020</span>
 
 <span class="n">Epoch</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5806</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7541</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3619</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8431</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5330</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7992</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3370</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8758</span>
 
 <span class="n">Epoch</span> <span class="mi">2</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6731</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7541</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.1280</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6667</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4853</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8197</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.8833</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7647</span>
 
 <span class="n">Epoch</span> <span class="mi">3</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5278</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8033</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2925</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8954</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6320</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7582</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3469</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8889</span>
 
 <span class="n">Epoch</span> <span class="mi">4</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5577</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7828</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2829</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8889</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.8411</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7254</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.1522</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6405</span>
 
 <span class="n">Epoch</span> <span class="mi">5</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4402</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8156</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3983</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8889</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5444</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7951</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2842</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
 
 <span class="n">Epoch</span> <span class="mi">6</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">1.0058</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7213</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3535</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8954</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4206</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8402</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4947</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8562</span>
 
 <span class="n">Epoch</span> <span class="mi">7</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4291</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8320</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3507</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8889</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4865</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8115</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3350</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8758</span>
 
 <span class="n">Epoch</span> <span class="mi">8</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3470</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8689</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2927</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3343</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8361</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3314</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
 
 <span class="n">Epoch</span> <span class="mi">9</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3647</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2681</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3872</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8279</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3139</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
 
 <span class="n">Epoch</span> <span class="mi">10</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3726</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2659</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4570</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8033</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3096</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8889</span>
 
 <span class="n">Epoch</span> <span class="mi">11</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2981</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8770</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2892</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3559</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8279</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2845</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">12</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3082</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8893</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2556</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3000</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8607</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2693</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">13</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3342</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8934</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2826</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2930</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2580</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">14</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2682</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9057</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2784</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3020</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8689</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2689</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
 
 <span class="n">Epoch</span> <span class="mi">15</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2861</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8730</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2428</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2186</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9180</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2663</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">16</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2615</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9016</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2553</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4039</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8197</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2725</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
 
 <span class="n">Epoch</span> <span class="mi">17</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2574</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9016</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2642</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2384</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9057</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2581</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">18</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2633</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9016</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2591</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2630</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8934</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2672</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
 
 <span class="n">Epoch</span> <span class="mi">19</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2303</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9098</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3393</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8824</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3348</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8607</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2681</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
 
 <span class="n">Epoch</span> <span class="mi">20</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2603</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8934</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2556</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2762</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8852</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2831</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
 
 <span class="n">Epoch</span> <span class="mi">21</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2168</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9016</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2611</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2888</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8566</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2664</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">22</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3338</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2464</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3505</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8402</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2647</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">23</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2274</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9057</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2694</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9020</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2928</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8607</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2480</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
 
 <span class="n">Epoch</span> <span class="mi">24</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3142</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2708</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9085</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2822</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8811</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2553</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9216</span>
 
 <span class="n">Training</span> <span class="n">complete</span> <span class="ow">in</span> <span class="mi">0</span><span class="n">m</span> <span class="mi">58</span><span class="n">s</span>
 <span class="n">Best</span> <span class="n">val</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.934641</span>
@@ -927,13 +923,14 @@ minute.</p>
 <img alt="../_images/sphx_glr_transfer_learning_tutorial_002.png" class="align-center" src="../_images/sphx_glr_transfer_learning_tutorial_002.png" />
 </div>
 </div>
-<div class="section" id="convnet-as-fixed-feature-extractor">
-<h2>ConvNet as fixed feature extractor<a class="headerlink" href="#convnet-as-fixed-feature-extractor" title="Permalink to this headline">¶</a></h2>
-<p>Here, we need to freeze all the network except the final layer. We need
-to set <code class="docutils literal notranslate"><span class="pre">requires_grad</span> <span class="pre">==</span> <span class="pre">False</span></code> to freeze the parameters so that the
-gradients are not computed in <code class="docutils literal notranslate"><span class="pre">backward()</span></code>.</p>
-<p>You can read more about this in the documentation
-<a class="reference external" href="http://pytorch.org/docs/notes/autograd.html#excluding-subgraphs-from-backward">here</a>.</p>
+<div class="section" id="id8">
+<h2>고정 특정 추출기로써의 합성곱 신경망<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p>이제, 마지막 계층을 제외한 모든 신경망을 고정(freeze)할 필요가 있습니다.
+<code class="docutils literal notranslate"><span class="pre">requires_grad</span> <span class="pre">==</span> <span class="pre">False</span></code> 를 설정하여 매개변수를 고정하여 <code class="docutils literal notranslate"><span class="pre">backward()</span></code> 에서
+경사도(gradient)가 계산되지 않도록 해야합니다.</p>
+<p>이 부분에 대한 문서는
+<a class="reference external" href="http://pytorch.org/docs/notes/autograd.html#excluding-subgraphs-from-backward">여기</a>
+에서 확인할 수 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_conv</span> <span class="o">=</span> <span class="n">torchvision</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">resnet18</span><span class="p">(</span><span class="n">pretrained</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model_conv</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
     <span class="n">param</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="bp">False</span>
@@ -954,11 +951,11 @@ gradients are not computed in <code class="docutils literal notranslate"><span c
 <span class="n">exp_lr_scheduler</span> <span class="o">=</span> <span class="n">lr_scheduler</span><span class="o">.</span><span class="n">StepLR</span><span class="p">(</span><span class="n">optimizer_conv</span><span class="p">,</span> <span class="n">step_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">gamma</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="section" id="id1">
-<h3>Train and evaluate<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
-<p>On CPU this will take about half the time compared to previous scenario.
-This is expected as gradients don’t need to be computed for most of the
-network. However, forward does need to be computed.</p>
+<div class="section" id="id9">
+<h3>학습 및 평가하기<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>CPU에서 실행하는 경우 이전 시나리오와 비교했을 때 약 절반 가량의 시간이 소요됩니다.
+이는 대부분의 신경망에서 경사도를 계산할 필요가 없을 것으로 기대합니다. 하지만,
+순전파(forward)는 계산해야 할 필요가 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">model_conv</span> <span class="o">=</span> <span class="n">train_model</span><span class="p">(</span><span class="n">model_conv</span><span class="p">,</span> <span class="n">criterion</span><span class="p">,</span> <span class="n">optimizer_conv</span><span class="p">,</span>
                          <span class="n">exp_lr_scheduler</span><span class="p">,</span> <span class="n">num_epochs</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
 </pre></div>
@@ -966,131 +963,131 @@ network. However, forward does need to be computed.</p>
 <p class="sphx-glr-script-out">Out:</p>
 <div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Epoch</span> <span class="mi">0</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6048</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6762</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2204</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5825</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.6926</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2186</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9150</span>
 
 <span class="n">Epoch</span> <span class="mi">1</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4598</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7910</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2848</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8824</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4673</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7828</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1650</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">2</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3730</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8279</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2964</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8824</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5194</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7664</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1605</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9542</span>
 
 <span class="n">Epoch</span> <span class="mi">3</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5027</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7623</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4128</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8235</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4810</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8074</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1646</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">4</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.6587</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7500</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4260</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8235</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4189</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2209</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
 
 <span class="n">Epoch</span> <span class="mi">5</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.7825</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7008</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1944</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5166</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7828</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3921</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8497</span>
 
 <span class="n">Epoch</span> <span class="mi">6</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4888</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8074</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2144</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.5309</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7828</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1634</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">7</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4305</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2317</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3605</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8402</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1934</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">8</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4426</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2190</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3823</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8361</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2397</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
 
 <span class="n">Epoch</span> <span class="mi">9</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2810</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8648</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2249</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3467</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8279</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1880</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">10</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3035</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8689</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2426</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9281</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3001</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8811</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1895</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">11</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4367</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8156</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2138</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3604</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8361</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1945</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
 
 <span class="n">Epoch</span> <span class="mi">12</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3359</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8361</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2029</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3648</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8320</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1804</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">13</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3519</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2217</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4191</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8033</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1753</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">14</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3659</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8361</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2366</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.4081</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.7910</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1909</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">15</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3902</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2251</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3488</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1939</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">16</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3300</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8934</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2090</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3274</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1663</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">17</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3947</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8402</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2319</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3103</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1961</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">18</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3455</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8648</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2049</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2357</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9016</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1758</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">19</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2858</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8852</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2095</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3642</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8361</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1833</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">20</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3462</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8443</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1939</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2931</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8730</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1831</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9542</span>
 
 <span class="n">Epoch</span> <span class="mi">21</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3847</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2371</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9346</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2782</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8893</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1779</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">22</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3645</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8607</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2294</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3804</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8197</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1769</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9477</span>
 
 <span class="n">Epoch</span> <span class="mi">23</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3002</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8525</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2159</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3690</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8033</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1852</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
 
 <span class="n">Epoch</span> <span class="mi">24</span><span class="o">/</span><span class="mi">24</span>
 <span class="o">----------</span>
-<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3763</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8238</span>
-<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.2078</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9412</span>
+<span class="n">train</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.3018</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.8607</span>
+<span class="n">val</span> <span class="n">Loss</span><span class="p">:</span> <span class="mf">0.1776</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.9542</span>
 
 <span class="n">Training</span> <span class="n">complete</span> <span class="ow">in</span> <span class="mi">0</span><span class="n">m</span> <span class="mi">40</span><span class="n">s</span>
-<span class="n">Best</span> <span class="n">val</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.947712</span>
+<span class="n">Best</span> <span class="n">val</span> <span class="n">Acc</span><span class="p">:</span> <span class="mf">0.954248</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">visualize_model</span><span class="p">(</span><span class="n">model_conv</span><span class="p">)</span>
@@ -1100,7 +1097,7 @@ network. However, forward does need to be computed.</p>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_transfer_learning_tutorial_003.png" class="align-center" src="../_images/sphx_glr_transfer_learning_tutorial_003.png" />
-<p><strong>Total running time of the script:</strong> ( 1 minutes  44.292 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 1 minutes  44.757 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/transfer_learning_tutorial.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">transfer_learning_tutorial.py</span></code></a></div>
