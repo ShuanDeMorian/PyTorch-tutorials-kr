@@ -42,7 +42,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PyTorch Tutorials 0.4.0 documentation" href="../index.html"/>
-        <link rel="next" title="Reinforcement Learning (DQN) tutorial" href="reinforcement_q_learning.html"/>
+        <link rel="next" title="강화 학습 (DQN) 튜토리얼" href="reinforcement_q_learning.html"/>
         <link rel="prev" title="문자-단위 RNN으로 이름 생성하기" href="char_rnn_generation_tutorial.html"/> 
 
   
@@ -367,19 +367,19 @@
 <li class="toctree-l3"><a class="reference internal" href="#id14">어텐션 시각화</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id15">연습</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reinforcement_q_learning.html">Reinforcement Learning (DQN) tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#replay-memory">Replay Memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#dqn-algorithm">DQN algorithm</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#q-network">Q-network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#input-extraction">Input extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reinforcement_q_learning.html">강화 학습 (DQN) 튜토리얼</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#replay-memory">재현 메모리(Replay Memory)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#id2">DQN 알고리즘</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#q">Q-네트워크</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#id3">입력 추출</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#training">Training</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#hyperparameters-and-utilities">Hyperparameters and utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#training-loop">Training loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#id4">학습</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#id5">하이퍼 파라미터와 유틸리티</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#id8">학습 루프</a></li>
 </ul>
 </li>
 </ul>
@@ -539,7 +539,7 @@
 <dt><strong>Author</strong>: <a class="reference external" href="https://github.com/spro/practical-pytorch">Sean Robertson</a></dt>
 <dd><strong>번역</strong>: <a class="reference external" href="https://github.com/adonisues">황성수</a></dd>
 </dl>
-<p>이 프로젝트에서 신경망이 불어를 영어로 번역하는 것을 가르칠 예정입니다.</p>
+<p>이 프로젝트에서 신경망이 불어를 영어로 번역하도록 가르칠 예정입니다.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[KEY: &gt; input, = target, &lt; output]
 
 &gt; il est en train de peindre un tableau .
@@ -559,21 +559,21 @@
 &lt; you re all alone .
 </pre></div>
 </div>
-<p>… 성공도는 변화합니다.</p>
-<p>이것은 하나의 시퀀스를 다른 시퀀스로 바꾸는 두개의 RNN 이 함께 동작하는
-<a class="reference external" href="http://arxiv.org/abs/1409.3215">sequence to sequence network</a> 의 간단하지만 강력한 아이디어로
-가능합니다. 인코더 네트워크는 입력 시퀀스를 벡터로 압축하고,
+<p>… 성공율은 변할 수 있습니다.</p>
+<p>하나의 시퀀스를 다른 시퀀스로 바꾸는 두개의 RNN이 함께 동작하는
+<a class="reference external" href="http://arxiv.org/abs/1409.3215">sequence to sequence network</a> 의 간단하지만 강력한 아이디어가
+이것(번역)을 가능하게 합니다. 인코더 네트워크는 입력 시퀀스를 벡터로 압축하고,
 디코더 네트워크는 해당 벡터를 새로운 시퀀스로 펼칩니다.</p>
 <div class="figure">
 <img alt="" src="../_images/seq2seq.png" />
 </div>
-<p>이 모델을 개선하기 위해 <a class="reference external" href="https://arxiv.org/abs/1409.0473">attention mechanism</a> 을
-사용하여 디코더가 입력 시퀀스의 특정 범위에 초점을 맞출 수 있도록합니다.</p>
+<p>이 모델을 개선하기 위해 <a class="reference external" href="https://arxiv.org/abs/1409.0473">Attention Mechanism</a> 을
+사용하면 디코더가 입력 시퀀스의 특정 범위에 초점을 맞출 수 있도록 합니다.</p>
 <p><strong>추천 자료:</strong></p>
-<p>최소한 Pytorch 를 설치했고, Python을 알고, Tensor 를 이해한다고 가정합니다.:</p>
+<p>최소한 Pytorch 를 설치했고, Python을 알고, Tensor 를 이해한다고 가정합니다:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://pytorch.org/">http://pytorch.org/</a> 설치 안내</li>
-<li><a class="reference internal" href="../beginner/deep_learning_60min_blitz.html"><span class="doc">PyTorch로 딥러닝하기: 60분만에 끝장내기</span></a> 일반적인 PyTorch 시작을 위한 자료</li>
+<li><a class="reference internal" href="../beginner/deep_learning_60min_blitz.html"><span class="doc">PyTorch로 딥러닝하기: 60분만에 끝장내기</span></a> 전반적인 PyTorch 시작을 위한 자료</li>
 <li><a class="reference internal" href="../beginner/pytorch_with_examples.html"><span class="doc">예제로 배우는 PyTorch</span></a> 넓고 깊은 통찰을 위한 자료</li>
 <li><a class="reference internal" href="../beginner/former_torchies_tutorial.html"><span class="doc">Torch 사용자를 위한 PyTorch</span></a> 이전 Lua Torch 사용자를 위한 자료</li>
 </ul>
@@ -590,7 +590,7 @@ Translate</a></li>
 <p>이전 튜토리얼에 있는
 <a class="reference internal" href="char_rnn_classification_tutorial.html"><span class="doc">문자-단위 RNN으로 이름 분류하기</span></a>
 와 <a class="reference internal" href="char_rnn_generation_tutorial.html"><span class="doc">문자-단위 RNN으로 이름 생성하기</span></a> 는
-각각 인코더와 디코더 모델과 비슷한 컨센을 가져서 도움이 됩니다.</p>
+각각 인코더와 디코더 모델과 비슷한 컨센을 가지기 때문에 도움이 됩니다.</p>
 <p>추가로 이 토픽들을 다루는 논문을 읽어 보십시오:</p>
 <ul class="simple">
 <li><a class="reference external" href="http://arxiv.org/abs/1406.1078">Learning Phrase Representations using RNN Encoder-Decoder for
@@ -620,11 +620,10 @@ Translate</a></li>
 <div class="section" id="id2">
 <h2>데이터 파일 로딩<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>이 프로젝트의 데이터는 수천 개의 영어-프랑스어 번역 쌍입니다.</p>
-<p><a class="reference external" href="http://opendata.stackexchange.com/questions/3888/dataset-of-sentences-translated-into-many-languages">Open Data Stack
-Exchange 에 관한 이 질문은</a>
-<a class="reference external" href="http://tatoeba.org/eng">http://tatoeba.org/eng</a>/downloads에서 다운 가능한
-공개된 번역 사이트 <a class="reference external" href="http://tatoeba.org/">http://tatoeba.org/</a> 를 알려 주었습니다 - 더 나은 방법으로
-누군가가 언어 쌍을 개별 텍스트 파일로 분할하는 추가 작업을 수행한
+<p><a class="reference external" href="http://opendata.stackexchange.com/questions/3888/dataset-of-sentences-translated-into-many-languages">Open Data Stack Exchange</a>
+에 관한 이 문의는 <a class="reference external" href="http://tatoeba.org/eng/downloads">http://tatoeba.org/eng/downloads</a> 에서 다운 로드가 가능한
+공개 번역 사이트 <a class="reference external" href="http://tatoeba.org/">http://tatoeba.org/</a> 를 알려 주었습니다. 더 나은 방법으로
+언어 쌍을 개별 텍스트 파일로 분할하는 추가 작업을 수행한
 <a class="reference external" href="http://www.manythings.org/anki/">http://www.manythings.org/anki/</a> 가 있습니다:</p>
 <p>영어-프랑스어 쌍이 너무 커서 저장소에 포함 할 수 없기 때문에
 계속하기 전에 <code class="docutils literal notranslate"><span class="pre">data/eng-fra.txt</span></code> 로 다운로드하십시오.
@@ -638,10 +637,10 @@ Exchange 에 관한 이 질문은</a>
 에서 데이터를 다운 받고 현재 디렉토리에 압축을 푸십시오.</p>
 </div>
 <p>문자 단위 RNN 튜토리얼에서 사용된 문자 인코딩과 유사하게, 언어의 각
-단어들은 one-hot 벡터 또는 그 단어의 주소에만 단 하나의 1을 제외하고
+단어들은 One-Hot 벡터 또는 그 단어의 주소에만 단 하나의 1을 제외하고
 모두 0인 큰 벡터로 표현합니다. 한 가지 언어에 있는 수십 개의 문자와
-달리 아주 많은 단어들이 있기 때문에 인코딩 벡터는 아주 더 큽니다.
-그러나 우리는 약간의 속임수를 쓰고 언어 당 수천 단어 만
+달리 번역에는 아주 많은 단어들이 있기 때문에 인코딩 벡터는 매우 더 큽니다.
+그러나 우리는 약간의 속임수를 써서 언어 당 수천 단어 만
 사용하도록 데이터를 다듬을 것입니다.</p>
 <div class="figure">
 <img alt="" src="../_images/word-encoding.png" />
@@ -649,7 +648,7 @@ Exchange 에 관한 이 질문은</a>
 <p>나중에 네트워크의 입력 및 목표로 사용하려면 단어 당 고유 번호가
 필요합니다. 이 모든 것을 추적하기 위해 우리는
 단어→색인(<code class="docutils literal notranslate"><span class="pre">word2index</span></code>)과 색인→단어(<code class="docutils literal notranslate"><span class="pre">index2word</span></code>) 사전,
-그리고 나중에 희귀 단어를 대체하는데 사용할 각 단어의 숫자
+그리고 나중에 희귀 단어를 대체하는데 사용할 각 단어의 빈도
 <code class="docutils literal notranslate"><span class="pre">word2count</span></code> 를 가진 <code class="docutils literal notranslate"><span class="pre">Lang</span></code> 이라는 헬퍼 클래스를 사용합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">SOS_token</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">EOS_token</span> <span class="o">=</span> <span class="mi">1</span>
@@ -698,20 +697,20 @@ ASCII로 변환하고, 모든 문자를 소문자로 만들고, 대부분의 구
     <span class="k">return</span> <span class="n">s</span>
 </pre></div>
 </div>
-<p>데이터 파일을 읽으려면 파일을 줄로 나누고 줄을 쌍으로 나눕니다.
+<p>데이터 파일을 읽으려면 파일을 줄로 나눈 다음 줄을 쌍으로 나눕니다.
 파일은 모두 영어 → 기타 언어이므로 만약 다른 언어 → 영어로
-번역한다면 쌍을 뒤집도록 <code class="docutils literal notranslate"><span class="pre">reverse</span></code> 플래그를 추가했습니다.</p>
+번역한다면 쌍을 뒤집을 수 있도록 <code class="docutils literal notranslate"><span class="pre">reverse</span></code> 플래그를 추가했습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">readLangs</span><span class="p">(</span><span class="n">lang1</span><span class="p">,</span> <span class="n">lang2</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
     <span class="k">print</span><span class="p">(</span><span class="s2">&quot;Reading lines...&quot;</span><span class="p">)</span>
 
-    <span class="c1"># Read the file and split into lines</span>
+    <span class="c1"># 파일을 읽고 줄로 분리</span>
     <span class="n">lines</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;data/</span><span class="si">%s</span><span class="s1">-</span><span class="si">%s</span><span class="s1">.txt&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">lang1</span><span class="p">,</span> <span class="n">lang2</span><span class="p">),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span><span class="o">.</span>\
         <span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-    <span class="c1"># 모든 줄을 쌍으로 분리하고 정규화 하십시오</span>
+    <span class="c1"># 모든 줄을 쌍으로 분리하고 정규화</span>
     <span class="n">pairs</span> <span class="o">=</span> <span class="p">[[</span><span class="n">normalizeString</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">l</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">)]</span> <span class="k">for</span> <span class="n">l</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">]</span>
 
-    <span class="c1"># 쌍을 뒤집고, Lang 인스턴스를 만드십시오</span>
+    <span class="c1"># 쌍을 뒤집고, Lang 인스턴스 생성</span>
     <span class="k">if</span> <span class="n">reverse</span><span class="p">:</span>
         <span class="n">pairs</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="nb">reversed</span><span class="p">(</span><span class="n">p</span><span class="p">))</span> <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="n">pairs</span><span class="p">]</span>
         <span class="n">input_lang</span> <span class="o">=</span> <span class="n">Lang</span><span class="p">(</span><span class="n">lang2</span><span class="p">)</span>
@@ -783,7 +782,7 @@ ASCII로 변환하고, 모든 문자를 소문자로 만들고, 대부분의 구
 <span class="n">Counted</span> <span class="n">words</span><span class="p">:</span>
 <span class="n">fra</span> <span class="mi">4489</span>
 <span class="n">eng</span> <span class="mi">2925</span>
-<span class="p">[</span><span class="s1">&#39;je suis en train de lire une lettre .&#39;</span><span class="p">,</span> <span class="s1">&#39;i am reading a letter .&#39;</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;il est jeune et celibataire .&#39;</span><span class="p">,</span> <span class="s1">&#39;he s young and single .&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -792,31 +791,31 @@ ASCII로 변환하고, 모든 문자를 소문자로 만들고, 대부분의 구
 <p>Recurrent Neural Network(RNN)는 시퀀스에서 작동하고 후속 단계의
 입력으로 자신의 출력을 사용하는 네트워크입니다.</p>
 <p><a class="reference external" href="http://arxiv.org/abs/1409.3215">Sequence to Sequence network</a>, 또는
-seq2seq 네트워크, 또는 <a class="reference external" href="https://arxiv.org/pdf/1406.1078v3.pdf">Encoder Decoder
+Seq2Seq 네트워크, 또는 <a class="reference external" href="https://arxiv.org/pdf/1406.1078v3.pdf">Encoder Decoder
 network</a> 는 인코더 및
-디코더라고하는 두 개의 RNN으로 구성된 모델입니다.
+디코더라고 하는 두 개의 RNN으로 구성된 모델입니다.
 인코더는 입력 시퀀스를 읽고 단일 벡터를 출력하고,
 디코더는 해당 벡터를 읽어 출력 시퀀스를 생성합니다.</p>
 <div class="figure">
 <img alt="" src="../_images/seq2seq.png" />
 </div>
 <p>모든 입력에 해당하는 출력이 있는 단일 RNN의 시퀀스 예측과 달리
-seq2seq 모델은 시퀀스 길이와 순서를 자유롭게하여
-두 언어 간의 번역에 이상적입니다.</p>
+Seq2Seq 모델은 시퀀스 길이와 순서를 자유롭게하기 때문에
+두 언어 사이의 번역에 이상적입니다.</p>
 <p>다음 문장 “Je ne suis pas le chat noir” → “I am not the black cat”
-를 살펴 봅시다. 입력 문장의 대부분의 단어는 출력 문장에서
-직역되지만 약간 다른 순서도 있습니다. 예시 “chat noir” 와 “black cat”.
+를 살펴 봅시다. 입력 문장의 단어 대부분은 출력 문장에서
+직역(“chat noir” 와 “black cat”)되지만 약간 다른 순서도 있습니다.
 “ne/pas” 구조로 인해 입력 문장에 단어가 하나 더 있습니다.
-입력 단어의 시퀀스에서 직접적으로 정확한 번역을 만드는
+입력 단어의 시퀀스에서 직접적으로는 정확한 번역을 만드는
 것은 어려울 것입니다.</p>
-<p>seq2seq 모델을 사용하면 인코더는 하나의 벡터를 생성합니다.
-이상적인 경우 입력 시퀀스의 “의미”를 문장의 N 차원 공간에 있는
+<p>Seq2Seq 모델을 사용하면 인코더는 하나의 벡터를 생성합니다.
+이상적인 경우에 입력 시퀀스의 “의미”를 문장의 N 차원 공간에 있는
 단일 지점인 단일 벡터으로 인코딩합니다.</p>
 <div class="section" id="id4">
 <h3>인코더<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
-<p>seq2seq 네트워크의 인코더는 입력 문장의 모든 단어에 대해 어떤 값을
+<p>Seq2Seq 네트워크의 인코더는 입력 문장의 모든 단어에 대해 어떤 값을
 출력하는 RNN입니다. 모든 입력 단어에 대해 인코더는 벡터와
-hidden state 를 출력하고 다음 입력 단어에 hidden state를 사용합니다.</p>
+은닉 상태를 출력하고 다음 입력 단어에 그 은닉 상태를 사용합니다.</p>
 <div class="figure">
 <img alt="" src="../_images/encoder-network.png" />
 </div>
@@ -845,13 +844,13 @@ hidden state 를 출력하고 다음 입력 단어에 hidden state를 사용합�
 출력합니다.</p>
 <div class="section" id="id6">
 <h4>간단한 디코더<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
-<p>가장 간단한 seq2seq 디코더에서 인코더의 마지막 출력만을 이용합니다.
+<p>가장 간단한 Seq2Seq 디코더에서 인코더의 마지막 출력만을 이용합니다.
 이 마지막 출력은 전체 시퀀스에서 문맥을 인코드하기 때문에
-<em>문맥 벡터(context vector)</em> 로 불립니다. 이 문맥 벡터는 디코더의 초기 hidden state로
+<em>문맥 벡터(context vector)</em> 로 불립니다. 이 문맥 벡터는 디코더의 초기 은닉 상태로
 사용 됩니다.</p>
-<p>디코딩의 매 단계에서 디코더에게 입력 토큰과 hidden state 가 주어집니다.
+<p>디코딩의 매 단계에서 디코더에게 입력 토큰과 은닉 상태가 주어집니다.
 초기 입력 토큰은 문자열-시작 (start-of-string) <code class="docutils literal notranslate"><span class="pre">&lt;SOS&gt;</span></code> 토큰이고,
-첫 hidden state는 문맥 벡터(인코더의 마지막 hidden state) 입니다.</p>
+첫 은닉 상태는 문맥 벡터(인코더의 마지막 은닉 상태) 입니다.</p>
 <div class="figure">
 <img alt="" src="../_images/decoder-network.png" />
 </div>
@@ -876,27 +875,27 @@ hidden state 를 출력하고 다음 입력 단어에 hidden state를 사용합�
         <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">hidden_size</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>나는 당신이 이 모델의 결과를 학습하고 관찰하는 것을 권장하지만,
-공간을 절약하기 위해 금메달을 위해 곧장 가고
-어텐션 메카니즘을 소개 할 것입니다.</p>
+<p>이 모델의 결과를 학습하고 관찰하는 것을 권장하지만,
+공간을 절약하기 위해 최종 목적지로 바로 이동해서
+어텐션(attention) 메카니즘을 소개 할 것입니다.</p>
 </div>
 <div class="section" id="id7">
 <h4>어텐션 디코더<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<p>문맥 벡터만 인코더와 디코더 사이로 전달 된다면, 단일 벡터가 전체 문장의
-인코딩 부담을 가지게 됩니다.
+<p>문맥 벡터만 인코더와 디코더 사이로 전달 된다면, 단일 벡터가 전체 문장을
+인코딩 해야하는 부담을 가지게 됩니다.
 어텐션은 디코더 네트워크가 자기 출력의 모든 단계에서 인코더 출력의
-다른 부분에 “집중” 할 수 있게 합니다. 첫째 <em>어텐션 웨이트</em> 의 셋을
+다른 부분에 “집중” 할 수 있게 합니다. 첫째 <em>어텐션 웨이트</em> 의 세트를
 계산합니다. 이것은 가중치 조합을 만들기 위해서 인코더 출력 벡터와
-곱해집니다. 그 결과 (코드에서 <code class="docutils literal notranslate"><span class="pre">attn_applied</span></code>)는 입력 시퀀스의
+곱해집니다. 그 결과(코드에서 <code class="docutils literal notranslate"><span class="pre">attn_applied</span></code>)는 입력 시퀀스의
 특정 부분에 관한 정보를 포함해야하고 따라서 디코더가 알맞은 출력
 단어를 선택하는 것을 도와줍니다.</p>
 <div class="figure">
 <img alt="" src="https://i.imgur.com/1152PYf.png" />
 </div>
-<p>어텐션 가중치 계산은 디코더의 입력 및 Hidden State를 입력으로
+<p>어텐션 가중치 계산은 디코더의 입력 및 은닉 상태를 입력으로
 사용하는 다른 feed-forwad layer 인 <code class="docutils literal notranslate"><span class="pre">attn</span></code> 으로 수행됩니다.
 학습 데이터에는 모든 크기의 문장이 있기 때문에 이 계층을 실제로
-만들고 학습시키려면 적용 할 수 있는 최대 문장 길이 (인코더 출력의 입력 길이)를
+만들고 학습시키려면 적용 할 수 있는 최대 문장 길이 (인코더 출력을 위한 입력 길이)를
 선택해야 합니다. 최대 길이의 문장은 모든 어텐션 가중치를 사용하지만
 더 짧은 문장은 처음 몇 개만 사용합니다.</p>
 <div class="figure">
@@ -953,8 +952,8 @@ hidden state 를 출력하고 다음 입력 단어에 hidden state를 사용합�
 <h2>학습<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id9">
 <h3>학습 데이터 준비<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
-<p>학습을 위해서, 각 쌍마다 입력 Tensor (입력 문장의 단어 주소)와
-목표 Tensor (목표 문장의 단어 주소)가 필요합니다. 이 벡터들을
+<p>학습을 위해서, 각 쌍마다 입력 Tensor(입력 문장의 단어 주소)와
+목표 Tensor(목표 문장의 단어 주소)가 필요합니다. 이 벡터들을
 생성하는 동안 두 시퀀스에 EOS 토큰을 추가 합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">indexesFromSentence</span><span class="p">(</span><span class="n">lang</span><span class="p">,</span> <span class="n">sentence</span><span class="p">):</span>
     <span class="k">return</span> <span class="p">[</span><span class="n">lang</span><span class="o">.</span><span class="n">word2index</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">)]</span>
@@ -975,20 +974,20 @@ hidden state 를 출력하고 다음 입력 단어에 hidden state를 사용합�
 </div>
 <div class="section" id="id10">
 <h3>모델 학습<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<p>학습을 위해서 인코더에 입력 문장을 넣고 모든 출력과 최신 hidden state를
+<p>학습을 위해서 인코더에 입력 문장을 넣고 모든 출력과 최신 은닉 상태를
 추적합니다. 그런 다음 디코더에 첫 번째 입력으로 <code class="docutils literal notranslate"><span class="pre">&lt;SOS&gt;</span></code> 토큰과
-인코더의 마지막 Hidden state가 첫번쩨 Hidden state로 제공됩니다.</p>
+인코더의 마지막 은닉 상태가 첫번쩨 은닉 상태로 제공됩니다.</p>
 <p>“Teacher forcing”은 다음 입력으로 디코더의 예측을 사용하는 대신
 실제 목표 출력을 다음 입력으로 사용하는 컨셉입니다.
 “Teacher forcing”을 사용하면 수렴이 빨리되지만 <a class="reference external" href="http://minds.jacobs-university.de/sites/default/files/uploads/papers/ESNTutorialRev.pdf">학습된 네트워크가
 잘못 사용될 때 불안정성을 보입니다</a></p>
-<p>teacher-forced 네트워크의 출력이 일관된 문법으로 읽지만 정확한
-번역과는 거리가 멀다는 것을 볼 수 있습니다. - 직관적으로 출력 문법을
-표현하는 법을 배우고 교사가 처음 몇 단어를 말하면 의미를 “선택할” 수 있지만
-번역에서 처음으로 문장을 만드는 법을 잘 배우지 못했습니다.</p>
-<p>PyTorch의 autograd 가 제공하는 자유 덕분에 간단한 if 문으로
-teacher forcing 을 사용할지 아니면 사용하지 않을지를 선택할 수 있습니다.
-더 많은 것을 사용하려면 <code class="docutils literal notranslate"><span class="pre">teacher_forcing_ratio</span></code> 를 확인하십시오.</p>
+<p>Teacher-forced 네트워크의 출력이 일관된 문법으로 읽지만 정확한
+번역과는 거리가 멀다는 것을 볼 수 있습니다. 직관적으로 출력 문법을
+표현하는 법을 배우고 교사가 처음 몇 단어를 말하면 의미를 “선택” 할 수 있지만,
+번역에서 처음으로 문장을 만드는 법은 잘 배우지 못합니다.</p>
+<p>PyTorch의 autograd 가 제공하는 자유 덕분에 간단한 If 문으로
+Teacher Forcing을 사용할지 아니면 사용하지 않을지를 선택할 수 있습니다.
+더 많이 사용하려면 <code class="docutils literal notranslate"><span class="pre">teacher_forcing_ratio</span></code> 를 확인하십시오.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">teacher_forcing_ratio</span> <span class="o">=</span> <span class="mf">0.5</span>
 
 
@@ -1017,7 +1016,7 @@ teacher forcing 을 사용할지 아니면 사용하지 않을지를 선택할 �
     <span class="n">use_teacher_forcing</span> <span class="o">=</span> <span class="bp">True</span> <span class="k">if</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">teacher_forcing_ratio</span> <span class="k">else</span> <span class="bp">False</span>
 
     <span class="k">if</span> <span class="n">use_teacher_forcing</span><span class="p">:</span>
-        <span class="c1"># Teacher forcing: 목표를 다음 입력으로 전달</span>
+        <span class="c1"># Teacher forcing 포함: 목표를 다음 입력으로 전달</span>
         <span class="k">for</span> <span class="n">di</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">target_length</span><span class="p">):</span>
             <span class="n">decoder_output</span><span class="p">,</span> <span class="n">decoder_hidden</span><span class="p">,</span> <span class="n">decoder_attention</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">(</span>
                 <span class="n">decoder_input</span><span class="p">,</span> <span class="n">decoder_hidden</span><span class="p">,</span> <span class="n">encoder_outputs</span><span class="p">)</span>
@@ -1025,7 +1024,7 @@ teacher forcing 을 사용할지 아니면 사용하지 않을지를 선택할 �
             <span class="n">decoder_input</span> <span class="o">=</span> <span class="n">target_tensor</span><span class="p">[</span><span class="n">di</span><span class="p">]</span>  <span class="c1"># Teacher forcing</span>
 
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># teacher forcing 없이: 자신의 예측을 다음 입력으로 사용</span>
+        <span class="c1"># Teacher forcing 미포함: 자신의 예측을 다음 입력으로 사용</span>
         <span class="k">for</span> <span class="n">di</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">target_length</span><span class="p">):</span>
             <span class="n">decoder_output</span><span class="p">,</span> <span class="n">decoder_hidden</span><span class="p">,</span> <span class="n">decoder_attention</span> <span class="o">=</span> <span class="n">decoder</span><span class="p">(</span>
                 <span class="n">decoder_input</span><span class="p">,</span> <span class="n">decoder_hidden</span><span class="p">,</span> <span class="n">encoder_outputs</span><span class="p">)</span>
@@ -1044,7 +1043,7 @@ teacher forcing 을 사용할지 아니면 사용하지 않을지를 선택할 �
     <span class="k">return</span> <span class="n">loss</span><span class="o">.</span><span class="n">item</span><span class="p">()</span> <span class="o">/</span> <span class="n">target_length</span>
 </pre></div>
 </div>
-<p>이것은 현재 시간과 진행률%을 고려하여 경과된 시간과 남은 예상
+<p>이것은 현재 시간과 진행률%을 고려해 경과된 시간과 남은 예상
 시간을 출력하는 헬퍼 함수입니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">import</span> <span class="nn">math</span>
@@ -1174,36 +1173,28 @@ teacher forcing 을 사용할지 아니면 사용하지 않을지를 선택할 �
         <span class="k">return</span> <span class="n">decoded_words</span><span class="p">,</span> <span class="n">decoder_attentions</span><span class="p">[:</span><span class="n">di</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>우리는 학습 세트에 있는 임의의 문장을 평가하고
+<p>학습 세트에 있는 임의의 문장을 평가하고
 입력, 목표 및 출력을 출력하여 주관적인 품질 판단을 내릴 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">..</span> <span class="n">code</span><span class="o">-</span><span class="n">block</span><span class="p">::</span> <span class="n">python</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">evaluateRandomly</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">pair</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">pairs</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;=&#39;</span><span class="p">,</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">output_words</span><span class="p">,</span> <span class="n">attentions</span> <span class="o">=</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">encoder</span><span class="p">,</span> <span class="n">decoder</span><span class="p">,</span> <span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+        <span class="n">output_sentence</span> <span class="o">=</span> <span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">output_words</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;&lt;&#39;</span><span class="p">,</span> <span class="n">output_sentence</span><span class="p">)</span>
+        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<blockquote>
-<div><dl class="docutils">
-<dt>def evaluateRandomly(encoder, decoder, n=10):</dt>
-<dd><dl class="first last docutils">
-<dt>for i in range(n):</dt>
-<dd>pair = random.choice(pairs)
-print(‘&gt;’, pair[0])
-print(‘=’, pair[1])
-output_words, attentions = evaluate(encoder, decoder, pair[0])
-output_sentence = ‘ ‘.join(output_words)
-print(‘&lt;’, output_sentence)
-print(‘’)</dd>
-</dl>
-</dd>
-</dl>
-</div></blockquote>
 </div>
 <div class="section" id="id13">
 <h2>학습과 평가<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h2>
 <p>이러한 모든 헬퍼 함수를 이용해서 (추가 작업처럼 보이지만 여러 실험을
 더 쉽게 수행 할 수 있음) 실제로 네트워크를 초기화하고 학습을
 시작할 수 있습니다.</p>
-<p>입력 문장은 많이 필터링되었음을 기억하십시오. 이 작은 데이터 세트의
-경우 256 개의 hidden node 와 단일 GRU layer의 상대적으로 작은
-네트워크를 사용할 수 있습니다. MacBook CPU에 대해 약 40분 후에
+<p>입력 문장이 많이 필터링되었음을 기억하십시오. 이 작은 데이터 세트의
+경우 256 크기의 은닉 노드(hidden node)와 단일 GRU 계층 같은 상대적으로 작은
+네트워크를 사용할 수 있습니다. MacBook CPU에서 약 40분 후에
 합리적인 결과를 얻을 것입니다.</p>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
@@ -1225,71 +1216,71 @@ print(‘’)</dd>
 </li>
 </ul>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="n">m</span> <span class="mi">57</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">27</span><span class="n">m</span> <span class="mi">22</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">5000</span> <span class="mi">6</span><span class="o">%</span><span class="p">)</span> <span class="mf">2.8927</span>
-<span class="mi">4</span><span class="n">m</span> <span class="mi">28</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">29</span><span class="n">m</span> <span class="mi">4</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">10000</span> <span class="mi">13</span><span class="o">%</span><span class="p">)</span> <span class="mf">2.3238</span>
-<span class="mi">6</span><span class="n">m</span> <span class="mi">31</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">26</span><span class="n">m</span> <span class="mi">6</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">15000</span> <span class="mi">20</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.9577</span>
-<span class="mi">8</span><span class="n">m</span> <span class="mi">55</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">24</span><span class="n">m</span> <span class="mi">32</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">20000</span> <span class="mi">26</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.7490</span>
-<span class="mi">11</span><span class="n">m</span> <span class="mi">18</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">22</span><span class="n">m</span> <span class="mi">37</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">25000</span> <span class="mi">33</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.5556</span>
-<span class="mi">13</span><span class="n">m</span> <span class="mi">44</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">20</span><span class="n">m</span> <span class="mi">37</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">30000</span> <span class="mi">40</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.4042</span>
-<span class="mi">16</span><span class="n">m</span> <span class="mi">17</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">18</span><span class="n">m</span> <span class="mi">36</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">35000</span> <span class="mi">46</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.2126</span>
-<span class="mi">18</span><span class="n">m</span> <span class="mi">59</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">16</span><span class="n">m</span> <span class="mi">36</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">40000</span> <span class="mi">53</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.1449</span>
-<span class="mi">21</span><span class="n">m</span> <span class="mi">26</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">14</span><span class="n">m</span> <span class="mi">17</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">45000</span> <span class="mi">60</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.0340</span>
-<span class="mi">24</span><span class="n">m</span> <span class="mi">0</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">12</span><span class="n">m</span> <span class="mi">0</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">50000</span> <span class="mi">66</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.9168</span>
-<span class="mi">26</span><span class="n">m</span> <span class="mi">36</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">9</span><span class="n">m</span> <span class="mi">40</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">55000</span> <span class="mi">73</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.8736</span>
-<span class="mi">29</span><span class="n">m</span> <span class="mi">11</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">7</span><span class="n">m</span> <span class="mi">17</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">60000</span> <span class="mi">80</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.7720</span>
-<span class="mi">31</span><span class="n">m</span> <span class="mi">39</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">4</span><span class="n">m</span> <span class="mi">52</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">65000</span> <span class="mi">86</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.7230</span>
-<span class="mi">34</span><span class="n">m</span> <span class="mi">14</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">2</span><span class="n">m</span> <span class="mi">26</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">70000</span> <span class="mi">93</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.6674</span>
-<span class="mi">36</span><span class="n">m</span> <span class="mi">23</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">0</span><span class="n">m</span> <span class="mi">0</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">75000</span> <span class="mi">100</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.6117</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="n">m</span> <span class="mi">37</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">36</span><span class="n">m</span> <span class="mi">42</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">5000</span> <span class="mi">6</span><span class="o">%</span><span class="p">)</span> <span class="mf">2.9190</span>
+<span class="mi">4</span><span class="n">m</span> <span class="mi">30</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">29</span><span class="n">m</span> <span class="mi">17</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">10000</span> <span class="mi">13</span><span class="o">%</span><span class="p">)</span> <span class="mf">2.3095</span>
+<span class="mi">5</span><span class="n">m</span> <span class="mi">47</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">23</span><span class="n">m</span> <span class="mi">11</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">15000</span> <span class="mi">20</span><span class="o">%</span><span class="p">)</span> <span class="mf">2.0036</span>
+<span class="mi">6</span><span class="n">m</span> <span class="mi">55</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">19</span><span class="n">m</span> <span class="mi">1</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">20000</span> <span class="mi">26</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.7571</span>
+<span class="mi">9</span><span class="n">m</span> <span class="mi">28</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">18</span><span class="n">m</span> <span class="mi">57</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">25000</span> <span class="mi">33</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.5599</span>
+<span class="mi">11</span><span class="n">m</span> <span class="mi">39</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">17</span><span class="n">m</span> <span class="mi">28</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">30000</span> <span class="mi">40</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.4037</span>
+<span class="mi">13</span><span class="n">m</span> <span class="mi">58</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">15</span><span class="n">m</span> <span class="mi">58</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">35000</span> <span class="mi">46</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.2407</span>
+<span class="mi">16</span><span class="n">m</span> <span class="mi">6</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">14</span><span class="n">m</span> <span class="mi">5</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">40000</span> <span class="mi">53</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.1184</span>
+<span class="mi">18</span><span class="n">m</span> <span class="mi">22</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">12</span><span class="n">m</span> <span class="mi">15</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">45000</span> <span class="mi">60</span><span class="o">%</span><span class="p">)</span> <span class="mf">1.0181</span>
+<span class="mi">20</span><span class="n">m</span> <span class="mi">52</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">10</span><span class="n">m</span> <span class="mi">26</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">50000</span> <span class="mi">66</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.9180</span>
+<span class="mi">23</span><span class="n">m</span> <span class="mi">0</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">8</span><span class="n">m</span> <span class="mi">22</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">55000</span> <span class="mi">73</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.8676</span>
+<span class="mi">25</span><span class="n">m</span> <span class="mi">37</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">6</span><span class="n">m</span> <span class="mi">24</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">60000</span> <span class="mi">80</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.7881</span>
+<span class="mi">27</span><span class="n">m</span> <span class="mi">56</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">4</span><span class="n">m</span> <span class="mi">17</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">65000</span> <span class="mi">86</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.7233</span>
+<span class="mi">30</span><span class="n">m</span> <span class="mi">18</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">2</span><span class="n">m</span> <span class="mi">9</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">70000</span> <span class="mi">93</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.6754</span>
+<span class="mi">33</span><span class="n">m</span> <span class="mi">0</span><span class="n">s</span> <span class="p">(</span><span class="o">-</span> <span class="mi">0</span><span class="n">m</span> <span class="mi">0</span><span class="n">s</span><span class="p">)</span> <span class="p">(</span><span class="mi">75000</span> <span class="mi">100</span><span class="o">%</span><span class="p">)</span> <span class="mf">0.5969</span>
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">evaluateRandomly</span><span class="p">(</span><span class="n">encoder1</span><span class="p">,</span> <span class="n">attn_decoder1</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">&gt;</span> <span class="n">il</span> <span class="n">est</span> <span class="n">trop</span> <span class="n">vieux</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">he</span> <span class="ow">is</span> <span class="n">too</span> <span class="n">old</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">he</span> <span class="n">s</span> <span class="n">too</span> <span class="n">old</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span>&gt; je ne suis pas comme toi .
+= i am not like you .
+&lt; i am not like you . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">je</span> <span class="n">suis</span> <span class="n">heureux</span> <span class="n">que</span> <span class="n">tu</span> <span class="n">puisses</span> <span class="n">venir</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">i</span> <span class="n">m</span> <span class="n">glad</span> <span class="n">that</span> <span class="n">you</span> <span class="n">can</span> <span class="n">come</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">i</span> <span class="n">m</span> <span class="n">glad</span> <span class="n">you</span> <span class="n">could</span> <span class="n">make</span> <span class="n">it</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; vous etes fascinantes .
+= you re fascinating .
+&lt; you re fascinating . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">je</span> <span class="n">peux</span> <span class="n">conduire</span> <span class="n">une</span> <span class="n">voiture</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">i</span> <span class="n">am</span> <span class="n">able</span> <span class="n">to</span> <span class="n">drive</span> <span class="n">a</span> <span class="n">car</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">i</span> <span class="n">m</span> <span class="n">learning</span> <span class="n">a</span> <span class="n">car</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; c est un bon joueur de tennis .
+= he is a good tennis player .
+&lt; he is good at tennis . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">ce</span> <span class="n">n</span> <span class="n">est</span> <span class="n">pas</span> <span class="n">un</span> <span class="n">eleve</span> <span class="n">ordinaire</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">he</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">ordinary</span> <span class="n">student</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">he</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">ordinary</span> <span class="n">student</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; je suis actrice non mannequin .
+= i m an actress not a model .
+&lt; i m an actress not an model . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">nous</span> <span class="n">ne</span> <span class="n">sommes</span> <span class="n">pas</span> <span class="n">perdus</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">we</span> <span class="n">re</span> <span class="ow">not</span> <span class="n">lost</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">we</span> <span class="n">re</span> <span class="ow">not</span> <span class="n">perfect</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; il porte ses livres sous son bras .
+= he is holding his books under his arm .
+&lt; he is digging his his business . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">il</span> <span class="n">est</span> <span class="n">completement</span> <span class="n">fou</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">he</span> <span class="n">s</span> <span class="n">an</span> <span class="n">absolute</span> <span class="n">fool</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">he</span> <span class="n">s</span> <span class="n">an</span> <span class="n">fool</span> <span class="n">fool</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; j ai une peur terrible des serpents .
+= i am terribly afraid of snakes .
+&lt; i m afraid of afraid of snakes . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">vous</span> <span class="n">n</span> <span class="n">y</span> <span class="n">etes</span> <span class="n">pas</span> <span class="n">en</span> <span class="n">securite</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">you</span> <span class="n">re</span> <span class="ow">not</span> <span class="n">safe</span> <span class="n">here</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">you</span> <span class="n">re</span> <span class="ow">not</span> <span class="n">safe</span> <span class="n">there</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; je vais couper cet arbre .
+= i m going to chop this tree down .
+&lt; i m going to go this . . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">je</span> <span class="n">suis</span> <span class="n">tres</span> <span class="n">fiere</span> <span class="n">de</span> <span class="n">mon</span> <span class="n">pere</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">i</span> <span class="n">m</span> <span class="n">very</span> <span class="n">proud</span> <span class="n">of</span> <span class="n">my</span> <span class="n">father</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">i</span> <span class="n">m</span> <span class="n">very</span> <span class="n">proud</span> <span class="n">of</span> <span class="n">my</span> <span class="n">father</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; je suis si epuisee !
+= i am so exhausted !
+&lt; i m so exhausted . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">nous</span> <span class="n">sommes</span> <span class="n">tous</span> <span class="n">seuls</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">we</span> <span class="n">re</span> <span class="nb">all</span> <span class="n">alone</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">we</span> <span class="n">re</span> <span class="nb">all</span> <span class="n">alone</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; je suis pensionne .
+= i m retired .
+&lt; i m retired . &lt;EOS&gt;
 
-<span class="o">&gt;</span> <span class="n">vous</span> <span class="n">avez</span> <span class="n">de</span> <span class="n">gros</span> <span class="n">problemes</span> <span class="o">.</span>
-<span class="o">=</span> <span class="n">you</span> <span class="n">re</span> <span class="ow">in</span> <span class="n">big</span> <span class="n">trouble</span> <span class="o">.</span>
-<span class="o">&lt;</span> <span class="n">you</span> <span class="n">re</span> <span class="ow">in</span> <span class="n">big</span> <span class="n">trouble</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+&gt; vous etes toutes invitees .
+= you re all invited .
+&lt; you re all invited . &lt;EOS&gt;
 </pre></div>
 </div>
 <div class="section" id="id14">
 <h3>어텐션 시각화<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h3>
-<p>어텐션 메커니즘의 유용한 속성은 해석 가능성이 높은 출력입니다.
+<p>어텐션 메커니즘의 유용한 속성은 하나는 해석 가능성이 높은 출력입니다.
 입력 시퀀스의 특정 인코더 출력에 가중치를 부여하는 데 사용되므로
 각 시간 단계에서 네트워크가 가장 집중되는 위치를 파악할 수 있습니다.</p>
 <p>어텐션 출력을 행렬로 표시하기 위해 <code class="docutils literal notranslate"><span class="pre">plt.matshow(attentions)</span></code> 를
@@ -1300,7 +1291,7 @@ print(‘’)</dd>
 </pre></div>
 </div>
 <img alt="../_images/sphx_glr_seq2seq_translation_tutorial_003.png" class="align-center" src="../_images/sphx_glr_seq2seq_translation_tutorial_003.png" />
-<p>더 나은 보기 경험을 위해 축과 라벨을 추가하는 추가 작업을 수행합니다:</p>
+<p>더 나은 보기를 위해 축과 라벨을 더하는 추가 작업을 수행합니다:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">showAttention</span><span class="p">(</span><span class="n">input_sentence</span><span class="p">,</span> <span class="n">output_words</span><span class="p">,</span> <span class="n">attentions</span><span class="p">):</span>
     <span class="c1"># colorbar로 그림 설정</span>
     <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
@@ -1351,17 +1342,17 @@ print(‘’)</dd>
 <div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">input</span> <span class="o">=</span> <span class="n">elle</span> <span class="n">a</span> <span class="n">cinq</span> <span class="n">ans</span> <span class="n">de</span> <span class="n">moins</span> <span class="n">que</span> <span class="n">moi</span> <span class="o">.</span>
 <span class="n">output</span> <span class="o">=</span> <span class="n">she</span> <span class="n">s</span> <span class="n">five</span> <span class="n">years</span> <span class="n">younger</span> <span class="n">than</span> <span class="n">me</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
 <span class="nb">input</span> <span class="o">=</span> <span class="n">elle</span> <span class="n">est</span> <span class="n">trop</span> <span class="n">petit</span> <span class="o">.</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">she</span> <span class="n">s</span> <span class="n">too</span> <span class="n">short</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">she</span> <span class="n">s</span> <span class="n">too</span> <span class="ow">and</span> <span class="o">.</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
 <span class="nb">input</span> <span class="o">=</span> <span class="n">je</span> <span class="n">ne</span> <span class="n">crains</span> <span class="n">pas</span> <span class="n">de</span> <span class="n">mourir</span> <span class="o">.</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">i</span> <span class="n">m</span> <span class="ow">not</span> <span class="n">scared</span> <span class="n">to</span> <span class="n">die</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">i</span> <span class="n">m</span> <span class="ow">not</span> <span class="n">afraid</span> <span class="n">to</span> <span class="n">die</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
 <span class="nb">input</span> <span class="o">=</span> <span class="n">c</span> <span class="n">est</span> <span class="n">un</span> <span class="n">jeune</span> <span class="n">directeur</span> <span class="n">plein</span> <span class="n">de</span> <span class="n">talent</span> <span class="o">.</span>
-<span class="n">output</span> <span class="o">=</span> <span class="n">he</span> <span class="n">s</span> <span class="n">a</span> <span class="n">talented</span> <span class="n">young</span> <span class="n">talented</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
+<span class="n">output</span> <span class="o">=</span> <span class="n">he</span> <span class="n">s</span> <span class="n">a</span> <span class="n">talented</span> <span class="n">young</span> <span class="o">.</span> <span class="o">&lt;</span><span class="n">EOS</span><span class="o">&gt;</span>
 </pre></div>
 </div>
 </div>
 </div>
-<div class="section" id="exercises">
-<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id15">
+<h2>연습<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>다른 데이터 셋을 시도해 보십시오<ul>
 <li>다른 언어쌍</li>
@@ -1372,7 +1363,7 @@ print(‘’)</dd>
 </li>
 <li>word2vec 또는 GloVe 같은 미리 학습된 word embedding 으로
 embedding 을 교체하십시오</li>
-<li>더 많은 레이어, hidden units,더 많은 문장을 사용하십시오.
+<li>더 많은 레이어, 은닉 유닛, 더 많은 문장을 사용하십시오.
 학습 시간과 결과를 비교해 보십시오</li>
 <li>만약 같은 구문 두개의 쌍으로 된 번역 파일을 이용한다면,
 (<code class="docutils literal notranslate"><span class="pre">I</span> <span class="pre">am</span> <span class="pre">test</span> <span class="pre">\t</span> <span class="pre">I</span> <span class="pre">am</span> <span class="pre">test</span></code>), 이것을 오토인코더로
@@ -1384,7 +1375,7 @@ embedding 을 교체하십시오</li>
 </ul>
 </li>
 </ul>
-<p><strong>Total running time of the script:</strong> ( 36 minutes  31.674 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 33 minutes  8.551 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../_downloads/seq2seq_translation_tutorial.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">seq2seq_translation_tutorial.py</span></code></a></div>
@@ -1405,7 +1396,7 @@ embedding 을 교체하십시오</li>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="reinforcement_q_learning.html" class="btn btn-neutral float-right" title="Reinforcement Learning (DQN) tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="reinforcement_q_learning.html" class="btn btn-neutral float-right" title="강화 학습 (DQN) 튜토리얼" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="char_rnn_generation_tutorial.html" class="btn btn-neutral" title="문자-단위 RNN으로 이름 생성하기" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

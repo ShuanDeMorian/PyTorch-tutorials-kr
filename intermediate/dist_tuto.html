@@ -43,7 +43,7 @@
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PyTorch Tutorials 0.4.0 documentation" href="../index.html"/>
         <link rel="next" title="Spatial Transformer Networks Tutorial" href="spatial_transformer_tutorial.html"/>
-        <link rel="prev" title="Reinforcement Learning (DQN) tutorial" href="reinforcement_q_learning.html"/> 
+        <link rel="prev" title="강화 학습 (DQN) 튜토리얼" href="reinforcement_q_learning.html"/> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -367,19 +367,19 @@
 <li class="toctree-l3"><a class="reference internal" href="seq2seq_translation_tutorial.html#id14">어텐션 시각화</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#exercises">Exercises</a></li>
+<li class="toctree-l2"><a class="reference internal" href="seq2seq_translation_tutorial.html#id15">연습</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="reinforcement_q_learning.html">Reinforcement Learning (DQN) tutorial</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#replay-memory">Replay Memory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#dqn-algorithm">DQN algorithm</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#q-network">Q-network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#input-extraction">Input extraction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reinforcement_q_learning.html">강화 학습 (DQN) 튜토리얼</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#replay-memory">재현 메모리(Replay Memory)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#id2">DQN 알고리즘</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#q">Q-네트워크</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#id3">입력 추출</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#training">Training</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#hyperparameters-and-utilities">Hyperparameters and utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#training-loop">Training loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reinforcement_q_learning.html#id4">학습</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#id5">하이퍼 파라미터와 유틸리티</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reinforcement_q_learning.html#id8">학습 루프</a></li>
 </ul>
 </li>
 </ul>
@@ -952,8 +952,8 @@ TODO: Custom ring-allreduce
 <li><code class="docutils literal notranslate"><span class="pre">init_processes(rank,</span> <span class="pre">size,</span> <span class="pre">fn,</span> <span class="pre">backend='tcp')</span></code> <span class="math notranslate">\(\rightarrow\)</span>
 <code class="docutils literal notranslate"><span class="pre">init_processes(rank,</span> <span class="pre">size,</span> <span class="pre">fn,</span> <span class="pre">backend='gloo')</span></code></li>
 </ol>
-<p>1.  Use <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">=</span> <span class="pre">torch.device(&quot;cuda:{}&quot;.format(rank))</span>
-<span class="pre">1.</span> <span class="pre">``model</span> <span class="pre">=</span> <span class="pre">Net()</span></code> <span class="math notranslate">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">Net().to(device)</span></code>
+<p>1.  Use <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">=</span> <span class="pre">torch.device(&quot;cuda:{}&quot;.format(rank))</span></code>
+1. <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">Net()</span></code> <span class="math notranslate">\(\rightarrow\)</span> <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">Net().to(device)</span></code>
 2.  Use <code class="docutils literal notranslate"><span class="pre">data,</span> <span class="pre">target</span> <span class="pre">=</span> <span class="pre">data.to(device),</span> <span class="pre">target.to(device)</span></code></p>
 <p>위의 수정으로 우리 모델은 이제 2개의 GPU에서 학습하고, <code class="docutils literal notranslate"><span class="pre">watch</span> <span class="pre">nvidia-smi</span></code> 로
 사용률을 모니터링 할 수 있습니다.</p>
@@ -1115,7 +1115,7 @@ Soumith Chintala, Adam Paszke 및 Natalia Gimelshein에게 감사드립니다.</
         <a href="spatial_transformer_tutorial.html" class="btn btn-neutral float-right" title="Spatial Transformer Networks Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="reinforcement_q_learning.html" class="btn btn-neutral" title="Reinforcement Learning (DQN) tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="reinforcement_q_learning.html" class="btn btn-neutral" title="강화 학습 (DQN) 튜토리얼" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
