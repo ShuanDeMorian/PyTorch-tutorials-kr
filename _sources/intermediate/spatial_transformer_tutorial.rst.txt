@@ -3,35 +3,31 @@
 .. _sphx_glr_intermediate_spatial_transformer_tutorial.py:
 
 
-Spatial Transformer Networks Tutorial
-=====================================
+공간 변형기 네트워크 튜토리얼(Spatial Transformer Networks Tutorial)
+======================================================================
 **Author**: `Ghassen HAMROUNI <https://github.com/GHamrouni>`_
 
 .. figure:: /_static/img/stn/FSeq.png
 
-In this tutorial, you will learn how to augment your network using
-a visual attention mechanism called spatial transformer
-networks. You can read more about the spatial transformer
-networks in the `DeepMind paper <https://arxiv.org/abs/1506.02025>`__
+이 튜토리얼에서 공간 변형기 네트워크로 불리는 시각 어텐션 메카니즘을 
+이용한 네트워크 사용 방법을 배웁니다. `DeepMind paper <https://arxiv.org/abs/1506.02025>`__
+에서 공간 변형 네트워크에 관해 더 많은 것을 읽을 수 있습니다.
 
-Spatial transformer networks are a generalization of differentiable
-attention to any spatial transformation. Spatial transformer networks
-(STN for short) allow a neural network to learn how to perform spatial
-transformations on the input image in order to enhance the geometric
-invariance of the model.
-For example, it can crop a region of interest, scale and correct
-the orientation of an image. It can be a useful mechanism because CNNs
-are not invariant to rotation and scale and more general affine
-transformations.
+공간 변형기 네트워크는 어떤 공간 변형에도 미분 가능한 어텐션의 일반화입니다.
+공간 변형기 네트워크(STN)는 신경망이 모델의 기하하적 불변성을 강화하기 위해서 
+어떻게 입력 이미지 공간 변형을 수행해야 하는지 배우게 합니다. 
+예를 들어서 이미지의 관심 영역을 잘르고 크기를 조정하고 방향을 수정할 수 있습니다.
+CNN이 회전과 크기 그리고 더 일반적인 Affine 변형에 불변하지 않기 때문에
+(민감하기 때문에) 이것은 매우 유용한 메카니즘 입니다.
 
-One of the best things about STN is the ability to simply plug it into
-any existing CNN with very little modification.
+STN의 가장 좋은 점 중 하나는 거의 수정하지 않고 기존의 CNN에 
+간단히 연결할 수 있는 점 입니다.
 
 
 
 .. code-block:: python
 
-    # License: BSD
+    # 라이센스: BSD
     # Author: Ghassen Hamrouni
 
     from __future__ import print_function
@@ -52,12 +48,12 @@ any existing CNN with very little modification.
 
 
 
-Loading the data
+데이터 로딩
 ----------------
 
-In this post we experiment with the classic MNIST dataset. Using a
-standard convolutional network augmented with a spatial transformer
-network.
+
+이 포스트에서 고전적인 MNIST 데이터 세트를 실험합니다.
+공간 변형기 네트워크로 보강된 표준 CN(convolutional network)을 사용합니다.
 
 
 
@@ -66,14 +62,14 @@ network.
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
-    # Training dataset
+    # 학습 데이터
     train_loader = torch.utils.data.DataLoader(
         datasets.MNIST(root='.', train=True, download=True,
                        transform=transforms.Compose([
                            transforms.ToTensor(),
                            transforms.Normalize((0.1307,), (0.3081,))
                        ])), batch_size=64, shuffle=True, num_workers=4)
-    # Test dataset
+    # 테스트 데이터
     test_loader = torch.utils.data.DataLoader(
         datasets.MNIST(root='.', train=False, transform=transforms.Compose([
             transforms.ToTensor(),
@@ -84,37 +80,24 @@ network.
 
 
 
-.. rst-class:: sphx-glr-script-out
-
- Out::
-
-    Downloading http://yann.lecun.com/exdb/mnist/train-images-idx3-ubyte.gz
-    Downloading http://yann.lecun.com/exdb/mnist/train-labels-idx1-ubyte.gz
-    Downloading http://yann.lecun.com/exdb/mnist/t10k-images-idx3-ubyte.gz
-    Downloading http://yann.lecun.com/exdb/mnist/t10k-labels-idx1-ubyte.gz
-    Processing...
-    Done!
 
 
-Depicting spatial transformer networks
+공간 변형기 네트워크 설명
 --------------------------------------
 
-Spatial transformer networks boils down to three main components :
+ 공간 변형기 네트워크는 3가지 주요 구성 요소로 요약됩니다:
 
--  The localization network is a regular CNN which regresses the
-   transformation parameters. The transformation is never learned
-   explicitly from this dataset, instead the network learns automatically
-   the spatial transformations that enhances the global accuracy.
--  The grid generator generates a grid of coordinates in the input
-   image corresponding to each pixel from the output image.
--  The sampler uses the parameters of the transformation and applies
-   it to the input image.
+-  위치 결정 네트워크(localization network)는 변형 파라미터를 회귀시키는
+   일반적인 CNN 입니다. 변형은 이 데이터셋에 명시적으로 학습되지 않으며
+   네트워크는 전체 정확도를 향상하는 공간 변형을 자동으로 배웁니다.
+-  그리드 생성기(grid generator)는 출력 이미지로의 각 픽셀에 대응하는 
+   입력 이미지에서 좌표 그리드를 생성한다.   
+-  샘플러는 변형의 파라미터를 사용하여 입력 이미지에 적용합니다.  
 
 .. figure:: /_static/img/stn/stn-arch.png
 
 .. Note::
-   We need the latest version of PyTorch that contains
-   affine_grid and grid_sample modules.
+   affine_grid 및 grid_sample 모듈이 포함 된 PyTorch의 최신 버전이 필요합니다.
 
 
 
@@ -187,17 +170,16 @@ Spatial transformer networks boils down to three main components :
 
 
 
-Training the model
+모델 학습
 ------------------
 
-Now, let's use the SGD algorithm to train the model. The network is
-learning the classification task in a supervised way. In the same time
-the model is learning STN automatically in an end-to-end fashion.
+이제 SGD 알고리즘을 사용하여 모델을 학습시켜 봅시다.
+네트워크는 감독 방식으로 분류 작업을 학습하고 있습니다.
+동시에 모델은 STN을 자동으로 end-to-end 방식으로 학습합니다.
 
 
 
 .. code-block:: python
-
 
 
     optimizer = optim.SGD(model.parameters(), lr=0.01)
@@ -218,7 +200,7 @@ the model is learning STN automatically in an end-to-end fashion.
                     epoch, batch_idx * len(data), len(train_loader.dataset),
                     100. * batch_idx / len(train_loader), loss.item()))
     #
-    # A simple test procedure to measure STN the performances on MNIST.
+    # MNIST에서 STN의 성능을 측정하는 간단한 테스트 절차.
     #
 
 
@@ -248,14 +230,12 @@ the model is learning STN automatically in an end-to-end fashion.
 
 
 
-Visualizing the STN results
+STN 결과 시각화
 ---------------------------
 
-Now, we will inspect the results of our learned visual attention
-mechanism.
+이제 학습 된 비주얼 어텐션 메커니즘의 결과를 검사 할 것입니다.
 
-We define a small helper function in order to visualize the
-transformations while training.
+훈련 도중 변형을 시각화하기 위해 작은 헬퍼 함수를 정의합니다.
 
 
 
@@ -272,9 +252,8 @@ transformations while training.
         inp = np.clip(inp, 0, 1)
         return inp
 
-    # We want to visualize the output of the spatial transformers layer
-    # after the training, we visualize a batch of input images and
-    # the corresponding transformed batch using STN.
+    # 학습 후에 공간 변형기 레이어의 출력을 시각화하기 위해 STN을 
+    # 사용하여 입력 이미지 배치와 해당 변형 배치를 시각화합니다.
 
 
     def visualize_stn():
@@ -304,7 +283,7 @@ transformations while training.
         train(epoch)
         test()
 
-    # Visualize the STN transformation on some input batch
+    # 일부 입력 배치에서 STN 변형 시각화
     visualize_stn()
 
     plt.ioff()
@@ -320,108 +299,108 @@ transformations while training.
 
  Out::
 
-    Train Epoch: 1 [0/60000 (0%)]   Loss: 2.297115
-    Train Epoch: 1 [32000/60000 (53%)]      Loss: 0.982825
+    Train Epoch: 1 [0/60000 (0%)]   Loss: 2.280064
+    Train Epoch: 1 [32000/60000 (53%)]      Loss: 0.970847
 
-    Test set: Average loss: 0.2167, Accuracy: 9390/10000 (94%)
+    Test set: Average loss: 0.2211, Accuracy: 9388/10000 (94%)
 
-    Train Epoch: 2 [0/60000 (0%)]   Loss: 0.444329
-    Train Epoch: 2 [32000/60000 (53%)]      Loss: 0.318906
+    Train Epoch: 2 [0/60000 (0%)]   Loss: 0.426824
+    Train Epoch: 2 [32000/60000 (53%)]      Loss: 0.261392
 
-    Test set: Average loss: 0.1229, Accuracy: 9654/10000 (97%)
+    Test set: Average loss: 0.1501, Accuracy: 9517/10000 (95%)
 
-    Train Epoch: 3 [0/60000 (0%)]   Loss: 0.226231
-    Train Epoch: 3 [32000/60000 (53%)]      Loss: 0.493132
+    Train Epoch: 3 [0/60000 (0%)]   Loss: 0.305775
+    Train Epoch: 3 [32000/60000 (53%)]      Loss: 0.512901
 
-    Test set: Average loss: 0.1067, Accuracy: 9666/10000 (97%)
+    Test set: Average loss: 0.0921, Accuracy: 9712/10000 (97%)
 
-    Train Epoch: 4 [0/60000 (0%)]   Loss: 0.169104
-    Train Epoch: 4 [32000/60000 (53%)]      Loss: 0.272227
+    Train Epoch: 4 [0/60000 (0%)]   Loss: 0.266732
+    Train Epoch: 4 [32000/60000 (53%)]      Loss: 0.209967
 
-    Test set: Average loss: 0.0734, Accuracy: 9773/10000 (98%)
+    Test set: Average loss: 0.1383, Accuracy: 9578/10000 (96%)
 
-    Train Epoch: 5 [0/60000 (0%)]   Loss: 0.357396
-    Train Epoch: 5 [32000/60000 (53%)]      Loss: 0.252423
+    Train Epoch: 5 [0/60000 (0%)]   Loss: 0.231416
+    Train Epoch: 5 [32000/60000 (53%)]      Loss: 0.210637
 
-    Test set: Average loss: 0.2302, Accuracy: 9307/10000 (93%)
+    Test set: Average loss: 0.0723, Accuracy: 9791/10000 (98%)
 
-    Train Epoch: 6 [0/60000 (0%)]   Loss: 0.264745
-    Train Epoch: 6 [32000/60000 (53%)]      Loss: 0.260752
+    Train Epoch: 6 [0/60000 (0%)]   Loss: 0.443118
+    Train Epoch: 6 [32000/60000 (53%)]      Loss: 0.300378
 
-    Test set: Average loss: 0.0686, Accuracy: 9778/10000 (98%)
+    Test set: Average loss: 0.0685, Accuracy: 9794/10000 (98%)
 
-    Train Epoch: 7 [0/60000 (0%)]   Loss: 0.122121
-    Train Epoch: 7 [32000/60000 (53%)]      Loss: 0.119862
+    Train Epoch: 7 [0/60000 (0%)]   Loss: 0.069902
+    Train Epoch: 7 [32000/60000 (53%)]      Loss: 0.222119
 
-    Test set: Average loss: 0.0935, Accuracy: 9717/10000 (97%)
+    Test set: Average loss: 0.0560, Accuracy: 9836/10000 (98%)
 
-    Train Epoch: 8 [0/60000 (0%)]   Loss: 0.144465
-    Train Epoch: 8 [32000/60000 (53%)]      Loss: 0.304339
+    Train Epoch: 8 [0/60000 (0%)]   Loss: 0.087083
+    Train Epoch: 8 [32000/60000 (53%)]      Loss: 0.261030
 
-    Test set: Average loss: 0.0531, Accuracy: 9828/10000 (98%)
+    Test set: Average loss: 0.0521, Accuracy: 9846/10000 (98%)
 
-    Train Epoch: 9 [0/60000 (0%)]   Loss: 0.211429
-    Train Epoch: 9 [32000/60000 (53%)]      Loss: 0.057886
+    Train Epoch: 9 [0/60000 (0%)]   Loss: 0.042878
+    Train Epoch: 9 [32000/60000 (53%)]      Loss: 0.185363
 
-    Test set: Average loss: 0.0689, Accuracy: 9791/10000 (98%)
+    Test set: Average loss: 0.0539, Accuracy: 9843/10000 (98%)
 
-    Train Epoch: 10 [0/60000 (0%)]  Loss: 0.099875
-    Train Epoch: 10 [32000/60000 (53%)]     Loss: 0.112081
+    Train Epoch: 10 [0/60000 (0%)]  Loss: 0.045872
+    Train Epoch: 10 [32000/60000 (53%)]     Loss: 0.366736
 
-    Test set: Average loss: 0.0468, Accuracy: 9851/10000 (99%)
+    Test set: Average loss: 0.0550, Accuracy: 9837/10000 (98%)
 
-    Train Epoch: 11 [0/60000 (0%)]  Loss: 0.180126
-    Train Epoch: 11 [32000/60000 (53%)]     Loss: 0.079006
+    Train Epoch: 11 [0/60000 (0%)]  Loss: 0.154057
+    Train Epoch: 11 [32000/60000 (53%)]     Loss: 0.230927
 
-    Test set: Average loss: 0.0448, Accuracy: 9860/10000 (99%)
+    Test set: Average loss: 0.0493, Accuracy: 9854/10000 (99%)
 
-    Train Epoch: 12 [0/60000 (0%)]  Loss: 0.110848
-    Train Epoch: 12 [32000/60000 (53%)]     Loss: 0.017916
+    Train Epoch: 12 [0/60000 (0%)]  Loss: 0.086824
+    Train Epoch: 12 [32000/60000 (53%)]     Loss: 0.043383
 
-    Test set: Average loss: 0.0456, Accuracy: 9862/10000 (99%)
+    Test set: Average loss: 0.0831, Accuracy: 9740/10000 (97%)
 
-    Train Epoch: 13 [0/60000 (0%)]  Loss: 0.109621
-    Train Epoch: 13 [32000/60000 (53%)]     Loss: 0.362076
+    Train Epoch: 13 [0/60000 (0%)]  Loss: 0.251277
+    Train Epoch: 13 [32000/60000 (53%)]     Loss: 0.342350
 
-    Test set: Average loss: 0.0464, Accuracy: 9850/10000 (98%)
+    Test set: Average loss: 0.0465, Accuracy: 9861/10000 (99%)
 
-    Train Epoch: 14 [0/60000 (0%)]  Loss: 0.041995
-    Train Epoch: 14 [32000/60000 (53%)]     Loss: 0.162154
+    Train Epoch: 14 [0/60000 (0%)]  Loss: 0.122309
+    Train Epoch: 14 [32000/60000 (53%)]     Loss: 0.016662
 
-    Test set: Average loss: 0.0558, Accuracy: 9824/10000 (98%)
+    Test set: Average loss: 0.0545, Accuracy: 9847/10000 (98%)
 
-    Train Epoch: 15 [0/60000 (0%)]  Loss: 0.061534
-    Train Epoch: 15 [32000/60000 (53%)]     Loss: 0.148644
+    Train Epoch: 15 [0/60000 (0%)]  Loss: 0.047610
+    Train Epoch: 15 [32000/60000 (53%)]     Loss: 0.364575
 
-    Test set: Average loss: 0.0392, Accuracy: 9877/10000 (99%)
+    Test set: Average loss: 0.0397, Accuracy: 9882/10000 (99%)
 
-    Train Epoch: 16 [0/60000 (0%)]  Loss: 0.052512
-    Train Epoch: 16 [32000/60000 (53%)]     Loss: 0.171004
+    Train Epoch: 16 [0/60000 (0%)]  Loss: 0.137486
+    Train Epoch: 16 [32000/60000 (53%)]     Loss: 0.298632
 
-    Test set: Average loss: 0.0499, Accuracy: 9854/10000 (99%)
+    Test set: Average loss: 0.0422, Accuracy: 9881/10000 (99%)
 
-    Train Epoch: 17 [0/60000 (0%)]  Loss: 0.128819
-    Train Epoch: 17 [32000/60000 (53%)]     Loss: 0.218798
+    Train Epoch: 17 [0/60000 (0%)]  Loss: 0.121383
+    Train Epoch: 17 [32000/60000 (53%)]     Loss: 0.138875
 
-    Test set: Average loss: 0.1009, Accuracy: 9700/10000 (97%)
+    Test set: Average loss: 0.0366, Accuracy: 9898/10000 (99%)
 
-    Train Epoch: 18 [0/60000 (0%)]  Loss: 0.067087
-    Train Epoch: 18 [32000/60000 (53%)]     Loss: 0.093650
+    Train Epoch: 18 [0/60000 (0%)]  Loss: 0.148161
+    Train Epoch: 18 [32000/60000 (53%)]     Loss: 0.030627
 
-    Test set: Average loss: 0.0434, Accuracy: 9871/10000 (99%)
+    Test set: Average loss: 0.0404, Accuracy: 9881/10000 (99%)
 
-    Train Epoch: 19 [0/60000 (0%)]  Loss: 0.101753
-    Train Epoch: 19 [32000/60000 (53%)]     Loss: 0.070599
+    Train Epoch: 19 [0/60000 (0%)]  Loss: 0.032757
+    Train Epoch: 19 [32000/60000 (53%)]     Loss: 0.111942
 
-    Test set: Average loss: 0.0369, Accuracy: 9894/10000 (99%)
+    Test set: Average loss: 0.0361, Accuracy: 9896/10000 (99%)
 
-    Train Epoch: 20 [0/60000 (0%)]  Loss: 0.055140
-    Train Epoch: 20 [32000/60000 (53%)]     Loss: 0.149468
+    Train Epoch: 20 [0/60000 (0%)]  Loss: 0.086252
+    Train Epoch: 20 [32000/60000 (53%)]     Loss: 0.017113
 
-    Test set: Average loss: 0.0360, Accuracy: 9886/10000 (99%)
+    Test set: Average loss: 0.0379, Accuracy: 9882/10000 (99%)
 
 
-**Total running time of the script:** ( 1 minutes  23.043 seconds)
+**Total running time of the script:** ( 1 minutes  10.878 seconds)
 
 
 
