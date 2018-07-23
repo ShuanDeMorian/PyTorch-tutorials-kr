@@ -3,7 +3,7 @@
 PyTorch를 이용한 신경망-변환(Neural-Transfer)
 ===============================================
 **저자**: `Alexis Jacq <https://alexis-jacq.github.io>`_
-**번역**: `김봉모 <http://fmttm.egloos.com>`_
+  **번역**: `김봉모 <http://fmttm.egloos.com>`_
 
 소개
 ------------
@@ -25,8 +25,8 @@ PyTorch를 이용한 신경망-변환(Neural-Transfer)
 어떻게 동작합니까?
 ~~~~~~~~~~~~~~~~~~
 
-원리는 간단합니다. 2개의 거리(distance)를 정의합니다. 하나는 콘텐츠(:math:`D_C`)를 위한 것, 
-다른 하나는 스타일(:math:`D_S`)을 위한 것입니다.
+원리는 간단합니다. 2개의 거리(distance)를 정의합니다. 하나는 콘텐츠( :math:`D_C` )를 위한 것, 
+다른 하나는 스타일( :math:`D_S` )을 위한 것입니다.
 :math:`D_C` 는 콘텐츠 이미지와 스타일 이미지 간의 콘텐츠가 얼마나 차이가 있는지 측정을 합니다. 
 반면에, :math:`D_S` 는 콘텐츠 이미지와 스타일 이미지 간의 스타일에서 얼마나 차이가 있는지를 측정합니다.
 그런 다음, 세 번째 이미지를 입력(예, 노이즈로 구성된 이미지)으로부터 콘텐츠 이미지와의 콘텐츠 거리 
@@ -52,20 +52,20 @@ PyTorch를 이용한 신경망-변환(Neural-Transfer)
 벡터화된 :math:`k \leq K` 라고 해 보겠습니다.
 스타일 :math:`G_{XL}` 의 :math:`X` 레이어에서 :math:`L` 은 모든 벡터화된 특징 맵(feature map) :math:`F_{XL}^k` 
 에서 :math:`k \leq K` 그람(Gram)으로 정의 됩니다.
-다시 말하면, :math:`G_{XL}` 는 :math:`K`\ x\ :math:`K` 행렬과 요소 :math:`G_{XL}(k,l)`의 :math:`k^{번째}` 줄과
-:math:`l^{번째}` 행의 :math:`G_{XL}`는 :math:`F_{XL}^k` 와 :math:`F_{XL}^l` 간의
+다시 말하면, :math:`G_{XL}` 는 :math:`K`\ x\ :math:`K` 행렬과 요소 :math:`G_{XL}(k,l)` 의 :math:`k^{번째}` 줄과
+:math:`l^{번째}` 행의 :math:`G_{XL}` 는 :math:`F_{XL}^k` 와 :math:`F_{XL}^l` 간의
 벡터화 곱을 의미합니다:
 
 .. math::
 
     G_{XL}(k,l) = \langle F_{XL}^k, F_{XL}^l\\rangle = \sum_i F_{XL}^k(i) . F_{XL}^l(i)
 
-:math:`F_{XL}^k(i)` 는 :math:`F_{XL}^k` 의 :math:`i^{번째}` 요소 입니다.
-우리는 :math:`G_{XL}(k,l)`를 특징 맵(feature map) :math:`k` 와 :math:`l` 간의 
+:math:`F_{XL}^k(i)` 는 :math:`F_{XL}^k` 의 :math:`i^{번째}` 요소입니다.
+우리는 :math:`G_{XL}(k,l)` 를 특징 맵(feature map) :math:`k` 와 :math:`l` 간의 
 상관 관계(correlation)에 대한 척도로 볼 수 있습니다.
 그런 의미에서, :math:`G_{XL}` 는 특징 맵(feature map) :math:`X` 의 레이어 :math:`L` 에서의 
 상관 관계 행렬을 나타냅니다.
-:math:`G_{XL}`의 크기는 단지 특징 맵(feature map)의 숫자에만 의존성이 있고,
+:math:`G_{XL}` 의 크기는 단지 특징 맵(feature map)의 숫자에만 의존성이 있고,
 :math:`X` 의 크기에는 의존성이 없다는 것을 유의 해야 합니다.
 그러면, 만약 :math:`Y` 가 다른 *어떤 크기의* 이미지라면,
 우리는 다음과 같이 레이어 :math:`L` 에서 스타일의 거리를 정의 합니다.
@@ -74,8 +74,8 @@ PyTorch를 이용한 신경망-변환(Neural-Transfer)
 
     D_S^L(X,Y) = \|G_{XL} - G_{YL}\|^2 = \sum_{k,l} (G_{XL}(k,l) - G_{YL}(k,l))^2
 
-:math:`D_C(X,C)`의 한 번의 최소화를 위해서, 이미지 변수 :math:`X`와 대상 콘텐츠-이미지 :math:`C`와
-:math:`D_S(X,S)` 와 :math:`X`와 대상 스타일-이미지 :math:`S`, 둘 다 여러 레이어들에 대해서 계산되야 하고,
+:math:`D_C(X,C)` 의 한 번의 최소화를 위해서, 이미지 변수 :math:`X` 와 대상 콘텐츠-이미지 :math:`C` 와
+:math:`D_S(X,S)` 와 :math:`X` 와 대상 스타일-이미지 :math:`S` , 둘 다 여러 레이어들에 대해서 계산되야 하고,
 우리는 원하는 레이어 각각에서의 거리의 그레디언트를 계산하고 더합니다(:math:`X` 와 관련된 도함수):
 
 .. math::
@@ -83,9 +83,9 @@ PyTorch를 이용한 신경망-변환(Neural-Transfer)
     \\nabla_{\textit{total}}(X,S,C) = \sum_{L_C} w_{CL_C}.\\nabla_{\textit{content}}^{L_C}(X,C) + \sum_{L_S} w_{SL_S}.\\nabla_{\textit{style}}^{L_S}(X,S)
 
 :math:`L_C` 와 :math:`L_S` 는 각각 콘텐츠와 스타일의 원하는 (임의 상태의) 레이어들을 의미하고,
-:math:`w_{CL_C}`와 :math:`w_{SL_S}`는 원하는 레이어에서의
+:math:`w_{CL_C}` 와 :math:`w_{SL_S}` 는 원하는 레이어에서의
 스타일 또는 콘텐츠의 가중치를 (임의 상태의) 의미합니다.
-그리고 나서, 우리는 :math:`X`에 대해 경사 하강법을 실행합니다.
+그리고 나서, 우리는 :math:`X` 에 대해 경사 하강법을 실행합니다.
 
 .. math:: X \leftarrow X - \\alpha \\nabla_{\textit{total}}(X,S,C)
 
@@ -102,8 +102,7 @@ PyTorch 구현
 ----------------------
 
 위의 모든 수학을 이해할 수 없다면, 구현함으로써 이해도를 높여 갈 수 있을 것 입니다. 
-PyTorch를 이용할 예정이라면, 먼저 이 문서 :doc:`Introduction to
-PyTorch </beginner/deep_learning_60min_blitz>` 를 읽어볼 것을 추천 합니다.
+PyTorch를 이용할 예정이라면, 먼저 이 문서 :doc:`PyTorch로 딥러닝하기: 60분만에 끝장내기 </beginner/deep_learning_60min_blitz>` 를 읽어볼 것을 추천 합니다.
 
 패키지들
 ~~~~~~~~
@@ -112,7 +111,7 @@ PyTorch </beginner/deep_learning_60min_blitz>` 를 읽어볼 것을 추천 합�
 
 -  ``torch``, ``torch.nn``, ``numpy`` (PyTorch로 신경망 처리를 위한 필수 패키지)
 -  ``torch.optim`` (효율적인 그레디언트 디센트)
--  ``PIL``, ``PIL.Image``, ``matplotlib.pyplot`` (이미지를 읽고 보여주는 패키지)
+-  ``PIL`` , ``PIL.Image`` , ``matplotlib.pyplot`` (이미지를 읽고 보여주는 패키지)
 -  ``torchvision.transforms`` (PIL타입의 이미지들을 토치 텐서 형태로 변형해주는 패키지)
 -  ``torchvision.models`` (미리 학습된 모델들의 학습 또는 읽기 패키지)
 -  ``copy`` (모델들의 깊은 복사를 위한 시스템 패키지)
@@ -198,7 +197,7 @@ assert style_img.size() == content_img.size(), \
 # 이미지 표시하기
 # ~~~~~~~~~~~~~~~~
 #
-# 우리는 이미지를 표시하기 위해 ``plt.imshow``를 이용합니다. 
+# 우리는 이미지를 표시하기 위해 ``plt.imshow`` 를 이용합니다. 
 # 그러기 위해 우선 텐서를 PIL 이미지로 변환해 주겠습니다:
 #
 
@@ -227,15 +226,15 @@ imshow(content_img, title='Content Image')
 # 콘텐츠 로스
 # ~~~~~~~~~~~~
 #
-# 콘텐츠 로스는 네트워크에서 :math:`X`로 입력을 받았을 때 레이어 :math:`L` 에서 특징 맵(feature map) :math:`F_{XL}`을 입력으로 가져 와서 
-# 이 이미지와 콘텐츠 이미지 사이의 가중치 콘텐츠 거리 :math:`w_{CL}.D_C^L(X,C)`를 반환하는 기능입니다. 
-# 따라서, 가중치 :math:`w_{CL}` 및 목표 콘텐츠 :math:`F_{CL}`은 함수의 파라미터 입니다.
+# 콘텐츠 로스는 네트워크에서 :math:`X` 로 입력을 받았을 때 레이어 :math:`L` 에서 특징 맵(feature map) :math:`F_{XL}` 을 입력으로 가져와서 
+# 이 이미지와 콘텐츠 이미지 사이의 가중치 콘텐츠 거리 :math:`w_{CL}.D_C^L(X,C)` 를 반환하는 기능입니다. 
+# 따라서, 가중치 :math:`w_{CL}` 및 목표 콘텐츠 :math:`F_{CL}` 은 함수의 파라미터 입니다.
 # 우리는 이 매개 변수를 입력으로 사용하는 생성자(constructor)가 있는 토치 모듈로 함수를 구현합니다. 
-# 거리 :math:`\|F_{XL} - F_{YL}\|^2`는 세 번째 매개 변수로 명시된 기준 ``nn.MSELoss``를 사용하여
+# 거리 :math:`\|F_{XL} - F_{YL}\|^2` 는 세 번째 매개 변수로 명시된 기준 ``nn.MSELoss`` 를 사용하여
 # 계산할 수 있는 두 세트의 특징 맵(feature map) 사이의 평균 제곱 오차(MSE, Mean Square Error)입니다.
 #
 # 우리는 신경망의 추가 모듈로서 각 레이어에 컨텐츠 로스를 추가 할 것 입니다. 
-# 이렇게 하면 입력 영상 :math:`X`를 네트워크에 보낼 때마다 원하는 모든 레이어에서 
+# 이렇게 하면 입력 영상 :math:`X` 를 네트워크에 보낼 때마다 원하는 모든 레이어에서 
 # 모든 컨텐츠 로스가 계산되고 자동 그라디언트로 인해 모든 그라디언트가 계산됩니다. 
 # 이를 위해 우리는 입력을 리턴하는 ``forward`` 메소드를 만들기만 하면 됩니다: 모듈은 신경망의 ''투명 레이어''가 됩니다. 
 # 계산된 로스는 모듈의 매개 변수로 저장됩니다.
@@ -260,20 +259,20 @@ class ContentLoss(nn.Module):
 
 ######################################################################
 # .. Note::
-#    **중요한 디테일**: 이 모듈은``ContentLoss``라고 이름 지어졌지만 진정한 PyTorch Loss 함수는 아닙니다. 
+#    **중요한 디테일** : 이 모듈은``ContentLoss`` 라고 이름 지어졌지만 진정한 PyTorch Loss 함수는 아닙니다. 
 #  컨텐츠 손실을 PyTorch Loss로 정의 하려면 PyTorch autograd Function을 생성 하고 ``backward`` 메소드에서
 #  직접 그라디언트를 재계산/구현 해야 합니다.
 #
 # 스타일 로스
 # ~~~~~~~~~~~~
 #
-# 스타일 손실을 위해 우리는 레이어 :math:`L`에서 :math:`X`로 공급된(입력으로 하는) 신경망의 특징 맵(feature map) :math:`F_{XL}`이 주어진 경우
-# 그램 생성 :math:`G_{XL}`을 계산하는 모듈을 먼저 정의 해야 합니다. 
-# :math:`\hat{F}_{XL}`을 KxN 행렬에 대한 :math:`F_{XL}`의 모양을 변경한 버전이라고 하겠습니다.
-# 여기서, :math:`K`는 레이어 :math:`L`에서의 특징 맵(feature map)들의 수이고, :math:`N`은 임의의 벡터화 된 특징 맵(feature map) :math:`F_{XL}^k`의 길이가 됩니다. 
-# :math:`F_{XL}^k`의 :math:`k^{th}`번째 줄은 :math:`F_{XL}^k` 입니다. 
-# math:`\hat{F}_{XL} \cdot \hat{F}_{XL}^T = G_{XL}`인지 확인 해보길 바랍니다. 
-# 이를 확인해보면 모듈을 구현하는 것이 쉬워 집니다:
+# 스타일 손실을 위해 우리는 레이어 :math:`L` 에서 :math:`X` 로 공급된(입력으로 하는) 신경망의 특징 맵(feature map) :math:`F_{XL}` 이 주어진 경우
+# 그램 생성 :math:`G_{XL}` 을 계산하는 모듈을 먼저 정의 해야 합니다. 
+# :math:`\hat{F}_{XL}` 을 KxN 행렬에 대한 :math:`F_{XL}` 의 모양을 변경한 버전이라고 하겠습니다.
+# 여기서, :math:`K` 는 레이어 :math:`L` 에서의 특징 맵(feature map)들의 수이고, :math:`N` 은 임의의 벡터화 된 특징 맵(feature map) :math:`F_{XL}^k` 의 길이가 됩니다. 
+# :math:`F_{XL}^k` 의 :math:`k^{th}` 번째 줄은 :math:`F_{XL}^k` 입니다. 
+# :math:`\hat{F}_{XL} \cdot \hat{F}_{XL}^T = G_{XL}` 인지 확인 해보길 바랍니다. 
+# 이를 확인해보면 모듈을 구현하는 것이 쉬워집니다:
 #
 
 def gram_matrix(input):
@@ -290,8 +289,8 @@ def gram_matrix(input):
 
 
 ######################################################################
-# 특징 맵(feature map) 차원 :math:`N`이 클수록, 그램(Gram) 행렬의 값이 커집니다. 
-# 따라서 :math:`N`으로 정규화하지 않으면 첫번째 레이어에서 계산된 로스 (풀링 레이어 전에)는
+# 특징 맵(feature map) 차원 :math:`N` 이 클수록, 그램(Gram) 행렬의 값이 커집니다. 
+# 따라서 :math:`N` 으로 정규화하지 않으면 첫번째 레이어에서 계산된 로스 (풀링 레이어 전에)는
 # 경사 하강법 동안 훨씬 더 중요하게 됩니다. 가장 흥미로운 스타일 특징이 가장 깊은 레이어에 있기 때문에
 # 우리는 그렇게 동작하길 원하지 않습니다!
 #
@@ -324,7 +323,7 @@ class StyleLoss(nn.Module):
 # 우리는 여기서 특징 모듈에 관심이 있습니다.
 # 일부 레이어는 학습 및 평가에 있어서 상황에 따라 다른 동작을 합니다. 
 # 이후 우리는 그것을 특징 추출자로 사용하고 있습니다. 
-# 우리는 .eval ()을 사용하여 네트워크를 평가 모드로 설정 할 수 있습니다.
+# 우리는 .eval()을 사용하여 네트워크를 평가 모드로 설정 할 수 있습니다.
 #
 
 cnn = models.vgg19(pretrained=True).features.to(device).eval()
@@ -356,8 +355,8 @@ class Normalization(nn.Module):
 
 ######################################################################
 # ``순차(Sequential)`` 모듈에는 하위 모듈의 정렬된 목록이 있습니다. 
-# 예를 들어 ``vgg19.features(vgg19의 특징들)``은 vgg19 구조의 올바른 순서로 정렬된 순서 정보(Conv2d, ReLU, MaxPool2d, Conv2d, ReLU ...)를 포함합니다. 
-# 콘텐츠 로스 섹션에서 말했듯이 우리는 네트워크의 원하는 레이어에 추가 레이어 '투명(transparent)'레이어로 스타일 및 콘텐츠 손실 모듈을 추가하려고 합니다. 
+# 예를 들어 ``vgg19.features(vgg19의 특징들)`` 은 vgg19 구조의 올바른 순서로 정렬된 순서 정보(Conv2d, ReLU, MaxPool2d, Conv2d, ReLU ...)를 포함합니다. 
+# 콘텐츠 로스 섹션에서 말했듯이 우리는 네트워크의 원하는 레이어에 추가 레이어 '투명(transparent)' 레이어로 스타일 및 콘텐츠 손실 모듈을 추가하려고 합니다. 
 # 이를 위해 새로운 순차 모듈을 구성합니다.이 모듈에서는 vgg19의 모듈과 손실 모듈을 올바른 순서로 추가합니다.
 #
 
@@ -481,7 +480,7 @@ def get_input_optimizer(input_img):
 # 그라디언트 디센트의 단계를 수행하기 위해 각 손실의 ``역방향(backward)`` 메소드를 실행해야 합니다.
 # 옵티마이저는 인수로서 "클로저(closure)"를 필요로 합니다: 즉, 모델을 재평가하고 로스를 반환 하는 함수입니다.
 #
-# 그러나, 여기에 작은 함정이 있습니다. 최적화 된 이미지는 0 과 1 사이에 머물지 않고 :math:`-\infty`과 :math:`+\infty` 사이의 값을 가질 수 있습니다. 
+# 그러나, 여기에 작은 함정이 있습니다. 최적화 된 이미지는 0 과 1 사이에 머물지 않고 :math:`-\infty` 과 :math:`+\infty` 사이의 값을 가질 수 있습니다. 
 # 다르게 말하면, 이미지는 잘 최적화될 수 있고 이상한 값을 가질 수 있습니다. 
 # 사실 우리는 입력 이미지에 올바른 시각을 유지하기 위해 제약 조건 하에서 최적화를 수행해야 합니다. 
 # 각 단계마다 0-1 간격으로 값을 유지하기 위해 이미지를 수정하는 간단한 해결책이 있습니다.
