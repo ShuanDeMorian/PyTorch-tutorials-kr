@@ -328,7 +328,7 @@ http://pytorch.org/tutorials/beginner/former\_torchies/parallelism\_tutorial.htm
 
 
 
-**Total running time of the script:** ( 0 minutes  3.180 seconds)
+**Total running time of the script:** ( 0 minutes  0.002 seconds)
 
 
 

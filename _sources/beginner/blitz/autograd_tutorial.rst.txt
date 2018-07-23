@@ -117,7 +117,7 @@ tensor에 연산을 수행합니다:
 
  Out::
 
-    <AddBackward0 object at 0x7f2f21f11978>
+    <AddBackward0 object at 0x7f8bba9ec240>
 
 
 y에 다른 연산을 수행합니다.
@@ -168,7 +168,7 @@ y에 다른 연산을 수행합니다.
 
     False
     True
-    <SumBackward0 object at 0x7f2f21eb5048>
+    <SumBackward0 object at 0x7f8bba9eccf8>
 
 
 변화도(Gradient)
@@ -245,7 +245,7 @@ autograd로 많은 정신나간 일들(crazy things)도 할 수 있습니다!
 
  Out::
 
-    tensor([  172.6891,  1148.2012,  -544.5717])
+    tensor([-1245.3888,  -278.6119, -1069.9080])
 
 
 
@@ -264,7 +264,7 @@ autograd로 많은 정신나간 일들(crazy things)도 할 수 있습니다!
 
  Out::
 
-    tensor([  102.4000,  1024.0000,     0.1024])
+    tensor([  204.8000,  2048.0000,     0.2048])
 
 
 ``with torch.no_grad():`` 로 코드 블럭(Code Block)을 감싸서, autograd가
@@ -299,7 +299,7 @@ requires_grad=True인 Tensor들의 연산 기록을 추적하는 것을 멈출 �
 있습니다.
 
 
-**Total running time of the script:** ( 0 minutes  0.003 seconds)
+**Total running time of the script:** ( 0 minutes  0.004 seconds)
 
 
 

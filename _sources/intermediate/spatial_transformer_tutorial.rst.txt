@@ -3,24 +3,25 @@
 .. _sphx_glr_intermediate_spatial_transformer_tutorial.py:
 
 
-공간 변형기 네트워크 튜토리얼(Spatial Transformer Networks Tutorial)
-======================================================================
+공간 변형기 네트워크(Spatial Transformer Networks) 튜토리얼
+=============================================================
 **Author**: `Ghassen HAMROUNI <https://github.com/GHamrouni>`_
+  **번역**: `황성수 <https://github.com/adonisues>`_
 
 .. figure:: /_static/img/stn/FSeq.png
 
-이 튜토리얼에서 공간 변형기 네트워크로 불리는 시각 어텐션 메카니즘을 
+이 튜토리얼에서 공간 변형 네트워크(Spatial Transformer Networks, STN)로 불리는 시각 어텐션 메카니즘을
 이용한 네트워크 사용 방법을 배웁니다. `DeepMind paper <https://arxiv.org/abs/1506.02025>`__
-에서 공간 변형 네트워크에 관해 더 많은 것을 읽을 수 있습니다.
+에서 STN에 관해 더 많은 것을 읽을 수 있습니다.
 
-공간 변형기 네트워크는 어떤 공간 변형에도 미분 가능한 어텐션의 일반화입니다.
-공간 변형기 네트워크(STN)는 신경망이 모델의 기하하적 불변성을 강화하기 위해서 
-어떻게 입력 이미지 공간 변형을 수행해야 하는지 배우게 합니다. 
+STN은 어떤 공간 변형에도 미분 가능한 어텐션의 일반화입니다.
+STN은 신경망이 모델의 기하하적 불변성을 강화하기 위해서
+어떻게 입력 이미지 공간 변형을 수행해야 하는지 배우게 합니다.
 예를 들어서 이미지의 관심 영역을 잘르고 크기를 조정하고 방향을 수정할 수 있습니다.
-CNN이 회전과 크기 그리고 더 일반적인 Affine 변형에 불변하지 않기 때문에
+CNN이 회전과 크기 그리고 더 일반적인 아핀(affine) 변형에 불변하지 않기 때문에
 (민감하기 때문에) 이것은 매우 유용한 메카니즘 입니다.
 
-STN의 가장 좋은 점 중 하나는 거의 수정하지 않고 기존의 CNN에 
+STN의 가장 좋은 점 중 하나는 거의 수정하지 않고 기존의 CNN에
 간단히 연결할 수 있는 점 입니다.
 
 
@@ -53,7 +54,7 @@ STN의 가장 좋은 점 중 하나는 거의 수정하지 않고 기존의 CNN�
 
 
 이 포스트에서 고전적인 MNIST 데이터 세트를 실험합니다.
-공간 변형기 네트워크로 보강된 표준 CN(convolutional network)을 사용합니다.
+STN으로 보강된 표준 CN(convolutional network)을 사용합니다.
 
 
 
@@ -82,17 +83,17 @@ STN의 가장 좋은 점 중 하나는 거의 수정하지 않고 기존의 CNN�
 
 
 
-공간 변형기 네트워크 설명
+공간 변형 네트워크 설명
 --------------------------------------
 
- 공간 변형기 네트워크는 3가지 주요 구성 요소로 요약됩니다:
+ STN은 3가지 주요 구성 요소로 요약됩니다:
 
 -  위치 결정 네트워크(localization network)는 변형 파라미터를 회귀시키는
    일반적인 CNN 입니다. 변형은 이 데이터셋에 명시적으로 학습되지 않으며
-   네트워크는 전체 정확도를 향상하는 공간 변형을 자동으로 배웁니다.
--  그리드 생성기(grid generator)는 출력 이미지로의 각 픽셀에 대응하는 
-   입력 이미지에서 좌표 그리드를 생성한다.   
--  샘플러는 변형의 파라미터를 사용하여 입력 이미지에 적용합니다.  
+   네트워크는 전체 정확도를 향상하는 공간 변형을 자동으로 학습합니다.
+-  그리드 생성기(grid generator)는 출력 이미지로의 각 픽셀에 대응하는
+   입력 이미지에서 좌표 그리드를 생성한다.
+-  샘플러는 변형의 파라미터를 사용하여 입력 이미지에 적용합니다.
 
 .. figure:: /_static/img/stn/stn-arch.png
 
@@ -252,7 +253,7 @@ STN 결과 시각화
         inp = np.clip(inp, 0, 1)
         return inp
 
-    # 학습 후에 공간 변형기 레이어의 출력을 시각화하기 위해 STN을 
+    # 학습 후에 공간 변형 레이어의 출력을 시각화하기 위해 STN을
     # 사용하여 입력 이미지 배치와 해당 변형 배치를 시각화합니다.
 
 
@@ -299,108 +300,108 @@ STN 결과 시각화
 
  Out::
 
-    Train Epoch: 1 [0/60000 (0%)]   Loss: 2.280064
-    Train Epoch: 1 [32000/60000 (53%)]      Loss: 0.970847
+    Train Epoch: 1 [0/60000 (0%)]   Loss: 2.324564
+    Train Epoch: 1 [32000/60000 (53%)]      Loss: 1.076034
 
-    Test set: Average loss: 0.2211, Accuracy: 9388/10000 (94%)
+    Test set: Average loss: 0.2527, Accuracy: 9279/10000 (93%)
 
-    Train Epoch: 2 [0/60000 (0%)]   Loss: 0.426824
-    Train Epoch: 2 [32000/60000 (53%)]      Loss: 0.261392
+    Train Epoch: 2 [0/60000 (0%)]   Loss: 0.662645
+    Train Epoch: 2 [32000/60000 (53%)]      Loss: 0.469055
 
-    Test set: Average loss: 0.1501, Accuracy: 9517/10000 (95%)
+    Test set: Average loss: 0.1389, Accuracy: 9595/10000 (96%)
 
-    Train Epoch: 3 [0/60000 (0%)]   Loss: 0.305775
-    Train Epoch: 3 [32000/60000 (53%)]      Loss: 0.512901
+    Train Epoch: 3 [0/60000 (0%)]   Loss: 0.180951
+    Train Epoch: 3 [32000/60000 (53%)]      Loss: 0.370810
 
-    Test set: Average loss: 0.0921, Accuracy: 9712/10000 (97%)
+    Test set: Average loss: 0.1002, Accuracy: 9694/10000 (97%)
 
-    Train Epoch: 4 [0/60000 (0%)]   Loss: 0.266732
-    Train Epoch: 4 [32000/60000 (53%)]      Loss: 0.209967
+    Train Epoch: 4 [0/60000 (0%)]   Loss: 0.224168
+    Train Epoch: 4 [32000/60000 (53%)]      Loss: 0.162626
 
-    Test set: Average loss: 0.1383, Accuracy: 9578/10000 (96%)
+    Test set: Average loss: 0.0805, Accuracy: 9762/10000 (98%)
 
-    Train Epoch: 5 [0/60000 (0%)]   Loss: 0.231416
-    Train Epoch: 5 [32000/60000 (53%)]      Loss: 0.210637
+    Train Epoch: 5 [0/60000 (0%)]   Loss: 0.205905
+    Train Epoch: 5 [32000/60000 (53%)]      Loss: 0.135480
 
-    Test set: Average loss: 0.0723, Accuracy: 9791/10000 (98%)
+    Test set: Average loss: 0.0834, Accuracy: 9743/10000 (97%)
 
-    Train Epoch: 6 [0/60000 (0%)]   Loss: 0.443118
-    Train Epoch: 6 [32000/60000 (53%)]      Loss: 0.300378
+    Train Epoch: 6 [0/60000 (0%)]   Loss: 0.294633
+    Train Epoch: 6 [32000/60000 (53%)]      Loss: 0.216453
 
-    Test set: Average loss: 0.0685, Accuracy: 9794/10000 (98%)
+    Test set: Average loss: 0.0668, Accuracy: 9803/10000 (98%)
 
-    Train Epoch: 7 [0/60000 (0%)]   Loss: 0.069902
-    Train Epoch: 7 [32000/60000 (53%)]      Loss: 0.222119
+    Train Epoch: 7 [0/60000 (0%)]   Loss: 0.212660
+    Train Epoch: 7 [32000/60000 (53%)]      Loss: 0.820500
 
-    Test set: Average loss: 0.0560, Accuracy: 9836/10000 (98%)
+    Test set: Average loss: 0.0744, Accuracy: 9778/10000 (98%)
 
-    Train Epoch: 8 [0/60000 (0%)]   Loss: 0.087083
-    Train Epoch: 8 [32000/60000 (53%)]      Loss: 0.261030
+    Train Epoch: 8 [0/60000 (0%)]   Loss: 0.217669
+    Train Epoch: 8 [32000/60000 (53%)]      Loss: 0.090099
 
-    Test set: Average loss: 0.0521, Accuracy: 9846/10000 (98%)
+    Test set: Average loss: 0.0590, Accuracy: 9814/10000 (98%)
 
-    Train Epoch: 9 [0/60000 (0%)]   Loss: 0.042878
-    Train Epoch: 9 [32000/60000 (53%)]      Loss: 0.185363
+    Train Epoch: 9 [0/60000 (0%)]   Loss: 0.109696
+    Train Epoch: 9 [32000/60000 (53%)]      Loss: 0.101258
 
-    Test set: Average loss: 0.0539, Accuracy: 9843/10000 (98%)
+    Test set: Average loss: 0.0536, Accuracy: 9829/10000 (98%)
 
-    Train Epoch: 10 [0/60000 (0%)]  Loss: 0.045872
-    Train Epoch: 10 [32000/60000 (53%)]     Loss: 0.366736
+    Train Epoch: 10 [0/60000 (0%)]  Loss: 0.077102
+    Train Epoch: 10 [32000/60000 (53%)]     Loss: 0.106832
 
-    Test set: Average loss: 0.0550, Accuracy: 9837/10000 (98%)
+    Test set: Average loss: 0.0485, Accuracy: 9859/10000 (99%)
 
-    Train Epoch: 11 [0/60000 (0%)]  Loss: 0.154057
-    Train Epoch: 11 [32000/60000 (53%)]     Loss: 0.230927
+    Train Epoch: 11 [0/60000 (0%)]  Loss: 0.123674
+    Train Epoch: 11 [32000/60000 (53%)]     Loss: 0.192042
 
-    Test set: Average loss: 0.0493, Accuracy: 9854/10000 (99%)
+    Test set: Average loss: 0.0506, Accuracy: 9855/10000 (99%)
 
-    Train Epoch: 12 [0/60000 (0%)]  Loss: 0.086824
-    Train Epoch: 12 [32000/60000 (53%)]     Loss: 0.043383
+    Train Epoch: 12 [0/60000 (0%)]  Loss: 0.098186
+    Train Epoch: 12 [32000/60000 (53%)]     Loss: 0.171440
 
-    Test set: Average loss: 0.0831, Accuracy: 9740/10000 (97%)
+    Test set: Average loss: 0.0495, Accuracy: 9849/10000 (98%)
 
-    Train Epoch: 13 [0/60000 (0%)]  Loss: 0.251277
-    Train Epoch: 13 [32000/60000 (53%)]     Loss: 0.342350
+    Train Epoch: 13 [0/60000 (0%)]  Loss: 0.061927
+    Train Epoch: 13 [32000/60000 (53%)]     Loss: 0.086309
 
-    Test set: Average loss: 0.0465, Accuracy: 9861/10000 (99%)
+    Test set: Average loss: 0.0539, Accuracy: 9835/10000 (98%)
 
-    Train Epoch: 14 [0/60000 (0%)]  Loss: 0.122309
-    Train Epoch: 14 [32000/60000 (53%)]     Loss: 0.016662
+    Train Epoch: 14 [0/60000 (0%)]  Loss: 0.154054
+    Train Epoch: 14 [32000/60000 (53%)]     Loss: 0.228216
 
-    Test set: Average loss: 0.0545, Accuracy: 9847/10000 (98%)
+    Test set: Average loss: 0.0432, Accuracy: 9878/10000 (99%)
 
-    Train Epoch: 15 [0/60000 (0%)]  Loss: 0.047610
-    Train Epoch: 15 [32000/60000 (53%)]     Loss: 0.364575
+    Train Epoch: 15 [0/60000 (0%)]  Loss: 0.287977
+    Train Epoch: 15 [32000/60000 (53%)]     Loss: 0.089212
 
-    Test set: Average loss: 0.0397, Accuracy: 9882/10000 (99%)
+    Test set: Average loss: 0.0412, Accuracy: 9879/10000 (99%)
 
-    Train Epoch: 16 [0/60000 (0%)]  Loss: 0.137486
-    Train Epoch: 16 [32000/60000 (53%)]     Loss: 0.298632
+    Train Epoch: 16 [0/60000 (0%)]  Loss: 0.012599
+    Train Epoch: 16 [32000/60000 (53%)]     Loss: 0.149388
 
-    Test set: Average loss: 0.0422, Accuracy: 9881/10000 (99%)
+    Test set: Average loss: 0.0404, Accuracy: 9875/10000 (99%)
 
-    Train Epoch: 17 [0/60000 (0%)]  Loss: 0.121383
-    Train Epoch: 17 [32000/60000 (53%)]     Loss: 0.138875
+    Train Epoch: 17 [0/60000 (0%)]  Loss: 0.114039
+    Train Epoch: 17 [32000/60000 (53%)]     Loss: 0.147120
 
-    Test set: Average loss: 0.0366, Accuracy: 9898/10000 (99%)
+    Test set: Average loss: 0.0373, Accuracy: 9885/10000 (99%)
 
-    Train Epoch: 18 [0/60000 (0%)]  Loss: 0.148161
-    Train Epoch: 18 [32000/60000 (53%)]     Loss: 0.030627
+    Train Epoch: 18 [0/60000 (0%)]  Loss: 0.087503
+    Train Epoch: 18 [32000/60000 (53%)]     Loss: 0.052604
 
-    Test set: Average loss: 0.0404, Accuracy: 9881/10000 (99%)
+    Test set: Average loss: 0.0488, Accuracy: 9861/10000 (99%)
 
-    Train Epoch: 19 [0/60000 (0%)]  Loss: 0.032757
-    Train Epoch: 19 [32000/60000 (53%)]     Loss: 0.111942
+    Train Epoch: 19 [0/60000 (0%)]  Loss: 0.149159
+    Train Epoch: 19 [32000/60000 (53%)]     Loss: 0.016352
 
-    Test set: Average loss: 0.0361, Accuracy: 9896/10000 (99%)
+    Test set: Average loss: 0.0386, Accuracy: 9884/10000 (99%)
 
-    Train Epoch: 20 [0/60000 (0%)]  Loss: 0.086252
-    Train Epoch: 20 [32000/60000 (53%)]     Loss: 0.017113
+    Train Epoch: 20 [0/60000 (0%)]  Loss: 0.021877
+    Train Epoch: 20 [32000/60000 (53%)]     Loss: 0.132922
 
-    Test set: Average loss: 0.0379, Accuracy: 9882/10000 (99%)
+    Test set: Average loss: 0.0391, Accuracy: 9882/10000 (99%)
 
 
-**Total running time of the script:** ( 1 minutes  10.878 seconds)
+**Total running time of the script:** ( 1 minutes  12.998 seconds)
 
 
 
