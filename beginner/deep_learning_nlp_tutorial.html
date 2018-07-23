@@ -42,7 +42,7 @@
               href="../genindex.html"/>
         <link rel="search" title="Search" href="../search.html"/>
     <link rel="top" title="PyTorch Tutorials 0.4.0 documentation" href="../index.html"/>
-        <link rel="next" title="Introduction to PyTorch" href="nlp/pytorch_tutorial.html"/>
+        <link rel="next" title="PyTorch 소개" href="nlp/pytorch_tutorial.html"/>
         <link rel="prev" title="Data Loading and Processing Tutorial" href="data_loading_tutorial.html"/> 
 
   
@@ -263,14 +263,14 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Deep Learning for NLP with Pytorch</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="nlp/pytorch_tutorial.html">Introduction to PyTorch</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="nlp/pytorch_tutorial.html#introduction-to-torch-s-tensor-library">Introduction to Torch’s tensor library</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="nlp/pytorch_tutorial.html#creating-tensors">Creating Tensors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="nlp/pytorch_tutorial.html#operations-with-tensors">Operations with Tensors</a></li>
-<li class="toctree-l4"><a class="reference internal" href="nlp/pytorch_tutorial.html#reshaping-tensors">Reshaping Tensors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nlp/pytorch_tutorial.html">PyTorch 소개</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="nlp/pytorch_tutorial.html#torch-tensor">Torch의 텐서(Tensor) 라이브러리 소개</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="nlp/pytorch_tutorial.html#id1">텐서 생성하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nlp/pytorch_tutorial.html#id2">텐서로 작업하기</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nlp/pytorch_tutorial.html#id3">텐서 재구성</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="nlp/pytorch_tutorial.html#computation-graphs-and-automatic-differentiation">Computation Graphs and Automatic Differentiation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="nlp/pytorch_tutorial.html#computation-graph-automatic-differentiation">연산 그래프(Computation Graph)와 자동 미분(Automatic Differentiation)</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="nlp/deep_learning_tutorial.html">Deep Learning with PyTorch</a><ul>
@@ -413,7 +413,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id2">소개</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id3">신경망 뭐라고?</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id4">어떻게 동작합니까?</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id5">그래서, 어떻게 동작하냐고요?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id5">그래서. 어떻게 동작하냐고요?</a></li>
 </ul>
 </li>
 </ul>
@@ -425,9 +425,9 @@
 <li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id8">이미지 표시하기</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id9">콘텐츠 로스</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id10">스타일 로스</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id11">뉴럴 네트워크 읽기</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id12">입력 이미지</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id13">경사 하강법</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id15">뉴럴 네트워크 읽기</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id16">입력 이미지</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../advanced/neural_style_tutorial.html#id17">경사 하강법</a></li>
 </ul>
 </li>
 </ul>
@@ -559,7 +559,7 @@ and use them on it.</p>
 </div>
 <p><div class="sphx-glr-thumbcontainer" tooltip="All of deep learning is computations on tensors, which are generalizations of a matrix that can be..."><div class="figure" id="id1">
 <img alt="../_images/sphx_glr_pytorch_tutorial_thumb.png" src="../_images/sphx_glr_pytorch_tutorial_thumb.png" />
-<p class="caption"><span class="caption-text"><a class="reference internal" href="nlp/pytorch_tutorial.html#sphx-glr-beginner-nlp-pytorch-tutorial-py"><span class="std std-ref">Introduction to PyTorch</span></a></span></p>
+<p class="caption"><span class="caption-text"><a class="reference internal" href="nlp/pytorch_tutorial.html#sphx-glr-beginner-nlp-pytorch-tutorial-py"><span class="std std-ref">PyTorch 소개</span></a></span></p>
 </div>
 </div></p>
 <p><div class="sphx-glr-thumbcontainer" tooltip="Deep learning consists of composing linearities with non-linearities in clever ways. The introduction of non-linearities allows..."><div class="figure" id="id2">
@@ -594,7 +594,7 @@ and use them on it.</p>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="nlp/pytorch_tutorial.html" class="btn btn-neutral float-right" title="Introduction to PyTorch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="nlp/pytorch_tutorial.html" class="btn btn-neutral float-right" title="PyTorch 소개" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="data_loading_tutorial.html" class="btn btn-neutral" title="Data Loading and Processing Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
