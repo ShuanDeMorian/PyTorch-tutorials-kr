@@ -189,7 +189,7 @@ y에 다른 연산을 수행합니다:
 
     False
     True
-    <SumBackward0 object at 0x7f8bbaae45c0>
+    <SumBackward0 object at 0x7f649ff6c828>
 
 
 변화도(Gradient)
@@ -285,8 +285,8 @@ y에 다른 연산을 수행합니다:
 
  Out::
 
-    tensor([[ 3.5243,  0.1930],
-            [ 1.1552, -0.6083]])
+    tensor([[ 1.0323,  2.3887],
+            [ 0.3990,  2.1593]])
 
 
 ``with torch.no_grad():`` 로 코드 블럭(Code Block)을 감싸서, autograd가

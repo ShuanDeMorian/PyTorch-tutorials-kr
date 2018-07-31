@@ -344,7 +344,7 @@ ASCII로 변환하고, 모든 문자를 소문자로 만들고, 대부분의 구
     Counted words:
     fra 4489
     eng 2925
-    ['il est jeune et celibataire .', 'he s young and single .']
+    ['vous etes grossiere .', 'you re rude .']
 
 
 Seq2Seq 모델
@@ -946,21 +946,21 @@ matplotlib로 학습 중에 저장된 손실 값 ``plot_losses`` 의 배열을
 
  Out::
 
-    2m 37s (- 36m 42s) (5000 6%) 2.9190
-    4m 30s (- 29m 17s) (10000 13%) 2.3095
-    5m 47s (- 23m 11s) (15000 20%) 2.0036
-    6m 55s (- 19m 1s) (20000 26%) 1.7571
-    9m 28s (- 18m 57s) (25000 33%) 1.5599
-    11m 39s (- 17m 28s) (30000 40%) 1.4037
-    13m 58s (- 15m 58s) (35000 46%) 1.2407
-    16m 6s (- 14m 5s) (40000 53%) 1.1184
-    18m 22s (- 12m 15s) (45000 60%) 1.0181
-    20m 52s (- 10m 26s) (50000 66%) 0.9180
-    23m 0s (- 8m 22s) (55000 73%) 0.8676
-    25m 37s (- 6m 24s) (60000 80%) 0.7881
-    27m 56s (- 4m 17s) (65000 86%) 0.7233
-    30m 18s (- 2m 9s) (70000 93%) 0.6754
-    33m 0s (- 0m 0s) (75000 100%) 0.5969
+    1m 9s (- 16m 9s) (5000 6%) 2.8825
+    2m 50s (- 18m 26s) (10000 13%) 2.3051
+    5m 19s (- 21m 16s) (15000 20%) 2.0186
+    6m 58s (- 19m 11s) (20000 26%) 1.7963
+    9m 4s (- 18m 8s) (25000 33%) 1.6120
+    11m 31s (- 17m 17s) (30000 40%) 1.4355
+    13m 47s (- 15m 46s) (35000 46%) 1.2854
+    16m 8s (- 14m 7s) (40000 53%) 1.1586
+    18m 36s (- 12m 24s) (45000 60%) 1.0600
+    20m 55s (- 10m 27s) (50000 66%) 0.9815
+    23m 21s (- 8m 29s) (55000 73%) 0.8803
+    25m 29s (- 6m 22s) (60000 80%) 0.8030
+    27m 58s (- 4m 18s) (65000 86%) 0.7381
+    29m 48s (- 2m 7s) (70000 93%) 0.6720
+    31m 57s (- 0m 0s) (75000 100%) 0.6336
 
 
 
@@ -978,45 +978,45 @@ matplotlib로 학습 중에 저장된 손실 값 ``plot_losses`` 의 배열을
 
  Out::
 
-    > je ne suis pas comme toi .
-    = i am not like you .
-    < i am not like you . <EOS>
+    > je n abandonne pas si facilement .
+    = i m no quitter .
+    < i m no quitter . <EOS>
 
-    > vous etes fascinantes .
-    = you re fascinating .
-    < you re fascinating . <EOS>
+    > elle est extremement seduisante .
+    = she is extremely attractive .
+    < she is extremely to cold . <EOS>
 
-    > c est un bon joueur de tennis .
-    = he is a good tennis player .
-    < he is good at tennis . <EOS>
+    > vous etes si mechante .
+    = you re so mean .
+    < you re so mean . <EOS>
 
-    > je suis actrice non mannequin .
-    = i m an actress not a model .
-    < i m an actress not an model . <EOS>
+    > je suis amoureux de vous .
+    = i m in love with you .
+    < i m in love with you . <EOS>
 
-    > il porte ses livres sous son bras .
-    = he is holding his books under his arm .
-    < he is digging his his business . <EOS>
+    > je ne suis pas une idiote .
+    = i m no fool .
+    < i m not a thief . <EOS>
 
-    > j ai une peur terrible des serpents .
-    = i am terribly afraid of snakes .
-    < i m afraid of afraid of snakes . <EOS>
+    > je suis encore endormie .
+    = i m still sleepy .
+    < i m still sleepy . <EOS>
 
-    > je vais couper cet arbre .
-    = i m going to chop this tree down .
-    < i m going to go this . . <EOS>
+    > quel imbecile tu es !
+    = you re such an idiot !
+    < you re such an idiot ! <EOS>
 
-    > je suis si epuisee !
-    = i am so exhausted !
-    < i m so exhausted . <EOS>
+    > elle dit qu elle voit des choses .
+    = she says she is seeing things .
+    < she says she is seeing . <EOS>
 
-    > je suis pensionne .
-    = i m retired .
-    < i m retired . <EOS>
+    > il est habile a trouver des pretextes .
+    = he is clever at making excuses .
+    < he is quick at making at . <EOS>
 
-    > vous etes toutes invitees .
-    = you re all invited .
-    < you re all invited . <EOS>
+    > ils sont chretiens .
+    = they are christians .
+    < they re christians . <EOS>
 
 
 어텐션 시각화
@@ -1125,13 +1125,13 @@ matplotlib로 학습 중에 저장된 손실 값 ``plot_losses`` 의 배열을
  Out::
 
     input = elle a cinq ans de moins que moi .
-    output = she s five years younger than me . <EOS>
+    output = she s six years younger than me . <EOS>
     input = elle est trop petit .
-    output = she s too and . . <EOS>
+    output = she s too short . <EOS>
     input = je ne crains pas de mourir .
-    output = i m not afraid to die . <EOS>
+    output = i m not scared of dying . <EOS>
     input = c est un jeune directeur plein de talent .
-    output = he s a talented young . <EOS>
+    output = he s a talented critic s loaded . <EOS>
 
 
 연습
@@ -1160,7 +1160,7 @@ matplotlib로 학습 중에 저장된 손실 값 ``plot_losses`` 의 배열을
 
 
 
-**Total running time of the script:** ( 33 minutes  8.551 seconds)
+**Total running time of the script:** ( 32 minutes  2.713 seconds)
 
 
 

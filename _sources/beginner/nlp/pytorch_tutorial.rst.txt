@@ -337,7 +337,7 @@ torch 에 무엇이 저장되있나요.
  Out::
 
     tensor([ 5.,  7.,  9.])
-    <AddBackward1 object at 0x7f46c9ffba58>
+    <AddBackward1 object at 0x7f6512f06c50>
 
 
 그래서 텐서는 무엇이 그들을 생성했는지를 알고 있습니다.
@@ -368,7 +368,7 @@ x 와 y 를 찾을 것 입니다.
  Out::
 
     tensor(21.)
-    <SumBackward0 object at 0x7f46c9ffd828>
+    <SumBackward0 object at 0x7f649fce6400>
 
 
 이제 x의 첫번째 구성요소에 해당하는 이 합계의 도함수가 무엇입니까?
@@ -471,7 +471,7 @@ Pytorch가 기울기를 계산하게 하고, 우리가 옳았다는 것을 확�
 
     False False
     None
-    <AddBackward1 object at 0x7f46c9ffbd68>
+    <AddBackward1 object at 0x7f649ff6c4e0>
     True
     None
 
@@ -503,7 +503,7 @@ requires_grad=True 를 가진 텐서를 ``with torch.no_grad():`` 으로
     False
 
 
-**Total running time of the script:** ( 0 minutes  0.507 seconds)
+**Total running time of the script:** ( 0 minutes  0.007 seconds)
 
 
 

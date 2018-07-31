@@ -662,7 +662,7 @@
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mf">2.2538</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mf">2.2724</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>합성곱 신경망의 출력 <code class="docutils literal notranslate"><span class="pre">out</span></code> 은 <code class="docutils literal notranslate"><span class="pre">Tensor</span></code> 이며, 이를 사용하여 오차를
@@ -682,8 +682,8 @@
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.7637</span><span class="p">)</span>
-<span class="n">tensor</span><span class="p">(</span><span class="mf">0.4978</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.8185</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">(</span><span class="mf">0.5796</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -725,7 +725,7 @@ output:  &lt;class &#39;torch.Tensor&#39;&gt;
 
 input size: torch.Size([1, 10, 12, 12])
 output size: torch.Size([1, 20, 8, 8])
-output norm: tensor(13.6498)
+output norm: tensor(16.3986)
 </pre></div>
 </div>
 <p>conv2에 역방향 훅을 등록하고 몇 가지 정보를 출력해보겠습니다.</p>
@@ -759,7 +759,7 @@ output:  &lt;class &#39;torch.Tensor&#39;&gt;
 
 input size: torch.Size([1, 10, 12, 12])
 output size: torch.Size([1, 20, 8, 8])
-output norm: tensor(13.6498)
+output norm: tensor(16.3986)
 Inside Conv2d backward
 Inside class:Conv2d
 
@@ -770,7 +770,7 @@ grad_output[0]:  &lt;class &#39;torch.Tensor&#39;&gt;
 
 grad_input size: torch.Size([1, 10, 12, 12])
 grad_output size: torch.Size([1, 20, 8, 8])
-grad_input norm: tensor(0.1028)
+grad_input norm: tensor(0.1193)
 </pre></div>
 </div>
 <p>동작하는 전체 MNIST 예제는 여기에서 확인할 수 있습니다.
@@ -826,7 +826,7 @@ grad_input norm: tensor(0.1028)
 <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.012 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.010 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/nn_tutorial.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">nn_tutorial.py</span></code></a></div>

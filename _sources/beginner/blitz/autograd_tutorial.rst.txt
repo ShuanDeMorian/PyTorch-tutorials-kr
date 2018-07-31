@@ -117,7 +117,7 @@ tensor에 연산을 수행합니다:
 
  Out::
 
-    <AddBackward0 object at 0x7f8bba9ec240>
+    <AddBackward0 object at 0x7f649fd52b70>
 
 
 y에 다른 연산을 수행합니다.
@@ -168,7 +168,7 @@ y에 다른 연산을 수행합니다.
 
     False
     True
-    <SumBackward0 object at 0x7f8bba9eccf8>
+    <SumBackward0 object at 0x7f649feca400>
 
 
 변화도(Gradient)
@@ -245,7 +245,7 @@ autograd로 많은 정신나간 일들(crazy things)도 할 수 있습니다!
 
  Out::
 
-    tensor([-1245.3888,  -278.6119, -1069.9080])
+    tensor([ -244.5372, -1385.1035,   480.6814])
 
 
 

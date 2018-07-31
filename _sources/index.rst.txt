@@ -17,7 +17,7 @@ PyTorch의 API와 계층(Layer)에 대한 참고 문서는 http://docs.pytorch.o
 인라인(inline) 도움말을 참고해주세요. 만약 튜토리얼을 개선하고 싶으시다면,
 GitHub 이슈를 통해 의견을 주시기 바랍니다: https://github.com/pytorch/tutorials
 
-(역자 주: 한국어 번역에 대한 오타나 오역을 발견하시면
+(**역자 주**: 한국어 번역에 대한 오타나 오역을 발견하시면
 `번역 저장소 <https://github.com/9bow/PyTorch-tutorials-kr>`__ 에
 `이슈 <https://github.com/9bow/PyTorch-tutorials-kr/issues/new>`__ 또는
 `PR <https://github.com/9bow/PyTorch-tutorials-kr/pulls>`__ 을 남겨주세요.)
