@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Deep Learning with PyTorch &mdash; PyTorch Tutorials 0.4.0 documentation</title>
+  <title>PyTorch를 이용한 딥러닝 &mdash; PyTorch Tutorials 0.4.0 documentation</title>
   
 
   
@@ -274,17 +274,17 @@
 <li class="toctree-l3"><a class="reference internal" href="pytorch_tutorial.html#computation-graph-automatic-differentiation">연산 그래프(Computation Graph)와 자동 미분(Automatic Differentiation)</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Deep Learning with PyTorch</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#deep-learning-building-blocks-affine-maps-non-linearities-and-objectives">Deep Learning Building Blocks: Affine maps, non-linearities and objectives</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#affine-maps">Affine Maps</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#non-linearities">Non-Linearities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#softmax-and-probabilities">Softmax and Probabilities</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#objective-functions">Objective Functions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">PyTorch를 이용한 딥러닝</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#affine-maps">딥러닝 블록 구축 : 아핀 맵(affine maps), 비선형성, 객체</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">아핀 맵</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">비선형성</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#softmax">Softmax 및 확률</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#objective-functions">목적 함수(Objective Functions)</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#optimization-and-training">Optimization and Training</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-network-components-in-pytorch">Creating Network Components in PyTorch</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#example-logistic-regression-bag-of-words-classifier">Example: Logistic Regression Bag-of-Words classifier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">최적화와 학습</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Pytorch 에서 네트워크 구성요소 생성하기</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#bag-of-words">예제: 논리 회귀 Bag-of-Words 분류기</a></li>
 </ul>
 </li>
 </ul>
@@ -517,7 +517,7 @@
         
           <li><a href="../deep_learning_nlp_tutorial.html">Deep Learning for NLP with Pytorch</a> &raquo;</li>
         
-      <li>Deep Learning with PyTorch</li>
+      <li>PyTorch를 이용한 딥러닝</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -536,28 +536,28 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="deep-learning-with-pytorch">
-<span id="sphx-glr-beginner-nlp-deep-learning-tutorial-py"></span><h1>Deep Learning with PyTorch<a class="headerlink" href="#deep-learning-with-pytorch" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="deep-learning-building-blocks-affine-maps-non-linearities-and-objectives">
-<h2>Deep Learning Building Blocks: Affine maps, non-linearities and objectives<a class="headerlink" href="#deep-learning-building-blocks-affine-maps-non-linearities-and-objectives" title="Permalink to this headline">¶</a></h2>
-<p>Deep learning consists of composing linearities with non-linearities in
-clever ways. The introduction of non-linearities allows for powerful
-models. In this section, we will play with these core components, make
-up an objective function, and see how the model is trained.</p>
+  <div class="section" id="pytorch">
+<span id="sphx-glr-beginner-nlp-deep-learning-tutorial-py"></span><h1>PyTorch를 이용한 딥러닝<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="affine-maps">
-<h3>Affine Maps<a class="headerlink" href="#affine-maps" title="Permalink to this headline">¶</a></h3>
-<p>One of the core workhorses of deep learning is the affine map, which is
-a function <span class="math notranslate">\(f(x)\)</span> where</p>
+<h2>딥러닝 블록 구축 : 아핀 맵(affine maps), 비선형성, 객체<a class="headerlink" href="#affine-maps" title="Permalink to this headline">¶</a></h2>
+<p>딥러닝은 영리한 방법으로 비선형성을 가진 선형성을 구성하는 것으로
+이루어집니다. 비선형성의 도입은 강력한 모델을 가능하게 합니다.
+이 섹션에서 이 핵심 구성 요소를 다루고, 객체 함수를 만들고, 어떻게
+모델이 학습되지는 살펴봅시다.</p>
+<div class="section" id="id1">
+<h3>아핀 맵<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>딥러닝의 핵심 작업자 중 하나는 아핀 맵 입니다.
+이 함수 <span class="math notranslate">\(f(x)\)</span> 는 다음과 같습니다.</p>
 <div class="math notranslate">
 \[f(x) = Ax + b\]</div>
-<p>for a matrix <span class="math notranslate">\(A\)</span> and vectors <span class="math notranslate">\(x, b\)</span>. The parameters to be
-learned here are <span class="math notranslate">\(A\)</span> and <span class="math notranslate">\(b\)</span>. Often, <span class="math notranslate">\(b\)</span> is refered to
-as the <em>bias</em> term.</p>
-<p>PyTorch and most other deep learning frameworks do things a little
-differently than traditional linear algebra. It maps the rows of the
-input instead of the columns. That is, the <span class="math notranslate">\(i\)</span>‘th row of the
-output below is the mapping of the <span class="math notranslate">\(i\)</span>‘th row of the input under
-<span class="math notranslate">\(A\)</span>, plus the bias term. Look at the example below.</p>
+<p>여기서 <span class="math notranslate">\(A\)</span> 는 행렬, <span class="math notranslate">\(x, b\)</span> 는 벡터 입니다.
+여기서 학습되는 변수는 <span class="math notranslate">\(A\)</span> 와 <span class="math notranslate">\(b\)</span> 입니다.
+종종 <span class="math notranslate">\(b\)</span> 는 <em>편향(Bias)</em> 이라 불립니다.</p>
+<p>PyTorch 와 대부분의 다른 딥러닝 프레임워크들은 고전적인 선형 대수학와
+조금 다르게 동작합니다. 입력의 열 대신에 행으로 매핑합니다.
+즉 주어진 <span class="math notranslate">\(A\)</span> 에서 출력의 <span class="math notranslate">\(i\)</span> 번째 행은
+입력의 <span class="math notranslate">\(i\)</span> 번째 행에 매핑되고 편향(Bias)을 더합니다.
+아래 예시를 살펴보십시오.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Author: Robert Guthrie</span>
 
 <span class="kn">import</span> <span class="nn">torch</span>
@@ -580,38 +580,35 @@ output below is the mapping of the <span class="math notranslate">\(i\)</span>�
 </pre></div>
 </div>
 </div>
-<div class="section" id="non-linearities">
-<h3>Non-Linearities<a class="headerlink" href="#non-linearities" title="Permalink to this headline">¶</a></h3>
-<p>First, note the following fact, which will explain why we need
-non-linearities in the first place. Suppose we have two affine maps
-<span class="math notranslate">\(f(x) = Ax + b\)</span> and <span class="math notranslate">\(g(x) = Cx + d\)</span>. What is
-<span class="math notranslate">\(f(g(x))\)</span>?</p>
+<div class="section" id="id2">
+<h3>비선형성<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>먼저 왜 비선형성이 필요한지 설명하는 다음 사실을 주목하십시오.
+<span class="math notranslate">\(f(x) = Ax + b\)</span> 와 <span class="math notranslate">\(g(x) = Cx + d\)</span> 두개의 아핀맵이 있다고 가정합니다.
+<span class="math notranslate">\(f(g(x))\)</span> 는 무엇일까요?</p>
 <div class="math notranslate">
 \[f(g(x)) = A(Cx + d) + b = ACx + (Ad + b)\]</div>
-<p><span class="math notranslate">\(AC\)</span> is a matrix and <span class="math notranslate">\(Ad + b\)</span> is a vector, so we see that
-composing affine maps gives you an affine map.</p>
-<p>From this, you can see that if you wanted your neural network to be long
-chains of affine compositions, that this adds no new power to your model
-than just doing a single affine map.</p>
-<p>If we introduce non-linearities in between the affine layers, this is no
-longer the case, and we can build much more powerful models.</p>
-<p>There are a few core non-linearities.
-<span class="math notranslate">\(\tanh(x), \sigma(x), \text{ReLU}(x)\)</span> are the most common. You are
-probably wondering: “why these functions? I can think of plenty of other
-non-linearities.” The reason for this is that they have gradients that
-are easy to compute, and computing gradients is essential for learning.
-For example</p>
+<p><span class="math notranslate">\(AC\)</span> 는 행렬이고 <span class="math notranslate">\(Ad + b\)</span> 는 벡터이므로 아핀맵 구성은
+아핀맵이 주어집니다.</p>
+<p>이것으로부터, 신경망이 아핀 구성의 긴 체인이 되길 원한다면,
+단일 아핀 맵을 작성하는 것보다 이것이 모델에 추가하는 새로운 힘이
+없다는 것을 알 수 있습니다.</p>
+<p>아핀 계층 사이에 만약 비선형성을 적용한다면
+이것은 위 경우와 달리 더욱 더 강력한 모델을 구축할 수 있습니다.</p>
+<p>핵심적인 비선형성 <span class="math notranslate">\(\tanh(x), \sigma(x), \text{ReLU}(x)\)</span> 들이 가장
+일반적입니다. 아마 의문이 생길겁니다 : “왜 이런 함수들이지? 나는 다른 많은
+비선형성을 생각할 수 있는데”. 그 이유는 그들이 그래디언트를 계산하기 쉽고,
+그래디언트 연산은 학습에 필수적이기 때문입니다.
+예를 들어서</p>
 <div class="math notranslate">
 \[\frac{d\sigma}{dx} = \sigma(x)(1 - \sigma(x))\]</div>
-<p>A quick note: although you may have learned some neural networks in your
-intro to AI class where <span class="math notranslate">\(\sigma(x)\)</span> was the default non-linearity,
-typically people shy away from it in practice. This is because the
-gradient <em>vanishes</em> very quickly as the absolute value of the argument
-grows. Small gradients means it is hard to learn. Most people default to
-tanh or ReLU.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># In pytorch, most non-linearities are in torch.functional (we have it imported as F)</span>
-<span class="c1"># Note that non-linearites typically don&#39;t have parameters like affine maps do.</span>
-<span class="c1"># That is, they don&#39;t have weights that are updated during training.</span>
+<p>빠른 참고: AI 클래스에 대한 소개에서 일부 신경망을 배웠지만 <span class="math notranslate">\(\sigma(x)\)</span> 가 기본이었을 것입니다.
+일반적으로 사람들은 실제로 그것을 사용하지 않고 피합니다.
+이것은 그래디언트가 인수의 절대 값이 커짐에 따라 매우 빨리 <em>사라지기</em> 때문입니다.
+작은 그래디언트는 학습하기 어렵다는 것을 의미합니다.
+대부분의 사람들은 tanh 또는 ReLU를 기본값으로 사용합니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pytorch에서 대부분의 비선형성은 torch.functional에 있습니다 ( F 로 가져옵니다)</span>
+<span class="c1"># 일반적으로 비선형성은 아핀맵과 같은 파라미터를 가지고 있지 않습니다.</span>
+<span class="c1"># 즉, 학습 중에 업데이트되는 가중치가 없습니다.</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
@@ -625,28 +622,25 @@ tanh or ReLU.</p>
 </pre></div>
 </div>
 </div>
-<div class="section" id="softmax-and-probabilities">
-<h3>Softmax and Probabilities<a class="headerlink" href="#softmax-and-probabilities" title="Permalink to this headline">¶</a></h3>
-<p>The function <span class="math notranslate">\(\text{Softmax}(x)\)</span> is also just a non-linearity, but
-it is special in that it usually is the last operation done in a
-network. This is because it takes in a vector of real numbers and
-returns a probability distribution. Its definition is as follows. Let
-<span class="math notranslate">\(x\)</span> be a vector of real numbers (positive, negative, whatever,
-there are no constraints). Then the i’th component of
-<span class="math notranslate">\(\text{Softmax}(x)\)</span> is</p>
+<div class="section" id="softmax">
+<h3>Softmax 및 확률<a class="headerlink" href="#softmax" title="Permalink to this headline">¶</a></h3>
+<p>함수 <span class="math notranslate">\(\text{Softmax}(x)\)</span> 또한 단지 비선형성 이지만, 일반적으로 네트워크에서
+마지막으로 수행되는 작업이라는 점에서 특별합니다.
+이는 실수의 벡터를 취하여 확률 분포를 반환하기 때문입니다.
+정의는 다음과 같습니다. <span class="math notranslate">\(x\)</span> 는 실수 벡터(음수, 양수 , 제약 없음)라고 하면,
+i번째 구성 요소는 <span class="math notranslate">\(\text{Softmax}(x)\)</span> 는</p>
 <div class="math notranslate">
 \[\frac{\exp(x_i)}{\sum_j \exp(x_j)}\]</div>
-<p>It should be clear that the output is a probability distribution: each
-element is non-negative and the sum over all components is 1.</p>
-<p>You could also think of it as just applying an element-wise
-exponentiation operator to the input to make everything non-negative and
-then dividing by the normalization constant.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Softmax is also in torch.nn.functional</span>
+<p>출력은 확률 분포라는 것이 분명해야합니다:
+각 요소는 음수가 아니며 모든 구성 요소의 합은 1입니다.</p>
+<p>모두 음수가 아니게 하기 위해서 입력에 요소 단위의 지수 연산자를 적용한 다음
+정규화 상수로 나누는 것도 생각할 수 있습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Softmax 도 torch.nn.functional 에 있습니다.</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>
-<span class="k">print</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>  <span class="c1"># Sums to 1 because it is a distribution!</span>
-<span class="k">print</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># theres also log_softmax</span>
+<span class="k">print</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>  <span class="c1"># 확률 분포이기 때문에 합이 1 입니다!</span>
+<span class="k">print</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">dim</span><span class="o">=</span><span class="mi">0</span><span class="p">))</span>  <span class="c1"># log_softmax 도 있습니다.</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
@@ -658,89 +652,77 @@ then dividing by the normalization constant.</p>
 </div>
 </div>
 <div class="section" id="objective-functions">
-<h3>Objective Functions<a class="headerlink" href="#objective-functions" title="Permalink to this headline">¶</a></h3>
-<p>The objective function is the function that your network is being
-trained to minimize (in which case it is often called a <em>loss function</em>
-or <em>cost function</em>). This proceeds by first choosing a training
-instance, running it through your neural network, and then computing the
-loss of the output. The parameters of the model are then updated by
-taking the derivative of the loss function. Intuitively, if your model
-is completely confident in its answer, and its answer is wrong, your
-loss will be high. If it is very confident in its answer, and its answer
-is correct, the loss will be low.</p>
-<p>The idea behind minimizing the loss function on your training examples
-is that your network will hopefully generalize well and have small loss
-on unseen examples in your dev set, test set, or in production. An
-example loss function is the <em>negative log likelihood loss</em>, which is a
-very common objective for multi-class classification. For supervised
-multi-class classification, this means training the network to minimize
-the negative log probability of the correct output (or equivalently,
-maximize the log probability of the correct output).</p>
+<h3>목적 함수(Objective Functions)<a class="headerlink" href="#objective-functions" title="Permalink to this headline">¶</a></h3>
+<p>목적 함수는 네트워크가 최소화하도록 학습되는 함수입니다
+( <em>손실 함수</em> 또는 <em>비용 함수</em> 라고 함).
+먼저 학습 인스턴스를 선택하고 신경망을 통해 실행한 다음 출력의 손실을 계산합니다.
+그런 다음 손실 함수의 미분을 취함으로써 모델의 파라미터가 업데이트됩니다.
+직관적으로 모델이 자신의 대답에 완전히 확신하고 대답이 잘못되면 손실이 높아집니다.
+답변에 자신이 있고 답변이 맞으면 손실이 적습니다.</p>
+<p>학습 예제에서 손실 함수를 최소화하려는 아이디어는
+네트워크가 잘 일반화되고 개발자 세트, 테스트 세트 또는 프로덕션에서
+나타나지 않았던 예제(unseen examples)에 대해 작은 손실을 가지기를 바랍니다.
+손실 함수의 예로 <em>음의 로그 우도 손실(negative log likelihood loss)</em> 있습니다.
+이 것은 다중 클래스 분류에서 매우 자주 사용되는 목적 함수입니다.
+감독 다중 클래스 분류의 경우에는 올바른 출력(정답을 맞춘 출력)의 음의 로그 확률을
+최소화하도록 네트워크를 교육하는 것을 의미합니다.
+(또는 이와 동등하게 올바른 출력의 로그 확률을 최대화하십시오)</p>
 </div>
 </div>
-<div class="section" id="optimization-and-training">
-<h2>Optimization and Training<a class="headerlink" href="#optimization-and-training" title="Permalink to this headline">¶</a></h2>
-<p>So what we can compute a loss function for an instance? What do we do
-with that? We saw earlier that Tensors know how to compute gradients
-with respect to the things that were used to compute it. Well,
-since our loss is an Tensor, we can compute gradients with
-respect to all of the parameters used to compute it! Then we can perform
-standard gradient updates. Let <span class="math notranslate">\(\theta\)</span> be our parameters,
-<span class="math notranslate">\(L(\theta)\)</span> the loss function, and <span class="math notranslate">\(\eta\)</span> a positive
-learning rate. Then:</p>
+<div class="section" id="id3">
+<h2>최적화와 학습<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>그럼 인스턴스에 대해 손실 함수를 계산할 수 있다는 것은 무엇입니까? 그걸 어떻게 할까요?
+우리는 이전에 Tensor가 그것을 계산하는데 사용된 것들에 해당하는 그래디언트를
+계산하는 방법을 알고 있다는 것을 보았습니다.
+손실은 Tensor이기 때문에 그것을 계산하는데 사용된 모든 파라미터와 관련하여
+그래디언트를 계산할 수 있습니다! 그런 다음 표준 그래디언트 업데이트를 수행 할 수 있습니다.
+<span class="math notranslate">\(\theta\)</span> 가 우리의 파라미터라고 합시다.
+<span class="math notranslate">\(L(\theta)\)</span> 는 손실 함수, 그리고 <span class="math notranslate">\(\eta\)</span> 는 양의 러닝 레이트 입니다. 그러면</p>
 <div class="math notranslate">
 \[\theta^{(t+1)} = \theta^{(t)} - \eta \nabla_\theta L(\theta)\]</div>
-<p>There are a huge collection of algorithms and active research in
-attempting to do something more than just this vanilla gradient update.
-Many attempt to vary the learning rate based on what is happening at
-train time. You don’t need to worry about what specifically these
-algorithms are doing unless you are really interested. Torch provides
-many in the torch.optim package, and they are all completely
-transparent. Using the simplest gradient update is the same as the more
-complicated algorithms. Trying different update algorithms and different
-parameters for the update algorithms (like different initial learning
-rates) is important in optimizing your network’s performance. Often,
-just replacing vanilla SGD with an optimizer like Adam or RMSProp will
-boost performance noticably.</p>
+<p>이 기본적인 그레디언트 업데이트 이상의 것을 하기 위해서 많은 알고리즘과
+시도되고 있는 활발한 연구들이 있습니다.
+많은 시도들은 학습 시간에 일어나는 것에 기반한 러닝 레이트를 변경해봅니다.
+당신이 정말 관심이 없다면 특별히 이들 알고리즘이 무엇을 하는지 걱정할
+필요가 없습니다. Torch는 torch.optim  패키지에서 많은 것을 제공하며
+완전히 공개되어 있습니다. 가장 단순한 그래디언트 업데이트 사용은
+더 복잡한 알고리즘을 사용하는 것과 동일합니다.
+다른 업데이트 알고리즘과 업데이트 알고리즘을 위한 다른 파라미터(다른 초기 러닝 레이트)를
+시도해 보는 것은 네트워크의 성능을 최적화하는데 중요합니다.
+종종 기본 SGD를 Adam 또는 RMSprop 으로 교체하는 것이 눈에 띄게 성능
+향상 시킵니다.</p>
 </div>
-<div class="section" id="creating-network-components-in-pytorch">
-<h2>Creating Network Components in PyTorch<a class="headerlink" href="#creating-network-components-in-pytorch" title="Permalink to this headline">¶</a></h2>
-<p>Before we move on to our focus on NLP, lets do an annotated example of
-building a network in PyTorch using only affine maps and
-non-linearities. We will also see how to compute a loss function, using
-PyTorch’s built in negative log likelihood, and update parameters by
-backpropagation.</p>
-<p>All network components should inherit from nn.Module and override the
-forward() method. That is about it, as far as the boilerplate is
-concerned. Inheriting from nn.Module provides functionality to your
-component. For example, it makes it keep track of its trainable
-parameters, you can swap it between CPU and GPU with the <code class="docutils literal notranslate"><span class="pre">.to(device)</span></code>
-method, where device can be a CPU device <code class="docutils literal notranslate"><span class="pre">torch.device(&quot;cpu&quot;)</span></code> or CUDA
-device <code class="docutils literal notranslate"><span class="pre">torch.device(&quot;cuda:0&quot;)</span></code>.</p>
-<p>Let’s write an annotated example of a network that takes in a sparse
-bag-of-words representation and outputs a probability distribution over
-two labels: “English” and “Spanish”. This model is just logistic
-regression.</p>
-<div class="section" id="example-logistic-regression-bag-of-words-classifier">
-<h3>Example: Logistic Regression Bag-of-Words classifier<a class="headerlink" href="#example-logistic-regression-bag-of-words-classifier" title="Permalink to this headline">¶</a></h3>
-<p>Our model will map a sparse BoW representation to log probabilities over
-labels. We assign each word in the vocab an index. For example, say our
-entire vocab is two words “hello” and “world”, with indices 0 and 1
-respectively. The BoW vector for the sentence “hello hello hello hello”
-is</p>
+<div class="section" id="id4">
+<h2>Pytorch 에서 네트워크 구성요소 생성하기<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>NLP에 초점을 맞추기 전에,  PyTorch에서 아핀 맵과 비선형성만을 사용하여
+네트워크를 구축하는 주석 처리된 예제를 수행 할 수 있습니다.
+또한 손실 함수를 계산하는 방법, PyTorch에 내장된 음의 로그 우도를 사용하는 방법,
+역전파를 통해 매개 변수를 업데이트하는 방법을 볼 것입니다.</p>
+<p>모든 네트워크 구성 요소는 nn.Module에서 상속 받아 forward() 메서드를 재정의해야합니다.
+이것은 상용구에 관한 것입니다. nn.Module에서의 상속은 구성 요소에 기능을 제공합니다.
+예를 들어 그것은 학습 가능한 파라미터를 추적하도록 만들고,
+<code class="docutils literal notranslate"><span class="pre">.to(device)</span></code> 로 CPU와 GPU 를 교환할수 있습니다.
+<code class="docutils literal notranslate"><span class="pre">torch.device(&quot;cpu&quot;)</span></code> 는 CPU 장치를 <code class="docutils literal notranslate"><span class="pre">torch.device(&quot;cuda:0&quot;)</span></code> 는 GPU 장치를 사용합니다.</p>
+<p>희소한 Bag-of-Words Representation 을 받아서 두개의 레이블 “영어”와 “스페인어”의 확률 분포
+출력하는 네트워크의 주석이 달린 예시를 작성해 봅시다.
+이 모델은 단순한 논리 회귀 입니다.</p>
+<div class="section" id="bag-of-words">
+<h3>예제: 논리 회귀 Bag-of-Words 분류기<a class="headerlink" href="#bag-of-words" title="Permalink to this headline">¶</a></h3>
+<p>우리 모델은 희소한 BoW 표현을 레이블에 대한 로그 확률로 매핑합니다.
+사전의 각 단어에 하나의 색인을 할당합니다.
+예를 들어서 전체 사전이 각각 0과 1의 색인을 가진 두개의 단어 “hello” 와 “world” 라고 합시다.
+“hello hello hello hello” 문장의 BoW 벡터는 다음과 같습니다.</p>
 <div class="math notranslate">
-\[\left[ 4, 0 \right]\]</div>
-<p>For “hello world world hello”, it is</p>
+\[ \begin{align}\begin{aligned}\left[ 4, 0 \right]\\&quot;hello world world hello&quot;는 다음과 같습니다.\end{aligned}\end{align} \]</div>
 <div class="math notranslate">
 \[\left[ 2, 2 \right]\]</div>
-<p>etc. In general, it is</p>
+<p>일반화 하면 다음과 같습니다.</p>
 <div class="math notranslate">
 \[\left[ \text{Count}(\text{hello}), \text{Count}(\text{world}) \right]\]</div>
-<p>Denote this BOW vector as <span class="math notranslate">\(x\)</span>. The output of our network is:</p>
+<p>이 BOW 벡터를 <span class="math notranslate">\(x\)</span> 라하면 네트워크의 출력은 다음과 같습니다:</p>
 <div class="math notranslate">
 \[\log \text{Softmax}(Ax + b)\]</div>
-<p>That is, we pass the input through an affine map and then do log
-softmax.</p>
+<p>즉, 아핀맵에 입력을 주고 그 다음 Log Softmax 를 합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;me gusta comer en la cafeteria&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="s2">&quot;SPANISH&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;Give it to me&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="s2">&quot;ENGLISH&quot;</span><span class="p">),</span>
         <span class="p">(</span><span class="s2">&quot;No creo que sea una buena idea&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="s2">&quot;SPANISH&quot;</span><span class="p">),</span>
@@ -749,8 +731,8 @@ softmax.</p>
 <span class="n">test_data</span> <span class="o">=</span> <span class="p">[(</span><span class="s2">&quot;Yo creo que si&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="s2">&quot;SPANISH&quot;</span><span class="p">),</span>
              <span class="p">(</span><span class="s2">&quot;it is lost on me&quot;</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span> <span class="s2">&quot;ENGLISH&quot;</span><span class="p">)]</span>
 
-<span class="c1"># word_to_ix maps each word in the vocab to a unique integer, which will be its</span>
-<span class="c1"># index into the Bag of words vector</span>
+<span class="c1"># word_to_ix 는 사전의 각 단어를 고유한 정수로 매핑하고</span>
+<span class="c1"># 그것은 BoW 벡터에서 자신의 색인이 됩니다.</span>
 <span class="n">word_to_ix</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">for</span> <span class="n">sent</span><span class="p">,</span> <span class="n">_</span> <span class="ow">in</span> <span class="n">data</span> <span class="o">+</span> <span class="n">test_data</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">sent</span><span class="p">:</span>
@@ -762,27 +744,25 @@ softmax.</p>
 <span class="n">NUM_LABELS</span> <span class="o">=</span> <span class="mi">2</span>
 
 
-<span class="k">class</span> <span class="nc">BoWClassifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>  <span class="c1"># inheriting from nn.Module!</span>
+<span class="k">class</span> <span class="nc">BoWClassifier</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>  <span class="c1"># nn.Module로 부터 상속 받기 !</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">,</span> <span class="n">vocab_size</span><span class="p">):</span>
-        <span class="c1"># calls the init function of nn.Module.  Dont get confused by syntax,</span>
-        <span class="c1"># just always do it in an nn.Module</span>
+        <span class="c1"># calls the init function of nn.Module의 초기화 함수 호출.  Dont get confused by syntax,</span>
+        <span class="c1"># 문법에 혼란스러워 하지 마시고 단지 항상 nn.Module 에서 수행하십시오.</span>
         <span class="nb">super</span><span class="p">(</span><span class="n">BoWClassifier</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
 
-        <span class="c1"># Define the parameters that you will need.  In this case, we need A and b,</span>
-        <span class="c1"># the parameters of the affine mapping.</span>
-        <span class="c1"># Torch defines nn.Linear(), which provides the affine map.</span>
-        <span class="c1"># Make sure you understand why the input dimension is vocab_size</span>
-        <span class="c1"># and the output is num_labels!</span>
+        <span class="c1"># 필요한 파라미터를 정의 하십시오. 이 경우에는 아핀 매핑의 매개 변수 인 A와 b가 필요합니다.</span>
+        <span class="c1"># Torch는 아핀 맵을 제공하는 nn.Linear()를 정의합니다</span>
+        <span class="c1"># 입력 차원이 vocab_size이고 출력이 num_labels 인 이유를 이해했는지 확인하십시오!</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">linear</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">vocab_size</span><span class="p">,</span> <span class="n">num_labels</span><span class="p">)</span>
 
-        <span class="c1"># NOTE! The non-linearity log softmax does not have parameters! So we don&#39;t need</span>
-        <span class="c1"># to worry about that here</span>
+        <span class="c1"># 주의! 비선형성 Log Softmax에는 파라미터가 없습니다!</span>
+        <span class="c1"># 그래서 여기에 대해 걱정할 필요가 없습니다.</span>
 
     <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">bow_vec</span><span class="p">):</span>
-        <span class="c1"># Pass the input through the linear layer,</span>
-        <span class="c1"># then pass that through log_softmax.</span>
-        <span class="c1"># Many non-linearities and other functions are in torch.nn.functional</span>
+        <span class="c1"># 선형 계층를 통해 입력을 전달한 다음 log_softmax로 전달합니다.</span>
+        <span class="c1"># 많은 비선형성 및 기타 기능이 torch.nn.functional 에 있습니다</span>
+
         <span class="k">return</span> <span class="n">F</span><span class="o">.</span><span class="n">log_softmax</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">linear</span><span class="p">(</span><span class="n">bow_vec</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 
 
@@ -799,17 +779,16 @@ softmax.</p>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">BoWClassifier</span><span class="p">(</span><span class="n">NUM_LABELS</span><span class="p">,</span> <span class="n">VOCAB_SIZE</span><span class="p">)</span>
 
-<span class="c1"># the model knows its parameters.  The first output below is A, the second is b.</span>
-<span class="c1"># Whenever you assign a component to a class variable in the __init__ function</span>
-<span class="c1"># of a module, which was done with the line</span>
+<span class="c1"># 모델은 자신의 파라미터를 알고 있습니다. 아래에 있는 첫번째 출력은 A 두번째는 b 입니다.</span>
+<span class="c1"># 모듈의 __init__ 함수에서 클래스 변수에 구성 요소를 할당 할 때마다 다음 행을 사용하여 완료합니다.</span>
 <span class="c1"># self.linear = nn.Linear(...)</span>
-<span class="c1"># Then through some Python magic from the PyTorch devs, your module</span>
-<span class="c1"># (in this case, BoWClassifier) will store knowledge of the nn.Linear&#39;s parameters</span>
+<span class="c1"># 그런 다음 PyTorch 개발자의 Python 마법을 통해, 모듈(이 경우 BoWClassifier)은</span>
+<span class="c1"># nn.Linear 파라미터에 대한 지식을 저장합니다</span>
 <span class="k">for</span> <span class="n">param</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">():</span>
     <span class="k">print</span><span class="p">(</span><span class="n">param</span><span class="p">)</span>
 
-<span class="c1"># To run the model, pass in a BoW vector</span>
-<span class="c1"># Here we don&#39;t need to train, so the code is wrapped in torch.no_grad()</span>
+<span class="c1"># 모델을 실행하려면 BoW 벡터를 전달합니다.</span>
+<span class="c1"># 여기서 우리는 학습 할 필요가 없으므로 코드는 torch.no_grad()로 싸여 있습니다.</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="n">sample</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">bow_vector</span> <span class="o">=</span> <span class="n">make_bow_vector</span><span class="p">(</span><span class="n">sample</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">word_to_ix</span><span class="p">)</span>
@@ -833,58 +812,52 @@ softmax.</p>
 <span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.5378</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.8771</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>Which of the above values corresponds to the log probability of ENGLISH,
-and which to SPANISH? We never defined it, but we need to if we want to
-train the thing.</p>
+<p>위의 값 중 어느 것이 ENGLISH와 SPANISH의 로그 확률에 해당하는 값일까요?
+우리는 정의하지 않았지만, 학습하기를 원한다면 필요합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label_to_ix</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;SPANISH&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;ENGLISH&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
 </pre></div>
 </div>
-<p>So lets train! To do this, we pass instances through to get log
-probabilities, compute a loss function, compute the gradient of the loss
-function, and then update the parameters with a gradient step. Loss
-functions are provided by Torch in the nn package. nn.NLLLoss() is the
-negative log likelihood loss we want. It also defines optimization
-functions in torch.optim. Here, we will just use SGD.</p>
-<p>Note that the <em>input</em> to NLLLoss is a vector of log probabilities, and a
-target label. It doesn’t compute the log probabilities for us. This is
-why the last layer of our network is log softmax. The loss function
-nn.CrossEntropyLoss() is the same as NLLLoss(), except it does the log
-softmax for you.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Run on test data before we train, just to see a before-and-after</span>
+<p>그럼 학습을 해봅시다! 이를 위해 로그 확률을 얻고, 손실 함수를 계산하고,
+손실 함수의 그래디언트를 계산한 다음 그래디언트 단계로 파라미터를
+업데이트하기 위해 인스턴스를 통과시킵니다.  손실 기능은 nn 패키지의 Torch에서 제공합니다.
+nn.NLLLoss()는 원하는 음의 로그 우도 손실입니다. 또한 torch.optim에서 최적화 함수를 정의합니다.
+여기서는 SGD 만 사용합니다.</p>
+<p>NLLLoss에 대한 <em>입력</em> 은 로그 확률의 벡터이고 목표 레이블입니다.
+우리를 위한 로그 확률을 계산하지 않습니다. 이것이 네트워크의 마지막 계층이
+Log softmax 인 이유입니다. 손실 함수 nn.CrossEntropyLoss()는 Log softmax를 제외하고는 NLLLoss()와 같습니다.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># 훈련하기 전에 테스트 데이터를 실행하여 전후를 볼 수 있습니다.</span>
 <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
     <span class="k">for</span> <span class="n">instance</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">test_data</span><span class="p">:</span>
         <span class="n">bow_vec</span> <span class="o">=</span> <span class="n">make_bow_vector</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">word_to_ix</span><span class="p">)</span>
         <span class="n">log_probs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">bow_vec</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="n">log_probs</span><span class="p">)</span>
 
-<span class="c1"># Print the matrix column corresponding to &quot;creo&quot;</span>
+<span class="c1"># &quot;creo&quot;에 해당하는 행렬 열을 인쇄하십시오.</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[:,</span> <span class="n">word_to_ix</span><span class="p">[</span><span class="s2">&quot;creo&quot;</span><span class="p">]])</span>
 
 <span class="n">loss_function</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">NLLLoss</span><span class="p">()</span>
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">optim</span><span class="o">.</span><span class="n">SGD</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 
-<span class="c1"># Usually you want to pass over the training data several times.</span>
-<span class="c1"># 100 is much bigger than on a real data set, but real datasets have more than</span>
-<span class="c1"># two instances.  Usually, somewhere between 5 and 30 epochs is reasonable.</span>
+<span class="c1"># 일반적으로 교육 데이터를 여러 번 전달 합니다.</span>
+<span class="c1"># 100은 실제 데이터 세트보다 훨씬 더 크지 만 실제 데이터 세트는 두 개 이상의 인스턴스를 가집니다.</span>
+<span class="c1"># 일반적으로 5 ~ 30 개 에포크가 적당합니다.</span>
 <span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">instance</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
-        <span class="c1"># Step 1. Remember that PyTorch accumulates gradients.</span>
-        <span class="c1"># We need to clear them out before each instance</span>
+        <span class="c1"># 1 단계. PyTorch는 그라데이션을 축적합니다.</span>
+        <span class="c1"># 각 인스턴스 전에 그들을 제거해야합니다.</span>
         <span class="n">model</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
 
-        <span class="c1"># Step 2. Make our BOW vector and also we must wrap the target in a</span>
-        <span class="c1"># Tensor as an integer. For example, if the target is SPANISH, then</span>
-        <span class="c1"># we wrap the integer 0. The loss function then knows that the 0th</span>
-        <span class="c1"># element of the log probabilities is the log probability</span>
-        <span class="c1"># corresponding to SPANISH</span>
+
+        <span class="c1"># 2 단계. BOW 벡터를 만들고 정수로 텐서로 대상을 싸야합니다.</span>
+        <span class="c1"># 예를 들어, 대상이 SPANISH이면 정수 0으로 합니다.</span>
+        <span class="c1"># 손실 함수는 로그 확률의 0번째 요소가 SPANISH에 해당하는 로그 확률임을 알 수 있습니다</span>
         <span class="n">bow_vec</span> <span class="o">=</span> <span class="n">make_bow_vector</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">word_to_ix</span><span class="p">)</span>
         <span class="n">target</span> <span class="o">=</span> <span class="n">make_target</span><span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">label_to_ix</span><span class="p">)</span>
 
-        <span class="c1"># Step 3. Run our forward pass.</span>
+        <span class="c1"># 3 단계. 순전파를 실행합니다.</span>
         <span class="n">log_probs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">bow_vec</span><span class="p">)</span>
 
-        <span class="c1"># Step 4. Compute the loss, gradients, and update the parameters by</span>
-        <span class="c1"># calling optimizer.step()</span>
+        <span class="c1"># 4 단계. optimizer.step()을 호출하여 손실, 그래디언트를 계산하고 파라미터를 업데이트합니다.</span>
         <span class="n">loss</span> <span class="o">=</span> <span class="n">loss_function</span><span class="p">(</span><span class="n">log_probs</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span>
         <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
         <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
@@ -895,7 +868,7 @@ softmax for you.</p>
         <span class="n">log_probs</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">bow_vec</span><span class="p">)</span>
         <span class="k">print</span><span class="p">(</span><span class="n">log_probs</span><span class="p">)</span>
 
-<span class="c1"># Index corresponding to Spanish goes up, English goes down!</span>
+<span class="c1"># 스페인어에 해당하는 색인이 올라갑니다. 영어가 내려갑니다!!</span>
 <span class="k">print</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">())[:,</span> <span class="n">word_to_ix</span><span class="p">[</span><span class="s2">&quot;creo&quot;</span><span class="p">]])</span>
 </pre></div>
 </div>
@@ -908,13 +881,12 @@ softmax for you.</p>
 <span class="n">tensor</span><span class="p">([</span> <span class="mf">0.2803</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5605</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>We got the right answer! You can see that the log probability for
-Spanish is much higher in the first example, and the log probability for
-English is much higher in the second for the test data, as it should be.</p>
-<p>Now you see how to make a PyTorch component, pass some data through it
-and do gradient updates. We are ready to dig deeper into what deep NLP
-has to offer.</p>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.087 seconds)</p>
+<p>정답을 얻었습니다! 첫 번째 예제에서는 스페인어의 로그 확률이 ​​훨씬 높고
+영어의 로그 확률은 테스트 데이터의 두 번째에서 훨씬 높다는 것을 알 수 있습니다.</p>
+<p>이제 PyTorch 구성 요소를 만들고 이를 통해 일부 데이터를 전달하고
+그래디언트 업데이트를 수행하는 방법을 살펴 보았습니다.
+우리는 심도있는 NLP가 제공해야하는 것을 더 깊이 파고들 준비가되었습니다.</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  0.620 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/deep_learning_tutorial.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">deep_learning_tutorial.py</span></code></a></div>
