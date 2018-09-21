@@ -540,14 +540,14 @@
 <span id="sphx-glr-beginner-blitz-tensor-tutorial-py"></span><h1>PyTorch가 무엇인가요?<a class="headerlink" href="#pytorch" title="Permalink to this headline">¶</a></h1>
 <p>Python 기반의 과학 연산 패키지로 다음과 같은 두 집단을 대상으로 합니다:</p>
 <ul class="simple">
-<li>NumPy를 대체하고 GPU의 연산력을 사용</li>
-<li>최대한의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼</li>
+<li>NumPy를 대체하면서 GPU를 이용한 연산이 필요한 경우</li>
+<li>최대한의 유연성과 속도를 제공하는 딥러닝 연구 플랫폼이 필요한 경우</li>
 </ul>
 <div class="section" id="id1">
 <h2>시작하기<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="tensors">
 <h3>Tensors<a class="headerlink" href="#tensors" title="Permalink to this headline">¶</a></h3>
-<p>Tensor는 NumPy의 ndarray와 유사할뿐만 아니라, GPU를 사용한 연산 가속도 지원합니다.</p>
+<p>Tensor는 NumPy의 ndarray와 유사할 뿐만 아니라, GPU를 사용한 연산 가속도 지원합니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
 <span class="kn">import</span> <span class="nn">torch</span>
 </pre></div>
@@ -558,12 +558,11 @@
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">(</span><span class="mf">1.00000e-20</span> <span class="o">*</span>
-       <span class="p">[[</span> <span class="mf">2.0426</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">,</span>  <span class="mf">0.0000</span><span class="p">]])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.2530e-03</span><span class="p">,</span>  <span class="mf">4.5872e-41</span><span class="p">,</span>  <span class="mf">5.8261e-37</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.0000e+00</span><span class="p">,</span>  <span class="mf">2.7498e+27</span><span class="p">,</span>  <span class="mf">4.5872e-41</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">8.9513e-05</span><span class="p">,</span>  <span class="mf">4.5872e-41</span><span class="p">,</span> <span class="o">-</span><span class="mf">8.9518e-05</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">4.5872e-41</span><span class="p">,</span>  <span class="mf">4.6243e-44</span><span class="p">,</span>  <span class="mf">0.0000e+00</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">5.6205e-37</span><span class="p">,</span>  <span class="mf">0.0000e+00</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2530e-03</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>무작위로 초기화된 행렬을 생성합니다:</p>
@@ -572,11 +571,11 @@
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">0.7217</span><span class="p">,</span>  <span class="mf">0.6245</span><span class="p">,</span>  <span class="mf">0.9863</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.9060</span><span class="p">,</span>  <span class="mf">0.4156</span><span class="p">,</span>  <span class="mf">0.6047</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.2656</span><span class="p">,</span>  <span class="mf">0.7753</span><span class="p">,</span>  <span class="mf">0.6814</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.8839</span><span class="p">,</span>  <span class="mf">0.6538</span><span class="p">,</span>  <span class="mf">0.3500</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.6724</span><span class="p">,</span>  <span class="mf">0.5330</span><span class="p">,</span>  <span class="mf">0.2112</span><span class="p">]])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">0.6861</span><span class="p">,</span>  <span class="mf">0.8317</span><span class="p">,</span>  <span class="mf">0.7426</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.4445</span><span class="p">,</span>  <span class="mf">0.2862</span><span class="p">,</span>  <span class="mf">0.1563</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.6311</span><span class="p">,</span>  <span class="mf">0.2009</span><span class="p">,</span>  <span class="mf">0.8151</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.5203</span><span class="p">,</span>  <span class="mf">0.9053</span><span class="p">,</span>  <span class="mf">0.3781</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.6071</span><span class="p">,</span>  <span class="mf">0.7370</span><span class="p">,</span>  <span class="mf">0.9638</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>dtype이 long이고 0으로 채워진 행렬을 생성합니다:</p>
@@ -617,11 +616,11 @@ dtype과 같이 사용자로부터 제공된 새로운 값이 없는 한 입력 
         <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
         <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">],</span>
         <span class="p">[</span> <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">,</span>  <span class="mf">1.</span><span class="p">]],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-<span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.0766</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.2275</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9512</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.0771</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3489</span><span class="p">,</span>  <span class="mf">0.2629</span><span class="p">],</span>
-        <span class="p">[</span><span class="o">-</span><span class="mf">0.0365</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9104</span><span class="p">,</span>  <span class="mf">0.2732</span><span class="p">],</span>
-        <span class="p">[</span><span class="o">-</span><span class="mf">0.0468</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4386</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7743</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">2.4719</span><span class="p">,</span>  <span class="mf">0.4576</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4155</span><span class="p">]])</span>
+<span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.9250</span><span class="p">,</span>  <span class="mf">2.5295</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3648</span><span class="p">],</span>
+        <span class="p">[</span><span class="o">-</span><span class="mf">0.4237</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4394</span><span class="p">,</span>  <span class="mf">0.1095</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.9107</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4097</span><span class="p">,</span>  <span class="mf">0.2659</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.1711</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9674</span><span class="p">,</span>  <span class="mf">0.7557</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.3148</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1422</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.7714</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>행렬의 크기를 구합니다:</p>
@@ -646,11 +645,11 @@ dtype과 같이 사용자로부터 제공된 새로운 값이 없는 한 입력 
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.2428</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5917</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5720</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.2720</span><span class="p">,</span>  <span class="mf">0.1466</span><span class="p">,</span>  <span class="mf">0.7353</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.5627</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3391</span><span class="p">,</span>  <span class="mf">0.3383</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0976</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1783</span><span class="p">,</span>  <span class="mf">0.0609</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">2.7405</span><span class="p">,</span>  <span class="mf">1.2564</span><span class="p">,</span>  <span class="mf">0.2109</span><span class="p">]])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.6503</span><span class="p">,</span>  <span class="mf">2.5629</span><span class="p">,</span>  <span class="mf">0.1517</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.2803</span><span class="p">,</span>  <span class="mf">0.1743</span><span class="p">,</span>  <span class="mf">0.1767</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.8534</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2887</span><span class="p">,</span>  <span class="mf">0.3580</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.3081</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8568</span><span class="p">,</span>  <span class="mf">1.3952</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.0090</span><span class="p">,</span>  <span class="mf">0.4657</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1922</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>덧셈: 문법2</p>
@@ -658,11 +657,11 @@ dtype과 같이 사용자로부터 제공된 새로운 값이 없는 한 입력 
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.2428</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5917</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5720</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.2720</span><span class="p">,</span>  <span class="mf">0.1466</span><span class="p">,</span>  <span class="mf">0.7353</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.5627</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3391</span><span class="p">,</span>  <span class="mf">0.3383</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0976</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1783</span><span class="p">,</span>  <span class="mf">0.0609</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">2.7405</span><span class="p">,</span>  <span class="mf">1.2564</span><span class="p">,</span>  <span class="mf">0.2109</span><span class="p">]])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.6503</span><span class="p">,</span>  <span class="mf">2.5629</span><span class="p">,</span>  <span class="mf">0.1517</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.2803</span><span class="p">,</span>  <span class="mf">0.1743</span><span class="p">,</span>  <span class="mf">0.1767</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.8534</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2887</span><span class="p">,</span>  <span class="mf">0.3580</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.3081</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8568</span><span class="p">,</span>  <span class="mf">1.3952</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.0090</span><span class="p">,</span>  <span class="mf">0.4657</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1922</span><span class="p">]])</span>
 </pre></div>
 </div>
 <p>덧셈: 결과 tensor를 인자로 제공</p>
@@ -672,30 +671,31 @@ dtype과 같이 사용자로부터 제공된 새로운 값이 없는 한 입력 
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.2428</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5917</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5720</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.2720</span><span class="p">,</span>  <span class="mf">0.1466</span><span class="p">,</span>  <span class="mf">0.7353</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.5627</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3391</span><span class="p">,</span>  <span class="mf">0.3383</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0976</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1783</span><span class="p">,</span>  <span class="mf">0.0609</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">2.7405</span><span class="p">,</span>  <span class="mf">1.2564</span><span class="p">,</span>  <span class="mf">0.2109</span><span class="p">]])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.6503</span><span class="p">,</span>  <span class="mf">2.5629</span><span class="p">,</span>  <span class="mf">0.1517</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.2803</span><span class="p">,</span>  <span class="mf">0.1743</span><span class="p">,</span>  <span class="mf">0.1767</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.8534</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2887</span><span class="p">,</span>  <span class="mf">0.3580</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.3081</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8568</span><span class="p">,</span>  <span class="mf">1.3952</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.0090</span><span class="p">,</span>  <span class="mf">0.4657</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1922</span><span class="p">]])</span>
 </pre></div>
 </div>
-<p>덧셈: in-place</p>
+<p>덧셈: 바꿔치기(In-place) 방식</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># y에 x 더하기</span>
 <span class="n">y</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span> <span class="mf">1.2428</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.5917</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.5720</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">1.2720</span><span class="p">,</span>  <span class="mf">0.1466</span><span class="p">,</span>  <span class="mf">0.7353</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.5627</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3391</span><span class="p">,</span>  <span class="mf">0.3383</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">0.0976</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.1783</span><span class="p">,</span>  <span class="mf">0.0609</span><span class="p">],</span>
-        <span class="p">[</span> <span class="mf">2.7405</span><span class="p">,</span>  <span class="mf">1.2564</span><span class="p">,</span>  <span class="mf">0.2109</span><span class="p">]])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([[</span><span class="o">-</span><span class="mf">0.6503</span><span class="p">,</span>  <span class="mf">2.5629</span><span class="p">,</span>  <span class="mf">0.1517</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.2803</span><span class="p">,</span>  <span class="mf">0.1743</span><span class="p">,</span>  <span class="mf">0.1767</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.8534</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.2887</span><span class="p">,</span>  <span class="mf">0.3580</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">0.3081</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.8568</span><span class="p">,</span>  <span class="mf">1.3952</span><span class="p">],</span>
+        <span class="p">[</span> <span class="mf">1.0090</span><span class="p">,</span>  <span class="mf">0.4657</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1922</span><span class="p">]])</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">Note</p>
-<p class="last">In-place로 tensor의 값을 변경하는 연산은 <code class="docutils literal notranslate"><span class="pre">_</span></code> 를 접미사로 갖습니다.
+<p class="last">바꿔치기(In-place) 방식으로 tensor의 값을 변경하는 연산은 <code class="docutils literal notranslate"><span class="pre">_</span></code> 를 접미사로
+갖습니다.
 예: <code class="docutils literal notranslate"><span class="pre">x.copy_(y)</span></code>, <code class="docutils literal notranslate"><span class="pre">x.t_()</span></code> 는 <code class="docutils literal notranslate"><span class="pre">x</span></code> 를 변경합니다.</p>
 </div>
 <p>NumPy의 인덱싱 표기 방법을 사용할 수도 있습니다!</p>
@@ -703,7 +703,7 @@ dtype과 같이 사용자로부터 제공된 새로운 값이 없는 한 입력 
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mf">1.2275</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.3489</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.9104</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.4386</span><span class="p">,</span>  <span class="mf">0.4576</span><span class="p">])</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">2.5295</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4394</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.4097</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.9674</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.1422</span><span class="p">])</span>
 </pre></div>
 </div>
 <p>크기 변경: tensor의 크기(size)나 모양(shape)을 변경하고 싶을 때, <code class="docutils literal notranslate"><span class="pre">torch.view</span></code> 를 사용합니다.</p>
@@ -717,16 +717,15 @@ dtype과 같이 사용자로부터 제공된 새로운 값이 없는 한 입력 
 <div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">16</span><span class="p">])</span> <span class="n">torch</span><span class="o">.</span><span class="n">Size</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
 </pre></div>
 </div>
-<p>If you have a one element tensor, use <code class="docutils literal notranslate"><span class="pre">.item()</span></code> to get the value as a
-Python number</p>
+<p>만약 tensor에 하나의 값만 존재한다면, <code class="docutils literal notranslate"><span class="pre">.item()</span></code> 을 사용하면 숫자 값을 얻을 수 있습니다.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">item</span><span class="p">())</span>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">1.0978</span><span class="p">])</span>
-<span class="mf">1.0977916717529297</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span><span class="o">-</span><span class="mf">0.7372</span><span class="p">])</span>
+<span class="o">-</span><span class="mf">0.7372124195098877</span>
 </pre></div>
 </div>
 <p><strong>더 읽을거리:</strong></p>
@@ -759,7 +758,7 @@ Python number</p>
 <div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span> <span class="mf">1.</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>numpy 배열의 값이 어떻게 변하는지 확인해보세요.</p>
+<p>NumPy 배열의 값이 어떻게 변하는지 확인해보세요.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">.</span><span class="n">add_</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
@@ -773,7 +772,7 @@ Python number</p>
 </div>
 <div class="section" id="numpy-torch-tensor">
 <h3>NumPy 배열을 Torch Tensor로 변환하기<a class="headerlink" href="#numpy-torch-tensor" title="Permalink to this headline">¶</a></h3>
-<p>np 배열을 변경하면 Torch Tensor의 값도 자동 변경되는 것을 확인해보세요.</p>
+<p>NumPy(np) 배열을 변경하면 Torch Tensor의 값도 자동 변경되는 것을 확인해보세요.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
 <span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">from_numpy</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
@@ -806,11 +805,11 @@ Python number</p>
 </pre></div>
 </div>
 <p class="sphx-glr-script-out">Out:</p>
-<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">2.0978</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">)</span>
-<span class="n">tensor</span><span class="p">([</span> <span class="mf">2.0978</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+<div class="sphx-glr-script-out highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">tensor</span><span class="p">([</span> <span class="mf">0.2628</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">)</span>
+<span class="n">tensor</span><span class="p">([</span> <span class="mf">0.2628</span><span class="p">],</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Total running time of the script:</strong> ( 0 minutes  0.005 seconds)</p>
+<p><strong>Total running time of the script:</strong> ( 0 minutes  3.103 seconds)</p>
 <div class="sphx-glr-footer docutils container">
 <div class="sphx-glr-download docutils container">
 <a class="reference download internal" href="../../_downloads/tensor_tutorial.py" download=""><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">tensor_tutorial.py</span></code></a></div>
